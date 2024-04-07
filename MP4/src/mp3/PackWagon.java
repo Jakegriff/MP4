@@ -1,18 +1,21 @@
 package mp3;
 
+import java.awt.Color;
 import java.awt.EventQueue;
-import java.util.*;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import java.awt.Color;
 import javax.swing.JLayeredPane;
-import java.awt.Font;
-import javax.swing.JCheckBox;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JSlider;
-import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  * The gui implementation of packing a wagon in an implementation of the game Oregon Trail.
@@ -24,7 +27,7 @@ import javax.swing.JButton;
  */
 public class PackWagon {
 
-	private JFrame frame;
+	private JFrame frmOregontrailv;
 	private ImageIcon backgroundImage;
 	private JLayeredPane layeredPane;
 	private JLabel bgImage;
@@ -162,6 +165,7 @@ public class PackWagon {
 	Item Tools = new Item("Tools", 50, false );
 	Item Toys = new Item("Toys", 15, false );
 	private JLabel travelOutput;
+	private JTextField textField;
 	
 
 
@@ -173,7 +177,7 @@ public class PackWagon {
 			public void run() {
 				try {
 					PackWagon window = new PackWagon();
-					window.frame.setVisible(true);
+					window.frmOregontrailv.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -189,9 +193,27 @@ public class PackWagon {
 		
 		backgroundImage = new ImageIcon(this.getClass().getResource("/Images/mp3img2.JPG"));
 		
+		JPanel gamePanel = new JPanel();
+		gamePanel.setBackground(new Color(0, 0, 0));
+		gamePanel.setBounds(0, 0, 736, 556);
+		frmOregontrailv.getContentPane().add(gamePanel);
+		gamePanel.setLayout(null);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBackground(new Color(0, 128, 0));
+		textArea.setBounds(118, 54, 500, 250);
+		gamePanel.add(textArea);
+		
+		textField = new JTextField();
+		textField.setBackground(new Color(0, 128, 0));
+		textField.setBounds(118, 399, 500, 40);
+		gamePanel.add(textField);
+		textField.setColumns(10);
+		gamePanel.setVisible(false);
+		
 		layeredPane = new JLayeredPane();
 		layeredPane.setBounds(0, 0, 736, 556);
-		frame.getContentPane().add(layeredPane);
+		frmOregontrailv.getContentPane().add(layeredPane);
 		
 		JButton btnMeager_1 = new JButton("Filling");
 		btnMeager_1.addActionListener(new ActionListener() {
@@ -200,6 +222,19 @@ public class PackWagon {
 				eatAmt = 3;
 			}
 		});
+		
+		JButton btnTravelTest = new JButton("Travel Test");
+		btnTravelTest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				layeredPane.setVisible(false);
+				gamePanel.setVisible(true);
+				
+			}
+		});
+		btnTravelTest.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		btnTravelTest.setBounds(282, 398, 85, 21);
+		layeredPane.add(btnTravelTest);
 		btnMeager_1.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		btnMeager_1.setBounds(185, 517, 75, 21);
 		layeredPane.add(btnMeager_1);
@@ -243,6 +278,7 @@ public class PackWagon {
 		layeredPane.add(travelOutput);
 		
 		JButton btnNewButton = new JButton("Travel");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -1106,6 +1142,8 @@ public class PackWagon {
 		
 		layeredPane.moveToBack(bgImage);
 		
+		
+		
 }
 	
 	
@@ -1116,12 +1154,13 @@ public class PackWagon {
 	 */
 	private void initialize() {
 		
-		frame = new JFrame();
+		frmOregontrailv = new JFrame();
+		frmOregontrailv.setTitle("OregonTrailV1");
 		
 		
-		frame.setBounds(100, 100, 750, 593);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmOregontrailv.setBounds(100, 100, 750, 593);
+		frmOregontrailv.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmOregontrailv.getContentPane().setLayout(null);
 	}
 	
 	/**
