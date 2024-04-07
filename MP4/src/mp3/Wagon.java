@@ -17,6 +17,12 @@ public class Wagon extends Item{
 	private int wagonMax = 2400;
 	private int wagonWeight = 0;
 	private int foodAmt = 0;
+	private String weather = "Fair";
+	private String pace = "Steady";
+	private String rations = "Filling";
+	private double location = 0;
+	private double numPace = 0;
+	private int numOxen = 4;
     // Items are stored in an array list
 	ArrayList<Item> supplies = new ArrayList<Item>();
 	/**
@@ -71,6 +77,7 @@ public class Wagon extends Item{
 	 * @return the amount of food in the wagon
 	 */
 	public int getFoodAmt() {
+
 		
 		foodAmt = 0;
 		supplies.forEach((n -> {
@@ -80,6 +87,53 @@ public class Wagon extends Item{
 		}));
 		
 		return foodAmt;
+	}
+	
+	public void clearWagon() {
+		supplies.clear();
+	}
+	public String getWeather() {
+		return(weather);
+	}
+	public String getPace() {
+		return(pace);
+	}
+	public void calcPace() {
+		double temp = 0;
+		double temp2 = 0;
+		
+		if(pace.equals("Steady")) {
+			temp = 1;
+		}
+		else if(pace.equals("Strenuous")) {
+			temp = 1.5;
+		}
+		else if (pace.equals("Grueling")) {
+			temp = 2;
+		}
+		
+		if(numOxen < 4) {
+			temp2 = numOxen / 4;
+		}
+		
+		numPace = 20 * temp * temp2;
+		
+	}
+	public void setPace(String newPace) {
+		pace = newPace;
+	}
+	public String getRations() {
+		return(rations);
+	}
+	public void setRations(String newRations) {
+		rations = newRations;
+	}
+	public double getLocation() {
+		return(location);
+	}
+	public void travel()
+	{
+		location = location + numPace;
 	}
 }
 

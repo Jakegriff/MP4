@@ -165,7 +165,13 @@ public class PackWagon {
 	Item Tools = new Item("Tools", 50, false );
 	Item Toys = new Item("Toys", 15, false );
 	private JLabel travelOutput;
-	private JTextField textField;
+	private JTextField inputField;
+	
+	Menu menu = new Menu();
+	String input = "";
+	
+	Boolean alive = true;
+	Boolean end = false;
 	
 
 
@@ -200,15 +206,25 @@ public class PackWagon {
 		gamePanel.setLayout(null);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setWrapStyleWord(true);
+		textArea.setFont(new Font("Monospaced", Font.BOLD, 18));
+		textArea.setLineWrap(true);
 		textArea.setBackground(new Color(0, 128, 0));
-		textArea.setBounds(118, 54, 500, 250);
+		textArea.setBounds(93, 54, 550, 314);
 		gamePanel.add(textArea);
 		
-		textField = new JTextField();
-		textField.setBackground(new Color(0, 128, 0));
-		textField.setBounds(118, 399, 500, 40);
-		gamePanel.add(textField);
-		textField.setColumns(10);
+		inputField = new JTextField();
+		inputField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				menu.baseMenu(textArea);
+			}
+		});
+		inputField.setFont(new Font("Monospaced", Font.BOLD, 18));
+		inputField.setBackground(new Color(0, 128, 0));
+		inputField.setBounds(93, 399, 550, 40);
+		gamePanel.add(inputField);
+		inputField.setColumns(10);
 		gamePanel.setVisible(false);
 		
 		layeredPane = new JLayeredPane();
@@ -229,6 +245,29 @@ public class PackWagon {
 				
 				layeredPane.setVisible(false);
 				gamePanel.setVisible(true);
+				
+				wagon.clearWagon();
+				wagon.addItem(Bacon);
+				wagon.addItem(Beans);
+				wagon.addItem(Coffee);
+				wagon.addItem(dApples);
+				wagon.addItem(Flour);
+				wagon.addItem(Hardtack);
+				wagon.addItem(Lard);
+				wagon.addItem(Salt);
+				wagon.addItem(Sugar);
+				wagon.addItem(Rice);
+				wagon.addItem(Whiskey);
+				wagon.addItem(Water);
+				wagon.addItem(Medicine);
+				wagon.addItem(Bedroll);
+				wagon.addItem(Tent);
+				wagon.addItem(Tools);
+				wagon.addItem(Chair);
+				
+				menu.introMenu(textArea);
+				
+				input = inputField.getText();
 				
 			}
 		});
