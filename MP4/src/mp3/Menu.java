@@ -1,5 +1,9 @@
 package mp3;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -19,7 +23,7 @@ public class Menu extends Wagon{
 		text.setText(" Welcome to Oregon Trail! This is a MVP version of the game, and will only include a short distance "
 				+ " with two landmarks. In addition, the wagon is already loaded with food, water, and basic supplies."
 				+ "As of now you can only change the travel speed and food consumption in the menus, but this will be "
-				+ "updated later on. To continue press any character");
+				+ "updated later on. To continue press enter");
 	}
 	
 	public void baseMenu(JTextArea text) {
@@ -56,6 +60,11 @@ public class Menu extends Wagon{
 					+ "\n 1. Filling"
 					+ "\n 2. Meager"
 					+ "\n 3. Barebones");
+	}
+	
+	public void travelling(JTextArea text) {
+		text.setText(" Travelling... Current Location = " + getLocation()
+					+ "\n Press q to stop");
 	}
 	
 	
@@ -105,6 +114,10 @@ public void rationsMenu(JTextArea text, JTextField in, String input, Boolean Fla
 			baseMenu(text);
 			
 		}
+	}
+	
+	public void travelMenu(JTextArea text, JTextField in, String input) {
+		
 	}
 	
 	

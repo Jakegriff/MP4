@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import javax.swing.Timer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -177,7 +181,9 @@ public class PackWagon {
 	Boolean supplyFlag = false;
 	Boolean paceFlag = false;
 	Boolean ratFlag = false;
+	Boolean travelFlag = false;
 	
+	private Timer timer;
 
 
 	/**
@@ -223,10 +229,14 @@ public class PackWagon {
 		inputField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				input = "";
 				if(end == false && alive == true) {
 					
+					wagon.calcPace();
 					input = inputField.getText();
+					System.out.println("Location: " + wagon.getLocation());
 					
+					System.out.println(wagon.getPace());
 					if(supplyFlag == true) {
 						menu.supplyMenu(textArea, inputField, input);
 						input = "";
@@ -244,6 +254,16 @@ public class PackWagon {
 						 input = "";
 						 ratFlag = false;
 					 }
+					 
+					 if(travelFlag == true) {
+						
+							
+						if(input.equals("q")) {
+							timer.stop();
+							 input = "";
+							 travelFlag = false;
+						}
+					 }
 					
 					if(menuFlag == false)
 						menu.baseMenu(textArea);
@@ -252,6 +272,19 @@ public class PackWagon {
 					switch(input) {
 					
 					case "1":
+					{
+						inputField.setText(null);
+						textArea.setText(null);
+						menuFlag = true;
+						travelFlag = true;
+						menu.travelling(textArea);
+						 timer = new javax.swing.Timer(3000, new ActionListener() {
+								public void actionPerformed(ActionEvent evt) {
+								wagon.travel(evt, textArea);
+								}
+								});
+							timer.start();
+					}
 						break;	
 					case "2": 
 					{ 
@@ -289,9 +322,8 @@ public class PackWagon {
 					}
 					System.out.println(input);
 					System.out.println(menuFlag);
-					System.out.println("Pace Flag: = " + paceFlag);
 					inputField.setText(null);
-					if(supplyFlag == false || paceFlag == false)
+					if(supplyFlag == false || paceFlag == false || ratFlag == false || travelFlag == false)
 						menuFlag = false;
 				}
 				}

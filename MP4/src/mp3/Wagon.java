@@ -1,6 +1,9 @@
 package mp3;
 
+import java.awt.event.ActionEvent;
 import java.util.*;
+
+import javax.swing.JTextArea;
 
 /**
  * The wagon for an implement of the game Oregon Trail.
@@ -21,7 +24,7 @@ public class Wagon extends Item{
 	private String pace = "Steady";
 	private String rations = "Filling";
 	private double location = 0;
-	private double numPace = 0;
+	private double numPace = 1;
 	private int numOxen = 4;
 	private int money = 1000;
     // Items are stored in an array list
@@ -99,9 +102,12 @@ public class Wagon extends Item{
 	public String getPace() {
 		return(pace);
 	}
+	public double getNumPace() {
+		return(numPace);
+	}
 	public void calcPace() {
-		double temp = 0;
-		double temp2 = 0;
+		double temp = 1;
+		double temp2 = 1;
 		
 		if(pace.equals("Steady")) {
 			temp = 1;
@@ -132,9 +138,11 @@ public class Wagon extends Item{
 	public double getLocation() {
 		return(location);
 	}
-	public void travel()
+	public void travel(ActionEvent evt, JTextArea text)
 	{
-		location = location + numPace;
+		location = location + numPace;	
+		text.setText(" Travelling... Current Location = " + getLocation()
+		+ "\n Press q to stop");
 	}
 	
 	public int getOxen() {
