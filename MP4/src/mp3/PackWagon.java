@@ -217,6 +217,7 @@ public class PackWagon {
 		textArea.setBackground(new Color(0, 128, 0));
 		textArea.setBounds(93, 54, 550, 314);
 		gamePanel.add(textArea);
+		textArea.setEditable(false);
 		
 		inputField = new JTextField();
 		inputField.addActionListener(new ActionListener() {
