@@ -29,7 +29,7 @@ import javax.swing.JTextField;
  * @date March 24th 2024
  * @filename PackWagon.java
  */
-public class PackWagon {
+public class OregonTrail {
 
 	private JFrame frmOregontrailv;
 	private ImageIcon backgroundImage;
@@ -195,7 +195,7 @@ public class PackWagon {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PackWagon window = new PackWagon();
+					OregonTrail window = new OregonTrail();
 					window.frmOregontrailv.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -207,7 +207,7 @@ public class PackWagon {
 	/**
 	 * Create the application.
 	 */
-	public PackWagon() {
+	public OregonTrail() {
 		initialize();
 		
 		backgroundImage = new ImageIcon(this.getClass().getResource("/Images/mp3img2.JPG"));
