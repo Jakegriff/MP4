@@ -38,11 +38,11 @@ public class Menu extends Wagon{
 				 + " 4. Change rations \n");
 	}
 	
-	public void checkSupplies(JTextArea text) {
+	public void checkSupplies(JTextArea text, int food, int oxen, int money) {
 		
-		text.setText(" Food: " + getFoodAmt() 
-				   + "\n Oxen: " + getOxen()
-				   + " \n Money:" + getMoney()
+		text.setText(" Food: " + food
+				   + "\n Oxen: " + oxen
+				   + " \n Money:" + money
 				   + "\n \n \n \n Enter q to go back");
 	}
 	
@@ -62,9 +62,9 @@ public class Menu extends Wagon{
 					+ "\n 3. Barebones");
 	}
 	
-	public void travelling(JTextArea text) {
+	public void travelling(JTextArea text, int food) {
 		text.setText(" Travelling... Current Location = " + getLocation()
-					+ "\n Press q to stop");
+					+ "\nFood: " + food + "\n Press q to stop");
 	}
 	
 	

@@ -228,10 +228,11 @@ public class PackWagon {
 		inputField = new JTextField();
 		inputField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+			
 				input = "";
 				if(end == false && alive == true) {
 					
+					wagon.calcFood();
 					wagon.calcPace();
 					input = inputField.getText();
 					System.out.println("Location: " + wagon.getLocation());
@@ -256,12 +257,11 @@ public class PackWagon {
 					 }
 					 
 					 if(travelFlag == true) {
-						
-							
-						if(input.equals("q")) {
+						if(input.equals(".")) {
 							timer.stop();
 							 input = "";
 							 travelFlag = false;
+
 						}
 					 }
 					
@@ -277,13 +277,14 @@ public class PackWagon {
 						textArea.setText(null);
 						menuFlag = true;
 						travelFlag = true;
-						menu.travelling(textArea);
+						menu.travelling(textArea, wagon.getFoodNum());
 						 timer = new javax.swing.Timer(3000, new ActionListener() {
 								public void actionPerformed(ActionEvent evt) {
-								wagon.travel(evt, textArea);
+								wagon.travel(evt, textArea, wagon.getFoodNum());
 								}
 								});
 							timer.start();
+							wagon.eatFood();
 					}
 						break;	
 					case "2": 
@@ -292,7 +293,7 @@ public class PackWagon {
 						textArea.setText(null);
 						menuFlag = true;
 						supplyFlag = true;
-						menu.checkSupplies(textArea);
+						menu.checkSupplies(textArea, wagon.getFoodAmt(),wagon.getOxen(),wagon.getMoney());
 					
 							
 						}
@@ -372,10 +373,10 @@ public class PackWagon {
 				wagon.addItem(Tent);
 				wagon.addItem(Tools);
 				wagon.addItem(Chair);
-				
+				wagon.getFoodAmt();
+					
 				menu.introMenu(textArea);
-				
-				input = inputField.getText();
+
 				
 			}
 		});

@@ -24,9 +24,11 @@ public class Wagon extends Item{
 	private String pace = "Steady";
 	private String rations = "Filling";
 	private double location = 0;
+	private double nextLoc = 220;
 	private double numPace = 1;
 	private int numOxen = 4;
 	private int money = 1000;
+	private int consumption;
     // Items are stored in an array list
 	ArrayList<Item> supplies = new ArrayList<Item>();
 	/**
@@ -93,6 +95,10 @@ public class Wagon extends Item{
 		return foodAmt;
 	}
 	
+	public int getFoodNum() {
+		return(foodAmt);
+	}
+	
 	public void clearWagon() {
 		supplies.clear();
 	}
@@ -126,6 +132,23 @@ public class Wagon extends Item{
 		numPace = 20 * temp * temp2;
 		
 	}
+	
+	public void calcFood() {
+		int temp = 1;
+		
+		if(rations.contains("Bare")) {
+			temp = 1;
+		}
+		if(rations.contains("Mea")) {
+			temp = 2;
+		}
+		if(rations.contains("Fill")) {
+			temp = 3;
+		}
+		
+		consumption = 5 * temp;
+		
+	}
 	public void setPace(String newPace) {
 		pace = newPace;
 	}
@@ -138,11 +161,13 @@ public class Wagon extends Item{
 	public double getLocation() {
 		return(location);
 	}
-	public void travel(ActionEvent evt, JTextArea text)
-	{
+	public void travel(ActionEvent evt, JTextArea text, int food)
+	{	
+		calcFood();
+		eatFood();
 		location = location + numPace;	
 		text.setText(" Travelling... Current Location = " + getLocation()
-		+ "\n Press q to stop");
+		+ "\nFood: " + food + "\n Press q to stop" + "\n Consumption: " + consumption );
 	}
 	
 	public int getOxen() {
@@ -151,6 +176,10 @@ public class Wagon extends Item{
 	
 	public int getMoney() {
 		return(money);
+	}
+	
+	public void eatFood() {
+		foodAmt -= consumption;
 	}
 }
 
