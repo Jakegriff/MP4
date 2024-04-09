@@ -24,7 +24,7 @@ public class Wagon extends Item{
 	private String pace = "Steady";
 	private String rations = "Filling";
 	private double location = 0;
-	private double nextLoc = 220;
+	private double nextLoc = 0;
 	private double numPace = 1;
 	private int numOxen = 4;
 	private int money = 1000;
@@ -161,13 +161,15 @@ public class Wagon extends Item{
 	public double getLocation() {
 		return(location);
 	}
-	public void travel(ActionEvent evt, JTextArea text, int food)
+	public void travel(ActionEvent evt, JTextArea text, int food, int nextLandmark)
 	{	
 		calcFood();
 		eatFood();
 		location = location + numPace;	
+		nextLoc = getNextLocation(nextLandmark);
 		text.setText(" Travelling... Current Location = " + getLocation()
-		+ "\nFood: " + food + "\n Press q to stop" + "\n Consumption: " + consumption );
+		+ "\n Food: " + getFoodNum() + "\n Press q to stop" + "\n Consumption: " + consumption
+		+ "\n Distance to next location: " + nextLoc);
 	}
 	
 	public int getOxen() {
@@ -180,6 +182,11 @@ public class Wagon extends Item{
 	
 	public void eatFood() {
 		foodAmt -= consumption;
+	}
+	
+	public double getNextLocation(int nextLandmark) {
+		nextLoc = nextLandmark - location;
+		return(nextLoc);
 	}
 }
 

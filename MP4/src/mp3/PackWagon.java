@@ -184,6 +184,8 @@ public class PackWagon {
 	Boolean travelFlag = false;
 	
 	private Timer timer;
+	
+	Fort FortBad = new Fort("FortBad", 200);
 
 
 	/**
@@ -257,7 +259,7 @@ public class PackWagon {
 					 }
 					 
 					 if(travelFlag == true) {
-						if(input.equals(".")) {
+						if(input.equals("q")) {
 							timer.stop();
 							 input = "";
 							 travelFlag = false;
@@ -280,11 +282,12 @@ public class PackWagon {
 						menu.travelling(textArea, wagon.getFoodNum());
 						 timer = new javax.swing.Timer(3000, new ActionListener() {
 								public void actionPerformed(ActionEvent evt) {
-								wagon.travel(evt, textArea, wagon.getFoodNum());
+								wagon.travel(evt, textArea, wagon.getFoodNum(), FortBad.getLocation());
 								}
 								});
 							timer.start();
-							wagon.eatFood();
+							
+							
 					}
 						break;	
 					case "2": 
@@ -293,7 +296,7 @@ public class PackWagon {
 						textArea.setText(null);
 						menuFlag = true;
 						supplyFlag = true;
-						menu.checkSupplies(textArea, wagon.getFoodAmt(),wagon.getOxen(),wagon.getMoney());
+						menu.checkSupplies(textArea, wagon.getFoodNum(),wagon.getOxen(),wagon.getMoney());
 					
 							
 						}
