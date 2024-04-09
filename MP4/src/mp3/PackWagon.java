@@ -169,9 +169,14 @@ public class PackWagon {
 	
 	Menu menu = new Menu();
 	String input = "";
+	int inputInt;
 	
 	Boolean alive = true;
 	Boolean end = false;
+	Boolean menuFlag = false;
+	Boolean supplyFlag = false;
+	Boolean paceFlag = false;
+	Boolean ratFlag = false;
 	
 
 
@@ -217,8 +222,78 @@ public class PackWagon {
 		inputField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				menu.baseMenu(textArea);
-			}
+				if(end == false && alive == true) {
+					
+					input = inputField.getText();
+					
+					if(supplyFlag == true) {
+						menu.supplyMenu(textArea, inputField, input);
+						input = "";
+						supplyFlag = false;
+					}
+					
+					 if(paceFlag == true) {
+						 menu.paceMenu(textArea, inputField, input, paceFlag);
+						 input = "";
+						 paceFlag = false;
+					 }
+					 
+					 if(ratFlag == true) {
+						 menu.rationsMenu(textArea, inputField, input, ratFlag);
+						 input = "";
+						 ratFlag = false;
+					 }
+					
+					if(menuFlag == false)
+						menu.baseMenu(textArea);
+					
+					if(menuFlag == false) {
+					switch(input) {
+					
+					case "1":
+						break;	
+					case "2": 
+					{ 
+						inputField.setText(null);
+						textArea.setText(null);
+						menuFlag = true;
+						supplyFlag = true;
+						menu.checkSupplies(textArea);
+					
+							
+						}
+					
+						break;
+					case "3":
+					{
+						inputField.setText(null);
+						textArea.setText(null);
+						menuFlag = true;
+						paceFlag = true;
+						menu.changePace(textArea);
+						
+					}
+						break;
+					case "4":
+					{
+						inputField.setText(null);
+						textArea.setText(null);
+						ratFlag = true;
+						menuFlag = true;
+						menu.changeRations(textArea);
+						
+					}
+						break;
+					}
+					}
+					System.out.println(input);
+					System.out.println(menuFlag);
+					System.out.println("Pace Flag: = " + paceFlag);
+					inputField.setText(null);
+					if(supplyFlag == false || paceFlag == false)
+						menuFlag = false;
+				}
+				}
 		});
 		inputField.setFont(new Font("Monospaced", Font.BOLD, 18));
 		inputField.setBackground(new Color(0, 128, 0));

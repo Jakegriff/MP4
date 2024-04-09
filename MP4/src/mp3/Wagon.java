@@ -23,6 +23,7 @@ public class Wagon extends Item{
 	private double location = 0;
 	private double numPace = 0;
 	private int numOxen = 4;
+	private int money = 1000;
     // Items are stored in an array list
 	ArrayList<Item> supplies = new ArrayList<Item>();
 	/**
@@ -134,6 +135,14 @@ public class Wagon extends Item{
 	public void travel()
 	{
 		location = location + numPace;
+	}
+	
+	public int getOxen() {
+		return(numOxen);
+	}
+	
+	public int getMoney() {
+		return(money);
 	}
 }
 
