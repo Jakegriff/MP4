@@ -168,7 +168,7 @@ public class Wagon extends Item{
 		location = location + numPace;	
 		nextLoc = getNextLocation(nextLandmark);
 		text.setText(" Travelling... Current Location = " + getLocation()
-		+ "\n Food: " + getFoodNum() + "\n Press q to stop" + "\n Consumption: " + consumption
+		+ "\n Food: " + getFoodNum() + "\n Press q to stop"
 		+ "\n Distance to next location: " + nextLoc);
 	}
 	
@@ -188,6 +188,8 @@ public class Wagon extends Item{
 		nextLoc = nextLandmark - location;
 		return(nextLoc);
 	}
+	
+	
 }
 
 

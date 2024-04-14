@@ -237,34 +237,29 @@ public class OregonTrail {
 					wagon.calcFood();
 					wagon.calcPace();
 					input = inputField.getText();
-					System.out.println("Location: " + wagon.getLocation());
 					
-					System.out.println(wagon.getPace());
+					
 					if(supplyFlag == true) {
-						menu.supplyMenu(textArea, inputField, input);
+						supplyFlag = menu.supplyMenu(textArea, inputField, input);
 						input = "";
-						supplyFlag = false;
+					//	supplyFlag = false;
 					}
 					
 					 if(paceFlag == true) {
-						 menu.paceMenu(textArea, inputField, input, paceFlag);
+						paceFlag =  menu.paceMenu(textArea, inputField, input);
 						 input = "";
-						 paceFlag = false;
+					//	paceFlag = false;
 					 }
 					 
 					 if(ratFlag == true) {
-						 menu.rationsMenu(textArea, inputField, input, ratFlag);
+						 ratFlag = menu.rationsMenu(textArea, inputField, input);
 						 input = "";
-						 ratFlag = false;
+						//ratFlag = false;
 					 }
 					 
 					 if(travelFlag == true) {
-						if(input.equals("q")) {
-							timer.stop();
-							 input = "";
-							 travelFlag = false;
-
-						}
+						travelFlag = menu.travelMenu(textArea, inputField, input, timer);
+		
 					 }
 					
 					if(menuFlag == false)
@@ -279,7 +274,7 @@ public class OregonTrail {
 						textArea.setText(null);
 						menuFlag = true;
 						travelFlag = true;
-						menu.travelling(textArea, wagon.getFoodNum());
+						menu.travelling(textArea, wagon.getFoodNum(),wagon.getLocation(),wagon.getNextLocation(FortBad.getLocation()));
 						 timer = new javax.swing.Timer(3000, new ActionListener() {
 								public void actionPerformed(ActionEvent evt) {
 								wagon.travel(evt, textArea, wagon.getFoodNum(), FortBad.getLocation());
@@ -324,11 +319,16 @@ public class OregonTrail {
 						break;
 					}
 					}
-					System.out.println(input);
 					System.out.println(menuFlag);
 					inputField.setText(null);
-					if(supplyFlag == false || paceFlag == false || ratFlag == false || travelFlag == false)
+					if(supplyFlag == false && paceFlag == false && ratFlag == false && travelFlag == false)
 						menuFlag = false;
+				System.out.println("SupplyFlag:" + supplyFlag);
+				System.out.println("PaceFlag:" + paceFlag);
+				System.out.println("RatFlag:" + ratFlag);
+				System.out.println("travelFlag:" + travelFlag);
+				System.out.println("menuFlag:" + menuFlag);
+				System.out.println("______________");
 				}
 				}
 		});

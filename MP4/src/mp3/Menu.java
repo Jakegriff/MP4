@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 
 
 public class Menu extends Wagon{
@@ -62,61 +63,77 @@ public class Menu extends Wagon{
 					+ "\n 3. Barebones");
 	}
 	
-	public void travelling(JTextArea text, int food) {
-		text.setText(" Travelling... Current Location = " + getLocation()
-					+ "\nFood: " + food + "\n Press q to stop");
+	public void travelling(JTextArea text, int food, double currentLoc, double nextLoc) {
+		text.setText(" Travelling... Current Location = " + currentLoc
+		+ "\n Food: " + food + "\n Press q to stop"
+		+ "\n Distance to next location: " + nextLoc);
 	}
 	
 	
-	public void paceMenu(JTextArea text, JTextField in, String input, Boolean Flag) {
+	public boolean paceMenu(JTextArea text, JTextField in, String input) {
 		
 		if(input.equals("1")) {
 			setPace("Steady");
 			baseMenu(text);
-			Flag = false;
+			return false;
 		}
 		else if(input.equals("2")) {
 			setPace("Strenuous");
 			baseMenu(text);
-			Flag = false;
+			return false;
 		}
 		else if(input.equals("3")) {
 			setPace("Grueling");
 			baseMenu(text);
-			Flag = false;
+			return false;
 		}
 		calcPace();
+		return true;
 	}
 
-public void rationsMenu(JTextArea text, JTextField in, String input, Boolean Flag) {
+public boolean rationsMenu(JTextArea text, JTextField in, String input) {
 		
 		if(input.equals("1")) {
 			setRations("Filling");
 			baseMenu(text);
-			Flag = false;
+			return false;
 		}
 		else if(input.equals("2")) {
 			setRations("Meager");
 			baseMenu(text);
-			Flag = false;
+			return false;
 		}
 		else if(input.equals("3")) {
 			setRations("Barebones");
 			baseMenu(text);
-			Flag = false;
+			return false;
 		}
+		return true;
+	
 	}
 	
-	public void supplyMenu(JTextArea text, JTextField in, String input) {
+	public boolean supplyMenu(JTextArea text, JTextField in, String input) {
 		
 		
 		if(input.equals("q")) {
-			baseMenu(text);
-			
+			baseMenu(text);	
+			return false;
 		}
+		else return true;
 	}
 	
-	public void travelMenu(JTextArea text, JTextField in, String input) {
+	public boolean travelMenu(JTextArea text, JTextField in, String input, Timer time) {
+		
+		if(input.equals("q")) {
+			time.stop();
+			input = "";
+			baseMenu(text);
+			return false;
+			}
+		else {
+			return true;
+			
+		}
 		
 	}
 	
