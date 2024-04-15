@@ -26,7 +26,7 @@ public class Wagon extends Item{
 	private double location = 0;
 	private double nextLoc = 0;
 	private double numPace = 1;
-	private int numOxen = 4;
+	private int numOxen;
 	private int money = 1000;
 	private int consumption;
     // Items are stored in an array list
@@ -170,6 +170,10 @@ public class Wagon extends Item{
 		text.setText(" Travelling... Current Location = " + getLocation()
 		+ "\n Food: " + getFoodNum() + "\n Press q to stop"
 		+ "\n Distance to next location: " + nextLoc);
+	}
+	
+	public void setOxen(String Oxen) {
+		numOxen = Integer.parseInt(Oxen);
 	}
 	
 	public int getOxen() {
