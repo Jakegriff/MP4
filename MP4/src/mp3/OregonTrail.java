@@ -184,6 +184,7 @@ public class OregonTrail {
 	Boolean ratFlag = false;
 	Boolean travelFlag = false;
 	Boolean storeFlag = false;
+	Boolean oxenFlag = false;
 	
 	private Timer timer;
 	
