@@ -101,7 +101,7 @@ public class Menu extends Wagon{
 	public void riverInfoMenu(JTextArea text, double wid, double dep, double spd) {
 		
 		text.setText(" You must cross the river to continue. The river at this point is " + wid
-				+ " feet wide and " + dep + " feet deep in the middle.");
+				+ " feet wide and " + dep + " feet deep in the middle and has " + spd  + " units of flow \n Press enter to continue");
 	}
 	
 	public void riverChoices(JTextArea text, double wid, double dep) {

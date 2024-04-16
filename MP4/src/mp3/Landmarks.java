@@ -1,14 +1,21 @@
 package mp3;
 
+
+/**
+ * Superclass for landmarks for an implementation of the game Oregon Trail
+ * 
+ * @author Griffin Broge
+ * @version 1.0.0
+ * @date April 16th, 2024
+ * 
+ */
 public class Landmarks {
 	
 	private String name;
 	private int location;
 	private String tag;
 	
-	private double riverWidth;
-	private double riverDepth;
-	private double riverSpeed;
+	
 	
 	public String getName() {
 		return(name);
@@ -34,28 +41,4 @@ public class Landmarks {
 		tag = newTag;
 	}
 	
-	public double getRiverWidth() {
-		return riverWidth;
-	}
-
-	public void setRiverWidth(double riverWidth) {
-		this.riverWidth = riverWidth;
-	}
-
-	public double getRiverDepth() {
-		return riverDepth;
-	}
-
-	public void setRiverDepth(double riverDepth) {
-		this.riverDepth = riverDepth;
-	}
-
-	public double getRiverSpeed() {
-		return riverSpeed;
-	}
-
-	public void setRiverSpeed(double riverSpeed) {
-		this.riverSpeed = riverSpeed;
-	}
-
 }
