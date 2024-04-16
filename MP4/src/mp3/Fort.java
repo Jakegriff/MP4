@@ -5,6 +5,7 @@ public class Fort extends Landmarks{
 	public Fort(String newName, int newLocation) {
 		 setName(newName);
 		 setLoc(newLocation);
+		 setTag("F");
 				
 	}
 

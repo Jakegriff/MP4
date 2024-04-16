@@ -174,6 +174,7 @@ public class OregonTrail {
 	Menu menu = new Menu();
 	String input = "";
 	int inputInt;
+	int flagCheck;
 	
 	Boolean alive = true;
 	Boolean end = false;
@@ -182,10 +183,17 @@ public class OregonTrail {
 	Boolean paceFlag = false;
 	Boolean ratFlag = false;
 	Boolean travelFlag = false;
+	Boolean fortFlag = false;
+	Boolean riverFlag = false;
+	Boolean rivSubMenuFlag = false;
 	
 	private Timer timer;
+
+	Fort FortKea = new Fort("Fort Kearny", 200);
+	River Kansas = new River("Kansas River Crossing", 400);
 	
-	Fort FortBad = new Fort("FortBad", 200);
+	Landmarks[] Locations = {FortKea, Kansas};
+	int locCounter = 0;
 
 
 	/**
@@ -238,7 +246,6 @@ public class OregonTrail {
 					wagon.calcPace();
 					input = inputField.getText();
 					
-					
 					if(supplyFlag == true) {
 						supplyFlag = menu.supplyMenu(textArea, inputField, input);
 						input = "";
@@ -261,26 +268,57 @@ public class OregonTrail {
 						travelFlag = menu.travelMenu(textArea, inputField, input, timer);
 		
 					 }
+					 
+					 if(fortFlag == true) {
+						 menu.fortMenu(textArea, Locations[locCounter].getName());
+					 }
+					
+					 if(rivSubMenuFlag == true) {
+						 Landmarks temp = Locations[locCounter];
+						 menu.riverChoices(textArea, temp.getRiverWidth(), temp.getRiverDepth());
+						 rivSubMenuFlag = menu.riverActions(textArea, inputField, input, temp.getRiverDepth());
+					 }
 					
 					if(menuFlag == false)
 						menu.baseMenu(textArea);
 					
-					if(menuFlag == false) {
+					if(menuFlag == false || fortFlag == true || riverFlag == true ) {
 					switch(input) {
 					
 					case "1":
 					{
+						
+						if(fortFlag == true) {
+							fortFlag = false;
+							locCounter++;
+						}
+						
+						if(riverFlag == true) {
+							Landmarks temp = Locations[locCounter];
+							if(rivSubMenuFlag == false) {
+							menu.riverInfoMenu(textArea, temp.getRiverWidth(), temp.getRiverDepth(), temp.getRiverSpeed());
+							rivSubMenuFlag = true;
+							}
+							else {
+								menu.riverChoices(textArea, temp.getRiverWidth(), temp.getRiverDepth());
+							}
+							
+						}
+						
+						else {
 						inputField.setText(null);
 						textArea.setText(null);
 						menuFlag = true;
 						travelFlag = true;
-						menu.travelling(textArea, wagon.getFoodNum(),wagon.getLocation(),wagon.getNextLocation(FortBad.getLocation()));
+						menu.travelling(textArea, wagon.getFoodNum(),wagon.getLocation(),wagon.getNextLocation(Locations[locCounter].getLocation()));
 						 timer = new javax.swing.Timer(3000, new ActionListener() {
 								public void actionPerformed(ActionEvent evt) {
-								wagon.travel(evt, textArea, wagon.getFoodNum(), FortBad.getLocation());
+								wagon.travel(evt, textArea, wagon.getFoodNum(), Locations[locCounter].getLocation());
+								flagCheck =	menu.landmarkCheck(evt, textArea, timer,Locations[locCounter].getLocation(), wagon.getLocation(),Locations[locCounter].getName(),Locations[locCounter].getTag(), locCounter );
 								}
 								});
 							timer.start();
+						}
 							
 							
 					}
@@ -319,18 +357,40 @@ public class OregonTrail {
 						break;
 					}
 					}
-					System.out.println(menuFlag);
+					
+					if(flagCheck == 1) {
+						fortFlag = true;
+						menuFlag = true;
+						flagCheck = 0;
+					}
+					
+					if(flagCheck == 2) {
+						riverFlag = true;
+						menuFlag = true;
+						flagCheck = 0;
+					}
+					
+					System.out.println("fortFlag:" + fortFlag);
+					System.out.println("riverFlag:" + riverFlag);
+					System.out.println("riverSubMenuFlag:" + rivSubMenuFlag);
+					System.out.println("______________");
+				//	System.out.println("loccounter: " + locCounter);
+				//	System.out.println("loc: " + Locations[locCounter].getLocation() + "  Tag: " + Locations[locCounter].getTag() + "  Name: " + Locations[locCounter].getName());
 					inputField.setText(null);
-					if(supplyFlag == false && paceFlag == false && ratFlag == false && travelFlag == false)
+					if(supplyFlag == false && paceFlag == false && ratFlag == false && travelFlag == false && rivSubMenuFlag)
 						menuFlag = false;
+			
+				/*		
 				System.out.println("SupplyFlag:" + supplyFlag);
 				System.out.println("PaceFlag:" + paceFlag);
 				System.out.println("RatFlag:" + ratFlag);
 				System.out.println("travelFlag:" + travelFlag);
 				System.out.println("menuFlag:" + menuFlag);
-				System.out.println("______________");
+				
+				*/
 				}
 				}
+				
 		});
 		inputField.setFont(new Font("Monospaced", Font.BOLD, 18));
 		inputField.setBackground(new Color(0, 128, 0));

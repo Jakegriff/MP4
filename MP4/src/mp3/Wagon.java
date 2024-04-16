@@ -185,9 +185,11 @@ public class Wagon extends Item{
 	}
 	
 	public double getNextLocation(int nextLandmark) {
-		nextLoc = nextLandmark - location;
+		nextLoc = nextLandmark - getLocation();
 		return(nextLoc);
 	}
+		
+
 	
 	
 }

@@ -1,9 +1,8 @@
 package mp3;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
+import java.awt.event.ActionEvent;
+import java.util.Random;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.Timer;
@@ -11,7 +10,7 @@ import javax.swing.Timer;
 
 public class Menu extends Wagon{
 	
-	
+	Random rand = new Random();
 	CharSequence baseMenuOptions = "1234";
 	
 	public Menu() {
@@ -69,6 +68,122 @@ public class Menu extends Wagon{
 		+ "\n Distance to next location: " + nextLoc);
 	}
 	
+
+	public void fortMenu(JTextArea text, String name) {
+		text.setText(" Welcome to " + name + "\n"
+				 + " Weather: " + getWeather() + "\n"
+				 + " Health: " + "Good" + "\n"
+				 + " Pace: " + getPace() + "\n"
+				 + " Rations: " + getRations() + "\n"
+				 + " \n You may:" + "\n \n"
+				 + " 1. Continue on trail \n"
+				 + " 2. Check supplies \n"
+				 + " 3. Change pace \n"
+				 + " 4. Change rations \n");
+		
+	}
+	
+	
+	public void riverMenu(JTextArea text, String name) {
+		
+		text.setText(" Welcome to " + name + "\n"
+				 + " Weather: " + getWeather() + "\n"
+				 + " Health: " + "Good" + "\n"
+				 + " Pace: " + getPace() + "\n"
+				 + " Rations: " + getRations() + "\n"
+				 + " \n You may:" + "\n \n"
+				 + " 1. Continue on trail \n"
+				 + " 2. Check supplies \n"
+				 + " 3. Change pace \n"
+				 + " 4. Change rations \n");
+	}
+	
+	public void riverInfoMenu(JTextArea text, double wid, double dep, double spd) {
+		
+		text.setText(" You must cross the river to continue. The river at this point is " + wid
+				+ " feet wide and " + dep + " feet deep in the middle.");
+	}
+	
+	public void riverChoices(JTextArea text, double wid, double dep) {
+		
+		text.setText(" Weather: " + getWeather() + "\n"
+					+ " River Width: " + wid + "\n" 
+					+ " River Depth " + dep + "\n"
+				    + " \n You may:" + "\n \n"
+				    + " 1. Attempt to ford the river \n"
+				    + " 2. Caulk the wagon and float it across \n"
+				    + " 3. Take a ferry across ( Costs 10$ ) \n"
+				    );			
+	}
+	
+	public boolean riverActions(JTextArea text, JTextField in, String input, double dep) {
+		
+		
+		int temp = rand.nextInt(100)+1;
+		
+		if(input.equals("1")) {
+			if(dep <= 3) {
+				if(temp <= 80) {
+					text.setText("You passed through the river with no issue");
+					return false;
+				}
+				else {
+					text.setText("You passed through the river, but lost some items");
+					return false;
+				}
+					
+			}
+			else {
+				if(temp <= 40) {
+					text.setText("You passed through the river with no issue");
+					return false;
+				}
+				else {
+					text.setText("You passed through the river, but lost some items");
+					return false;
+				}
+			}
+			
+		}
+		
+		if(input.equals("2")) {
+			if(dep <= 5) {
+				if(temp <= 85) {
+					text.setText("You passed through the river with no issue");
+					return false;
+				}
+				else {
+					text.setText("You passed through the river, but lost some items");
+					return false;
+				}
+					
+			}
+			else {
+				if(temp <= 25) {
+					text.setText("You passed through the river with no issue");
+					return false;
+				}
+				else {
+					text.setText("You passed through the river, but lost some items");
+					return false;
+				}
+			}
+		}
+		
+		if(input.equals("3")) {
+			
+			if(temp <= 90) {
+				text.setText("You passed through the river with no issue");
+				return false;
+			}
+			else {
+				text.setText("You passed through the river, but lost some items");
+				return false;
+		}
+		}
+		return true;
+			
+	}
 	
 	public boolean paceMenu(JTextArea text, JTextField in, String input) {
 		
@@ -123,7 +238,6 @@ public boolean rationsMenu(JTextArea text, JTextField in, String input) {
 	}
 	
 	public boolean travelMenu(JTextArea text, JTextField in, String input, Timer time) {
-		
 		if(input.equals("q")) {
 			time.stop();
 			input = "";
@@ -134,12 +248,35 @@ public boolean rationsMenu(JTextArea text, JTextField in, String input) {
 			return true;
 			
 		}
+	}
+	
+	
 		
+		public int landmarkCheck(ActionEvent evt, JTextArea text, Timer time, int nextLandmark, double currentLoc, String name, String tag, int counter) {
+			
+			double temp = nextLandmark - currentLoc;
+			
+		//	System.out.println("QQEQWEOJQEOI: " + temp);
+			if(temp <= 0) {
+				
+				time.stop();
+				
+				if(tag.equals("F")) {
+					fortMenu(text,name);
+					counter++;
+					System.out.println("COUNTER: " + counter);
+					return 1;
+				}
+				
+				if(tag.equals("R")) {
+					riverMenu(text,name);
+					counter++;
+					return 2;
+				}
+			}
+			return 0;
 	}
 	
 	
-	public CharSequence getBaseOptions() {
-		return(baseMenuOptions);
-	}
-
+	
 }
