@@ -252,7 +252,7 @@ public boolean rationsMenu(JTextArea text, JTextField in, String input) {
 	
 	
 		
-		public int landmarkCheck(ActionEvent evt, JTextArea text, Timer time, int nextLandmark, double currentLoc, String name, String tag, int counter) {
+	public int landmarkCheck(ActionEvent evt, JTextArea text, Timer time, int nextLandmark, double currentLoc, String name, String tag, int counter) {
 			
 			double temp = nextLandmark - currentLoc;
 			

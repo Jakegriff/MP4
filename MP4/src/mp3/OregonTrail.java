@@ -172,6 +172,7 @@ public class OregonTrail {
 	private JTextField inputField;
 	
 	Menu menu = new Menu();
+	//Store store = new Store();
 	String input = "";
 	int inputInt;
 	int flagCheck;
@@ -186,6 +187,7 @@ public class OregonTrail {
 	Boolean fortFlag = false;
 	Boolean riverFlag = false;
 	Boolean rivSubMenuFlag = false;
+	Boolean storeFlag = false;
 	
 	private Timer timer;
 
@@ -297,6 +299,11 @@ public class OregonTrail {
 						 if(rivSubMenuFlag == false)
 							 locCounter++;
 					 }
+					 if(storeFlag == true) {
+					//	storeFlag = store.storeMenu(textArea, inputField, input);
+						input = "";
+					 }
+					 
 					
 					if(menuFlag == false)
 						menu.baseMenu(textArea);
@@ -378,13 +385,24 @@ public class OregonTrail {
 						
 					}
 						break;
+						
+					// Store Test
+					case "5":
+					{
+						inputField.setText(null);
+						textArea.setText(null);
+						menuFlag = true;
+						storeFlag = true;
+						//store.baseStoreMenu(textArea, 0 , 800);
+					}
+						break;
 					}
 					}
 					
 				
 				//	System.out.println("loc: " + Locations[locCounter].getLocation() + "  Tag: " + Locations[locCounter].getTag() + "  Name: " + Locations[locCounter].getName());
 					inputField.setText(null);
-					if(supplyFlag == false && paceFlag == false && ratFlag == false && travelFlag == false && rivSubMenuFlag == false && riverFlag == false)
+					if(supplyFlag == false && paceFlag == false && ratFlag == false && travelFlag == false && rivSubMenuFlag == false && riverFlag == false && storeFlag == false)
 						menuFlag = false;
 			/*
 				System.out.println("loccounter: " + locCounter);
@@ -396,6 +414,7 @@ public class OregonTrail {
 				System.out.println("riverFlag:" + riverFlag);
 				System.out.println("riverSubMenuFlag:" + rivSubMenuFlag);
 				System.out.println("menuFlag:" + menuFlag);
+				System.out.println("storeFlag: " + storeFlag);
 				System.out.println("______________");
 			*/
 				
