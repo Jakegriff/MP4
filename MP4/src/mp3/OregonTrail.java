@@ -1511,10 +1511,10 @@ public class OregonTrail {
 			textA.setText(null);
 			menuFlag = true;
 			travelFlag = true;
-			menu.travelling(textA, wagon.getFoodNum(),wagon.getLocation(),wagon.getNextLocation(FortBad.getLocation()));
+			menu.travelling(textA, wagon.getFoodNum(),wagon.getLocation(),wagon.getNextLocation(Locations[locCounter].getLocation()));
 			timer = new javax.swing.Timer(900, new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						wagon.travel(evt, textA, wagon.getFoodNum(), FortBad.getLocation());
+						wagon.travel(evt, textA, wagon.getFoodNum(), Locations[locCounter].getLocation());
 					}
 					});
 			timer.start();
