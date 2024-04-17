@@ -172,7 +172,7 @@ public class OregonTrail {
 	private JTextField inputField;
 	
 	Menu menu = new Menu();
-	//Store store = new Store();
+	Store store = new Store();
 	String input = "";
 	int inputInt;
 	int flagCheck;
@@ -505,7 +505,7 @@ public class OregonTrail {
 				
 				}
 				}
-				
+			}
 		});
 		inputField.setFont(new Font("Monospaced", Font.BOLD, 18));
 		inputField.setBackground(new Color(0, 128, 0));
