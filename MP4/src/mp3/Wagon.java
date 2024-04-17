@@ -29,6 +29,9 @@ public class Wagon extends Item{
 	private int numOxen;
 	private int money = 1000;
 	private int consumption;
+	private int clothSetNum = 0;
+	private int ammunitionAmt = 0;
+	private int totalBill = 0;
     // Items are stored in an array list
 	ArrayList<Item> supplies = new ArrayList<Item>();
 	/**
@@ -41,6 +44,23 @@ public class Wagon extends Item{
 	 * Adds an item to the array list
 	 * @param item The item you want to add
 	 */
+	
+	public  int getTotalBill() {
+		return totalBill;
+	}
+	
+	public void setAmmo(int ammo) {
+		ammunitionAmt = ammunitionAmt + ammo;
+	}
+	
+	public int getAmmo() {
+		return ammunitionAmt;
+	}
+	
+	public void setFoodAmt(int food) {
+		foodAmt = foodAmt + food;
+	}
+	
 	public void addItem(Item item) {
 		
 		supplies.add(item);
@@ -172,12 +192,28 @@ public class Wagon extends Item{
 		+ "\n Distance to next location: " + nextLoc);
 	}
 	
-	public void setOxen(String Oxen) {
-		numOxen = Integer.parseInt(Oxen);
+	public void setOxen(int Oxen) {
+		numOxen = numOxen + (2*Oxen);
+	}
+	
+	public void setClothSet(int setnum) {
+		clothSetNum = clothSetNum + setnum;
+	}
+	
+	public int getClothSet() {
+		return clothSetNum;
 	}
 	
 	public int getOxen() {
 		return(numOxen);
+	}
+	
+	public void calcMoney(int price, int input) {
+		money = money -(price * input);
+	}
+	
+	public void calcTotalBill(int price, int input) {
+		totalBill = totalBill + (price * input);
 	}
 	
 	public int getMoney() {

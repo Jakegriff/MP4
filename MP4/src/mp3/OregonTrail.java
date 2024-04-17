@@ -185,6 +185,10 @@ public class OregonTrail {
 	Boolean travelFlag = false;
 	Boolean storeFlag = false;
 	Boolean oxenFlag = false;
+	Boolean clothFlag = false;
+	Boolean ammunitionFlag = false;
+	Boolean sparePartsFlag = false;
+	Boolean foodFlag = false;
 	
 	private Timer timer;
 	
@@ -264,10 +268,77 @@ public class OregonTrail {
 						travelFlag = menu.travelMenu(textArea, inputField, input, timer);
 		
 					 }
-					 if(storeFlag == true) {
+					 if(oxenFlag == true) {
+						 wagon.setOxen(Integer.parseInt(input));
+						 wagon.calcTotalBill(10, Integer.parseInt(input));
+						 oxenFlag = false;
+						 storeFlag = true;
+						 inputField.setText(null);
+						textArea.setText(null);
+						menuFlag = true;
+						storeFlag = true;
+						store.baseStoreMenu(textArea, wagon.getTotalBill() , wagon.getMoney());
+						 
+					 }
+					 
+					 else if(foodFlag == true) {
+						 wagon.setFoodAmt(Integer.parseInt(input));
+						 wagon.calcTotalBill(10, Integer.parseInt(input));
+						 foodFlag = false;
+						 storeFlag = true;
+						 inputField.setText(null);
+						 textArea.setText(null);
+						 menuFlag = true;
+						 storeFlag = true;
+						 store.baseStoreMenu(textArea, wagon.getTotalBill() , wagon.getMoney());
+						 
+					 }
+					 
+					 else if(clothFlag == true) {
+						 wagon.setClothSet(Integer.parseInt(input));
+						 wagon.calcTotalBill(10, Integer.parseInt(input));
+						 clothFlag = false;
+						 storeFlag = true;
+						 inputField.setText(null);
+						 textArea.setText(null);
+						 menuFlag = true;
+						 storeFlag = true;
+						 store.baseStoreMenu(textArea, wagon.getTotalBill() , wagon.getMoney());
+						 
+					 }
+					 else if (ammunitionFlag == true) {
+						 wagon.setAmmo(Integer.parseInt(input));
+						 wagon.calcTotalBill(20, Integer.parseInt(input));
+						 ammunitionFlag = false;
+						 storeFlag = true;
+						 inputField.setText(null);
+						 textArea.setText(null);
+						 menuFlag = true;
+						 storeFlag = true;
+						 store.baseStoreMenu(textArea, wagon.getTotalBill() , wagon.getMoney());
+					 }
+					 
+					 else if(storeFlag == true) {
+						int exitNumber = 6;
 						storeFlag = store.storeMenu(textArea, inputField, input);
+						if(Integer.parseInt(input) == 1) {
+							oxenFlag = true;
+						}
+						
+						if(Integer.parseInt(input) == 2) {
+							foodFlag = true;
+						}
+						
+						if(Integer.parseInt(input) == 3) {
+							clothFlag = true;
+						}
+						if(Integer.parseInt(input) == 4) {
+							ammunitionFlag = true;
+						}
+						
 						input = "";
 					 }
+					 
 					 
 					
 					if(menuFlag == false)
@@ -300,7 +371,6 @@ public class OregonTrail {
 						menuFlag = true;
 						supplyFlag = true;
 						menu.checkSupplies(textArea, wagon.getFoodNum(),wagon.getOxen(),wagon.getMoney());
-					
 							
 						}
 					
@@ -333,7 +403,7 @@ public class OregonTrail {
 						textArea.setText(null);
 						menuFlag = true;
 						storeFlag = true;
-						store.baseStoreMenu(textArea, 0 , 800);
+						store.baseStoreMenu(textArea, wagon.getTotalBill() , wagon.getMoney());
 					}
 						break;
 					}
@@ -342,6 +412,10 @@ public class OregonTrail {
 					inputField.setText(null);
 					if(supplyFlag == false && paceFlag == false && ratFlag == false && travelFlag == false && storeFlag == false)
 						menuFlag = false;
+				System.out.println("Oxen num: "+wagon.getOxen());
+				System.out.println("Cloth num: " +wagon.getClothSet());
+				System.out.println("Food num:" + wagon.getFoodNum());
+				System.out.println("Ammo num" + wagon.getAmmo());
 				System.out.println("SupplyFlag:" + supplyFlag);
 				System.out.println("PaceFlag:" + paceFlag);
 				System.out.println("RatFlag:" + ratFlag);

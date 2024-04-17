@@ -27,11 +27,10 @@ public class Store extends Menu {
 	public Boolean storeMenu(JTextArea text, JTextField in, String input) {
 		if(input.equals("6")) {
 			baseMenu(text);
-			return false;
 			}
 		if(input.equals("1")) {
 			oxenMenu(text, 10);
-			//setOxen(in.getText());		}
+			}
 		if(input.equals("2")) {
 			foodMenu(text, 20);
 		}
@@ -44,8 +43,9 @@ public class Store extends Menu {
 		if(input.equals("5")) {
 			sparePartsMenu(text, 20, 20, 20);
 		}
-	}
-		return true;
+	
+		return false;
+	
 	}
 	//public Boolean oxenSetMenu(JTextArea text, JTextField in, String input) {
 		//if(input.equals("1")) {
