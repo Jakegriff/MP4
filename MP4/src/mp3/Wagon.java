@@ -26,7 +26,7 @@ public class Wagon extends Item{
 	private double location = 0;
 	private double nextLoc = 0;
 	private double numPace = 1;
-	private int numOxen = 8;
+	private int numOxen = 8; // init to 0 later, at 8 for pace purposes
 	private int money = 1000;
 	private int consumption;
     // Items are stored in an array list
