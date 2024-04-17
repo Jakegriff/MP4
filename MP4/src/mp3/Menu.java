@@ -47,7 +47,8 @@ public class Menu extends Wagon{
 				 + " 2. Check supplies \n"
 				 + " 3. Change pace \n"
 				 + " 4. Change rations \n"
-				 + " 5. Trade \n");
+				 + " 5. Store \n"
+				 + " 6. Trade \n");
 	}
 	
 	public void checkSupplies(JTextArea text, int food, int oxen, double money) {

@@ -26,7 +26,7 @@ public class Wagon extends Item{
 	private double location = 0;
 	private double nextLoc = 0;
 	private double numPace = 1;
-	private int numOxen;
+	protected int numOxen = 0;
 	private double money = 1000;
 	private int consumption;
 	private int clothSetNum = 0;

@@ -276,6 +276,7 @@ public class OregonTrail {
 						travelFlag = false;
 						flagCheck = 0;
 					}
+				}
 					
 					wagon.calcFood();
 					wagon.calcPace();
@@ -315,8 +316,9 @@ public class OregonTrail {
 						 if(rivSubMenuFlag == false)
 							 locCounter++;
 					 }
-					 if(storeFlag == true) {
-					//	storeFlag = store.storeMenu(textArea, inputField, input);
+					 //if(storeFlag == true) {
+						//storeFlag = store.storeMenu(textArea, inputField, input);
+					 //}
 					 if(oxenFlag == true) {
 						 wagon.setOxen(Integer.parseInt(input));
 						 wagon.calcTotalBill(10, Integer.parseInt(input));
@@ -498,7 +500,16 @@ public class OregonTrail {
 						store.baseStoreMenu(textArea, wagon.getTotalBill() , wagon.getMoney());
 					}
 						break;
+					
+
+					case "6":{
+						inputField.setText(null);
+						textArea.setText(null);
+						menuFlag = true;
+						tradeFlag = true;
+						otherTravelers.initiateTrade(textArea, otherTravelers, fortMultiplier, 2, 1, Water, Bacon);
 					}
+					break;
 					}
 					
 				
@@ -508,7 +519,7 @@ public class OregonTrail {
 				/////////////////////////////////////////////////////////////////////////////////////////////////////////	
 					if(menuFlag == false) {
 						menu.baseMenu(textArea, true);
-						mainFlagSwitchOptions(input, textArea);
+						//mainFlagSwitchOptions(input, textArea);
 						//you have the code for if the num is typed in, now work on the function that changes the screen,
 						//the different screen classes, and adding in the text options if at a fort. 
 					}
@@ -536,11 +547,13 @@ public class OregonTrail {
 				System.out.println("______________");
 			*/
 				
-				}
-				}
+				
+				
+					}
 			}
 			
 		});
+
 		inputField.setFont(new Font("Monospaced", Font.BOLD, 18));
 		inputField.setBackground(new Color(0, 128, 0));
 		inputField.setBounds(93, 399, 550, 40);
@@ -1502,65 +1515,6 @@ public class OregonTrail {
 		layeredPane.moveToBack(bgImage);		
 }
 	
-	
-	private void mainFlagSwitchOptions(String choice, JTextArea textA) {
-		switch(input) {
-		case "1":
-		{
-			inputField.setText(null);
-			textA.setText(null);
-			menuFlag = true;
-			travelFlag = true;
-			menu.travelling(textA, wagon.getFoodNum(),wagon.getLocation(),wagon.getNextLocation(Locations[locCounter].getLocation()));
-			timer = new javax.swing.Timer(900, new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						wagon.travel(evt, textA, wagon.getFoodNum(), Locations[locCounter].getLocation());
-					}
-					});
-			timer.start();
-			break;	
-		}
-		
-		case "2": 
-		{ 
-			inputField.setText(null);
-			textA.setText(null);
-			menuFlag = true;
-			supplyFlag = true;
-			menu.checkSupplies(textA, wagon.getFoodNum(),wagon.getOxen(),wagon.getMoney());
-			break;
-		}
-		
-		case "3":
-		{
-			inputField.setText(null);
-			textA.setText(null);
-			menuFlag = true;
-			paceFlag = true;
-			menu.changePace(textA);
-			break;
-
-		}
-		
-		case "4":
-		{
-			inputField.setText(null);
-			textA.setText(null);
-			ratFlag = true;
-			menuFlag = true;
-			menu.changeRations(textA);
-			break;
-		}
-
-		case "5":{
-			inputField.setText(null);
-			textA.setText(null);
-			menuFlag = true;
-			tradeFlag = true;
-			otherTravelers.initiateTrade(textA, otherTravelers, fortMultiplier, 2, 1, Water, Bacon);
-		}		
-	}
-}
 	
 	/**
 	 * Initialize the contents of the frame.
