@@ -172,6 +172,14 @@ public class OregonTrail {
 	private JTextField inputField;
 	
 	Menu menu = new Menu();
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	Trading trappers = new Trading(0);
+	Trading natives = new Trading(1);
+	Trading otherTravelers = new Trading(2);
+	
+	int fortMultiplier = 1;
+	
 	String input = "";
 	int inputInt;
 	
@@ -182,6 +190,10 @@ public class OregonTrail {
 	Boolean paceFlag = false;
 	Boolean ratFlag = false;
 	Boolean travelFlag = false;
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	Boolean tradeFlag = false;
+	
+	Boolean isFort;
 	
 	private Timer timer;
 	
@@ -261,76 +273,43 @@ public class OregonTrail {
 						travelFlag = menu.travelMenu(textArea, inputField, input, timer);
 		
 					 }
+					 
+					 if (tradeFlag == true) {
+						 //if (IS_FORT == true) {
+							 tradeFlag = otherTravelers.tradeMenu(textArea, inputField, input);
+							 input = "";
+						 //} else if (IS_NATIVE == true){
+						 //	 tradeFlag = natives.tradeMenu(textArea, inputField, input);
+						 //} else if (IS_TRAPPER == true){
+						 //	 tradeFlag = trappers.tradeMenu(textArea, inputField, input);
+						//}
+					 }
 					
-					if(menuFlag == false)
-						menu.baseMenu(textArea);
+					////////////    //if(menuFlag == false)
+					////////////	//menu.baseMenu(textArea);
 					
+				/////////////////////////////////////////////////////////////////////////////////////////////////////////	
 					if(menuFlag == false) {
-					switch(input) {
+						menu.baseMenu(textArea, true);
+						mainFlagSwitchOptions(input, textArea);
+						//you have the code for if the num is typed in, now work on the function that changes the screen,
+						//the different screen classes, and adding in the text options if at a fort. 
+					}
 					
-					case "1":
-					{
-						inputField.setText(null);
-						textArea.setText(null);
-						menuFlag = true;
-						travelFlag = true;
-						menu.travelling(textArea, wagon.getFoodNum(),wagon.getLocation(),wagon.getNextLocation(FortBad.getLocation()));
-						 timer = new javax.swing.Timer(3000, new ActionListener() {
-								public void actionPerformed(ActionEvent evt) {
-								wagon.travel(evt, textArea, wagon.getFoodNum(), FortBad.getLocation());
-								}
-								});
-							timer.start();
-							
-							
-					}
-						break;	
-					case "2": 
-					{ 
-						inputField.setText(null);
-						textArea.setText(null);
-						menuFlag = true;
-						supplyFlag = true;
-						menu.checkSupplies(textArea, wagon.getFoodNum(),wagon.getOxen(),wagon.getMoney());
-					
-							
-						}
-					
-						break;
-					case "3":
-					{
-						inputField.setText(null);
-						textArea.setText(null);
-						menuFlag = true;
-						paceFlag = true;
-						menu.changePace(textArea);
-						
-					}
-						break;
-					case "4":
-					{
-						inputField.setText(null);
-						textArea.setText(null);
-						ratFlag = true;
-						menuFlag = true;
-						menu.changeRations(textArea);
-						
-					}
-						break;
-					}
-					}
 					System.out.println(menuFlag);
 					inputField.setText(null);
-					if(supplyFlag == false && paceFlag == false && ratFlag == false && travelFlag == false)
+					if(supplyFlag == false && paceFlag == false && ratFlag == false && travelFlag == false && tradeFlag == false)
 						menuFlag = false;
 				System.out.println("SupplyFlag:" + supplyFlag);
 				System.out.println("PaceFlag:" + paceFlag);
 				System.out.println("RatFlag:" + ratFlag);
 				System.out.println("travelFlag:" + travelFlag);
+				System.out.println("tradeFlag:" + tradeFlag);
 				System.out.println("menuFlag:" + menuFlag);
 				System.out.println("______________");
 				}
 				}
+			
 		});
 		inputField.setFont(new Font("Monospaced", Font.BOLD, 18));
 		inputField.setBackground(new Color(0, 128, 0));
@@ -454,8 +433,7 @@ public class OregonTrail {
 		lblNewLabel_47.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblNewLabel_47.setBounds(377, 507, 120, 40);
 		layeredPane.add(lblNewLabel_47);
-		
-		
+			
 		lblOverweight = new JLabel("");
 		lblOverweight.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		lblOverweight.setBounds(30, 429, 349, 56);
@@ -1291,14 +1269,68 @@ public class OregonTrail {
 		
 		bgImage.setIcon(backgroundImage);
 		
-		layeredPane.moveToBack(bgImage);
-		
-		
-		
+		layeredPane.moveToBack(bgImage);		
 }
 	
 	
+	private void mainFlagSwitchOptions(String choice, JTextArea textA) {
+		switch(input) {
+		case "1":
+		{
+			inputField.setText(null);
+			textA.setText(null);
+			menuFlag = true;
+			travelFlag = true;
+			menu.travelling(textA, wagon.getFoodNum(),wagon.getLocation(),wagon.getNextLocation(FortBad.getLocation()));
+			timer = new javax.swing.Timer(900, new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						wagon.travel(evt, textA, wagon.getFoodNum(), FortBad.getLocation());
+					}
+					});
+			timer.start();
+			break;	
+		}
+		
+		case "2": 
+		{ 
+			inputField.setText(null);
+			textA.setText(null);
+			menuFlag = true;
+			supplyFlag = true;
+			menu.checkSupplies(textA, wagon.getFoodNum(),wagon.getOxen(),wagon.getMoney());
+			break;
+		}
+		
+		case "3":
+		{
+			inputField.setText(null);
+			textA.setText(null);
+			menuFlag = true;
+			paceFlag = true;
+			menu.changePace(textA);
+			break;
 
+		}
+		
+		case "4":
+		{
+			inputField.setText(null);
+			textA.setText(null);
+			ratFlag = true;
+			menuFlag = true;
+			menu.changeRations(textA);
+			break;
+		}
+
+		case "5":{
+			inputField.setText(null);
+			textA.setText(null);
+			menuFlag = true;
+			tradeFlag = true;
+			otherTravelers.initiateTrade(textA, otherTravelers, fortMultiplier, 2, 1, Water, Bacon);
+		}		
+	}
+}
 	
 	/**
 	 * Initialize the contents of the frame.

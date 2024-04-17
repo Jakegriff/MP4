@@ -17,16 +17,16 @@ import javax.swing.JTextArea;
 
 public class Wagon extends Item{
 	// Initialize Variables
-	private int wagonMax = 2400;
-	private int wagonWeight = 0;
-	private int foodAmt = 0;
+	protected int wagonMax = 2400;
+	protected int wagonWeight = 0;
+	protected int foodAmt = 0;
 	private String weather = "Fair";
 	private String pace = "Steady";
 	private String rations = "Filling";
 	private double location = 0;
 	private double nextLoc = 0;
 	private double numPace = 1;
-	private int numOxen = 4;
+	protected int numOxen = 4;
 	private int money = 1000;
 	private int consumption;
     // Items are stored in an array list
@@ -189,8 +189,4 @@ public class Wagon extends Item{
 		return(nextLoc);
 	}
 	
-	
 }
-
-
-
