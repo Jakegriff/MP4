@@ -407,8 +407,9 @@ public class OregonTrail {
 						//}
 					 }
 					
-					////////////    //if(menuFlag == false)
-					////////////	//menu.baseMenu(textArea);
+					if(menuFlag == false) {
+						menu.baseMenu(textArea);
+					}
 					
 					if(menuFlag == false || fortFlag == true || riverFlag == true ) {
 					switch(input) {
@@ -510,23 +511,13 @@ public class OregonTrail {
 					break;
 					}
 					
+				System.out.println(menuFlag);
+				inputField.setText(null);
+				if(supplyFlag == false && paceFlag == false && ratFlag == false && travelFlag == false && rivSubMenuFlag == false && riverFlag == false && storeFlag == false) {
+					menuFlag = false;
+				}
 				
-				//	System.out.println("loc: " + Locations[locCounter].getLocation() + "  Tag: " + Locations[locCounter].getTag() + "  Name: " + Locations[locCounter].getName());
-					inputField.setText(null);
-					if(supplyFlag == false && paceFlag == false && ratFlag == false && travelFlag == false && rivSubMenuFlag == false && riverFlag == false && storeFlag == false)
-				/////////////////////////////////////////////////////////////////////////////////////////////////////////	
-					if(menuFlag == false) {
-						menu.baseMenu(textArea);
-						//mainFlagSwitchOptions(input, textArea);
-						//you have the code for if the num is typed in, now work on the function that changes the screen,
-						//the different screen classes, and adding in the text options if at a fort. 
-					}
-					
-					System.out.println(menuFlag);
-					inputField.setText(null);
-					if(supplyFlag == false && paceFlag == false && ratFlag == false && travelFlag == false && tradeFlag == false)
-						menuFlag = false;
-			/*
+			
 				System.out.println("loccounter: " + locCounter);
 				System.out.println("Oxen num: "+wagon.getOxen());
 				System.out.println("Cloth num: " +wagon.getClothSet());
@@ -543,7 +534,7 @@ public class OregonTrail {
 				System.out.println("menuFlag:" + menuFlag);
 				System.out.println("storeFlag: " + storeFlag);
 				System.out.println("______________");
-			*/
+			
 				
 				
 				
