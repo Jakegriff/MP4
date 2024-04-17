@@ -45,7 +45,7 @@ public class Trading extends Menu{
 			return false;
 		}
 		else if (input.equals("no")){
-			baseMenu(text, true);
+			baseMenu(text);
 			return false;
 		}
 		else {return true;}

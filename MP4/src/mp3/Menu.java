@@ -34,22 +34,10 @@ public class Menu extends Wagon{
 				 + " 2. Check supplies \n"
 				 + " 3. Change pace \n"
 				 + " 4. Change rations \n"
-				 + " 5. Store Test \n");
+				 + " 5. Store Test \n"
+				 + " 6. Trade");
 	}
 	
-	public void baseMenu(JTextArea text, Boolean fort) {
-		text.setText(" Weather: " + getWeather() + "\n"
-				 + " Health: " + "Good" + "\n"
-				 + " Pace: " + getPace() + "\n"
-				 + " Rations: " + getRations() + "\n"
-				 + " You may:" + "\n \n"
-				 + " 1. Continue on trail \n"
-				 + " 2. Check supplies \n"
-				 + " 3. Change pace \n"
-				 + " 4. Change rations \n"
-				 + " 5. Store \n"
-				 + " 6. Trade \n");
-	}
 	
 	public void checkSupplies(JTextArea text, int food, int oxen, double money) {
 		

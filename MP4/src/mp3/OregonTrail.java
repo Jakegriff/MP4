@@ -316,9 +316,7 @@ public class OregonTrail {
 						 if(rivSubMenuFlag == false)
 							 locCounter++;
 					 }
-					 //if(storeFlag == true) {
-						//storeFlag = store.storeMenu(textArea, inputField, input);
-					 //}
+			
 					 if(oxenFlag == true) {
 						 wagon.setOxen(Integer.parseInt(input));
 						 wagon.calcTotalBill(10, Integer.parseInt(input));
@@ -518,7 +516,7 @@ public class OregonTrail {
 					if(supplyFlag == false && paceFlag == false && ratFlag == false && travelFlag == false && rivSubMenuFlag == false && riverFlag == false && storeFlag == false)
 				/////////////////////////////////////////////////////////////////////////////////////////////////////////	
 					if(menuFlag == false) {
-						menu.baseMenu(textArea, true);
+						menu.baseMenu(textArea);
 						//mainFlagSwitchOptions(input, textArea);
 						//you have the code for if the num is typed in, now work on the function that changes the screen,
 						//the different screen classes, and adding in the text options if at a fort. 
