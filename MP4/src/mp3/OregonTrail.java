@@ -250,7 +250,7 @@ public class OregonTrail {
 				input = "";
 				if(end == false && alive == true) {
 					
-					
+					input = inputField.getText();
 					if(flagCheck == 1) {
 						fortFlag = true;
 						menuFlag = true;
@@ -267,7 +267,6 @@ public class OregonTrail {
 					
 					wagon.calcFood();
 					wagon.calcPace();
-					input = inputField.getText();
 					
 					if(supplyFlag == true) {
 						supplyFlag = menu.supplyMenu(textArea, inputField, input);
