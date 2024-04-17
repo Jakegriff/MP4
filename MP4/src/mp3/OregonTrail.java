@@ -271,6 +271,7 @@ public class OregonTrail {
 					 if(oxenFlag == true) {
 						 wagon.setOxen(Integer.parseInt(input));
 						 wagon.calcTotalBill(10, Integer.parseInt(input));
+						 wagon.calcMoney(10, Integer.parseInt(input));
 						 oxenFlag = false;
 						 storeFlag = true;
 						 inputField.setText(null);
@@ -283,7 +284,8 @@ public class OregonTrail {
 					 
 					 else if(foodFlag == true) {
 						 wagon.setFoodAmt(Integer.parseInt(input));
-						 wagon.calcTotalBill(10, Integer.parseInt(input));
+						 wagon.calcTotalBill(.20, Integer.parseInt(input));
+						 wagon.calcMoney(.20, Integer.parseInt(input));
 						 foodFlag = false;
 						 storeFlag = true;
 						 inputField.setText(null);
@@ -297,6 +299,7 @@ public class OregonTrail {
 					 else if(clothFlag == true) {
 						 wagon.setClothSet(Integer.parseInt(input));
 						 wagon.calcTotalBill(10, Integer.parseInt(input));
+						 wagon.calcMoney(10, Integer.parseInt(input));
 						 clothFlag = false;
 						 storeFlag = true;
 						 inputField.setText(null);
@@ -309,6 +312,7 @@ public class OregonTrail {
 					 else if (ammunitionFlag == true) {
 						 wagon.setAmmo(Integer.parseInt(input));
 						 wagon.calcTotalBill(20, Integer.parseInt(input));
+						 wagon.calcMoney(20, Integer.parseInt(input));
 						 ammunitionFlag = false;
 						 storeFlag = true;
 						 inputField.setText(null);
@@ -334,6 +338,9 @@ public class OregonTrail {
 						}
 						if(Integer.parseInt(input) == 4) {
 							ammunitionFlag = true;
+						}
+						if(Integer.parseInt(input) == 6) {
+							wagon.setTotalBill();
 						}
 						
 						input = "";
@@ -415,7 +422,7 @@ public class OregonTrail {
 				System.out.println("Oxen num: "+wagon.getOxen());
 				System.out.println("Cloth num: " +wagon.getClothSet());
 				System.out.println("Food num:" + wagon.getFoodNum());
-				System.out.println("Ammo num" + wagon.getAmmo());
+				System.out.println("Ammo num: " + wagon.getAmmo());
 				System.out.println("SupplyFlag:" + supplyFlag);
 				System.out.println("PaceFlag:" + paceFlag);
 				System.out.println("RatFlag:" + ratFlag);

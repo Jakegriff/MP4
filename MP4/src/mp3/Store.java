@@ -10,7 +10,7 @@ public class Store extends Menu {
 		
 	}
 	
-	public void baseStoreMenu(JTextArea Text, int totalBill, int money) {
+	public void baseStoreMenu(JTextArea Text, double totalBill, double money) {
 		Text.setText(" 1. Oxen" + "\n"
 					+" 2. Food" + "\n"
 					+" 3. Clothing" +"\n"
@@ -32,7 +32,7 @@ public class Store extends Menu {
 			oxenMenu(text, 10);
 			}
 		if(input.equals("2")) {
-			foodMenu(text, 20);
+			foodMenu(text, .20);
 		}
 		if(input.equals("3")) {
 			clothMenu(text, 20);
@@ -62,9 +62,9 @@ public class Store extends Menu {
 					+ "How many Yoke do you want?");
 	}
 	
-	public void foodMenu(JTextArea Text, int foodPrice) {
+	public void foodMenu(JTextArea Text, double foodPrice) {
 		Text.setText("It is recomend to bring 200 pounds for each person on your trip" + "\n"
-					+"The price is $" +foodPrice+ " cents per pound" + "\n"
+					+"The price is " +foodPrice+ " cents per pound" + "\n"
 					+"How many pounds of food do you want?");
 	}
 	public void clothMenu(JTextArea Text, int clothPrice) {

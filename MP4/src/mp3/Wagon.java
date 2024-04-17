@@ -27,11 +27,11 @@ public class Wagon extends Item{
 	private double nextLoc = 0;
 	private double numPace = 1;
 	private int numOxen;
-	private int money = 1000;
+	private double money = 1000;
 	private int consumption;
 	private int clothSetNum = 0;
 	private int ammunitionAmt = 0;
-	private int totalBill = 0;
+	private double totalBill = 0;
     // Items are stored in an array list
 	ArrayList<Item> supplies = new ArrayList<Item>();
 	/**
@@ -45,12 +45,12 @@ public class Wagon extends Item{
 	 * @param item The item you want to add
 	 */
 	
-	public  int getTotalBill() {
+	public  double getTotalBill() {
 		return totalBill;
 	}
 	
 	public void setAmmo(int ammo) {
-		ammunitionAmt = ammunitionAmt + ammo;
+		ammunitionAmt = ammunitionAmt + (20*ammo);
 	}
 	
 	public int getAmmo() {
@@ -208,15 +208,19 @@ public class Wagon extends Item{
 		return(numOxen);
 	}
 	
-	public void calcMoney(int price, int input) {
+	public void calcMoney(double price, int input) {
 		money = money -(price * input);
 	}
 	
-	public void calcTotalBill(int price, int input) {
+	public void setTotalBill() {
+		totalBill = 0;
+	}
+	
+	public void calcTotalBill(double price, int input) {
 		totalBill = totalBill + (price * input);
 	}
 	
-	public int getMoney() {
+	public double getMoney() {
 		return(money);
 	}
 	
