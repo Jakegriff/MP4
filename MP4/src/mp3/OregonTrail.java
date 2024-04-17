@@ -24,7 +24,7 @@ import javax.swing.JTextField;
 /**
  * The gui implementation of packing a wagon in an implementation of the game Oregon Trail.
  * 
- * @author Griffin Broge
+ * @author Griffin Broge, Elizabeth Burkholder, Yutaka Yamato, Victor Trujillo
  * @version 1.0.0
  * @date March 24th 2024
  * @filename PackWagon.java
