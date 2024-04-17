@@ -204,7 +204,7 @@ public class OregonTrail {
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 	Boolean tradeFlag = false;
 	
-	Boolean isFort;
+	//Boolean isFort;
 	
 	private Timer timer;
 
@@ -372,7 +372,7 @@ public class OregonTrail {
 					 }
 					 
 					 else if(storeFlag == true) {
-						int exitNumber = 6;
+						//int exitNumber = 6;
 						storeFlag = store.storeMenu(textArea, inputField, input);
 						if(Integer.parseInt(input) == 1) {
 							oxenFlag = true;
@@ -390,21 +390,17 @@ public class OregonTrail {
 						}
 						if(Integer.parseInt(input) == 6) {
 							wagon.setTotalBill();
+							storeFlag = false;
+							menuFlag = false;
 						}
 						
 						input = "";
 					 }
 					 
 					 
-					 if (tradeFlag == true) {
-						 //if (IS_FORT == true) {
+					if (tradeFlag == true) {
 							 tradeFlag = otherTravelers.tradeMenu(textArea, inputField, input);
 							 input = "";
-						 //} else if (IS_NATIVE == true){
-						 //	 tradeFlag = natives.tradeMenu(textArea, inputField, input);
-						 //} else if (IS_TRAPPER == true){
-						 //	 tradeFlag = trappers.tradeMenu(textArea, inputField, input);
-						//}
 					 }
 					
 					if(menuFlag == false) {
@@ -474,9 +470,9 @@ public class OregonTrail {
 						menuFlag = true;
 						paceFlag = true;
 						menu.changePace(textArea);
-						
-					}
 						break;
+					}
+
 					case "4":
 					{
 						inputField.setText(null);
@@ -484,9 +480,8 @@ public class OregonTrail {
 						ratFlag = true;
 						menuFlag = true;
 						menu.changeRations(textArea);
-						
-					}
 						break;
+					}
 						
 					// Store Test
 					case "5":
@@ -497,26 +492,28 @@ public class OregonTrail {
 						storeFlag = true;
 						//store.baseStoreMenu(textArea, 0 , 800);
 						store.baseStoreMenu(textArea, wagon.getTotalBill() , wagon.getMoney());
-					}
 						break;
+					}
 					
-
+					//Trade Test
 					case "6":{
 						inputField.setText(null);
 						textArea.setText(null);
 						menuFlag = true;
 						tradeFlag = true;
-						otherTravelers.initiateTrade(textArea, otherTravelers, fortMultiplier, 2, 1, Water, Bacon);
+						otherTravelers.initiateTrade(textArea, otherTravelers, fortMultiplier, 2, 1, wagon.getClothSet(), wagon.getAmmo());
+						break;
 					}
-					break;
-					}
+				}
 					
 				System.out.println(menuFlag);
 				inputField.setText(null);
-				if(supplyFlag == false && paceFlag == false && ratFlag == false && travelFlag == false && rivSubMenuFlag == false && riverFlag == false && storeFlag == false) {
+				
+				//Controls sub-menues for Store class
+				if(storeFlag == false) {
 					menuFlag = false;
 				}
-				
+
 			
 				System.out.println("loccounter: " + locCounter);
 				System.out.println("Oxen num: "+wagon.getOxen());
@@ -534,10 +531,7 @@ public class OregonTrail {
 				System.out.println("menuFlag:" + menuFlag);
 				System.out.println("storeFlag: " + storeFlag);
 				System.out.println("______________");
-			
-				
-				
-				
+
 					}
 			}
 			
