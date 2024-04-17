@@ -53,6 +53,8 @@ public class Wagon extends Item{
 		ammunitionAmt = ammunitionAmt + (20*ammo);
 	}
 	
+	
+	
 	public int getAmmo() {
 		return ammunitionAmt;
 	}
