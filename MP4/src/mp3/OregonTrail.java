@@ -381,16 +381,13 @@ public class OregonTrail {
 					}
 					}
 					
-					
-					
-					
-				System.out.println("loccounter: " + locCounter);
+				
 				//	System.out.println("loc: " + Locations[locCounter].getLocation() + "  Tag: " + Locations[locCounter].getTag() + "  Name: " + Locations[locCounter].getName());
 					inputField.setText(null);
 					if(supplyFlag == false && paceFlag == false && ratFlag == false && travelFlag == false && rivSubMenuFlag == false && riverFlag == false)
 						menuFlag = false;
-			
-				
+			/*
+				System.out.println("loccounter: " + locCounter);
 				System.out.println("SupplyFlag:" + supplyFlag);
 				System.out.println("PaceFlag:" + paceFlag);
 				System.out.println("RatFlag:" + ratFlag);
@@ -400,7 +397,7 @@ public class OregonTrail {
 				System.out.println("riverSubMenuFlag:" + rivSubMenuFlag);
 				System.out.println("menuFlag:" + menuFlag);
 				System.out.println("______________");
-				
+			*/
 				
 				}
 				}

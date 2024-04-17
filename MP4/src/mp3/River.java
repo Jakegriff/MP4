@@ -43,27 +43,45 @@ public class River extends Landmarks{
 	
 	
 	
-	
+	/**
+	 * Getter for the width of a river
+	 * @return the width of the river in double form
+	 */
 	public double getRiverWidth() {
 		return riverWidth;
 	}
-
+	/**
+	 * Setter for the width of a river
+	 * @param riverWidth the new width of the river
+	 */
 	public void setRiverWidth(double riverWidth) {
 		this.riverWidth = riverWidth;
 	}
-
+	/**
+	 * Getter for the depth of a river
+	 * @return the depth of the river in double form
+	 */
 	public double getRiverDepth() {
 		return riverDepth;
 	}
-
+	/**
+	 * Setter for the depth of a river
+	 * @param riverDepth the new depth of the river
+	 */
 	public void setRiverDepth(double riverDepth) {
 		this.riverDepth = riverDepth;
 	}
-
+	/**
+	 * Getter for the speed of a river
+	 * @return the speed of the river in double form
+	 */
 	public double getRiverSpeed() {
 		return riverSpeed;
 	}
-
+	/**
+	 * Setter for the speed of a river
+	 * @param riverSpeed the new speed of the river
+	 */
 	public void setRiverSpeed(double riverSpeed) {
 		this.riverSpeed = riverSpeed;
 	}
