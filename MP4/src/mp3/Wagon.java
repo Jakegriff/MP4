@@ -17,9 +17,9 @@ import javax.swing.JTextArea;
 
 public class Wagon extends Item{
 	// Initialize Variables
-	private int wagonMax = 2400;
-	private int wagonWeight = 0;
-	private int foodAmt = 0;
+	protected int wagonMax = 2400;
+	protected int wagonWeight = 0;
+	protected int foodAmt = 0;
 	private String weather = "Fair";
 	private String pace = "Steady";
 	private String rations = "Filling";
@@ -235,8 +235,4 @@ public class Wagon extends Item{
 		
 
 	
-	
 }
-
-
-

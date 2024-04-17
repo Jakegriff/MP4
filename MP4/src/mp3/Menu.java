@@ -11,11 +11,9 @@ import javax.swing.Timer;
 public class Menu extends Wagon{
 	
 	Random rand = new Random();
-	CharSequence baseMenuOptions = "1234";
+	CharSequence baseMenuOptions = "12345";
 	
 	public Menu() {
-		
-		
 		
 	}
 	
@@ -39,7 +37,20 @@ public class Menu extends Wagon{
 				 + " 5. Store Test \n");
 	}
 	
-	public void checkSupplies(JTextArea text, int food, int oxen, double money) {
+	public void baseMenu(JTextArea text, Boolean fort) {
+		text.setText(" Weather: " + getWeather() + "\n"
+				 + " Health: " + "Good" + "\n"
+				 + " Pace: " + getPace() + "\n"
+				 + " Rations: " + getRations() + "\n"
+				 + " You may:" + "\n \n"
+				 + " 1. Continue on trail \n"
+				 + " 2. Check supplies \n"
+				 + " 3. Change pace \n"
+				 + " 4. Change rations \n"
+				 + " 5. Trade \n");
+	}
+	
+	public void checkSupplies(JTextArea text, int food, int oxen, int money) {
 		
 		text.setText(" Food: " + food
 				   + "\n Oxen: " + oxen

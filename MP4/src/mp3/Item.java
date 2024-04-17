@@ -27,11 +27,11 @@ public class Item {
 	// Overloaded constructor to initialize items
 	public Item(String nameIn, int weightIn, boolean food) {
 
-		name = nameIn;
+		this.name = nameIn;
 
-		weight = weightIn;
+		this.weight = weightIn;
 		
-		edible = food;
+		this.edible = food;
 
 	}
 	
