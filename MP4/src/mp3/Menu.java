@@ -50,7 +50,7 @@ public class Menu extends Wagon{
 				 + " 5. Trade \n");
 	}
 	
-	public void checkSupplies(JTextArea text, int food, int oxen, int money) {
+	public void checkSupplies(JTextArea text, int food, int oxen, double money) {
 		
 		text.setText(" Food: " + food
 				   + "\n Oxen: " + oxen
