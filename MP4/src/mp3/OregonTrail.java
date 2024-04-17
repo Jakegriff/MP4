@@ -395,6 +395,8 @@ public class OregonTrail {
 						}
 						if(Integer.parseInt(input) == 6) {
 							wagon.setTotalBill();
+							storeFlag = false;
+							menuFlag = false;
 						}
 						
 						input = "";
@@ -506,7 +508,7 @@ public class OregonTrail {
 					
 				System.out.println(menuFlag);
 				inputField.setText(null);
-				if(supplyFlag == false && paceFlag == false && ratFlag == false && travelFlag == false && rivSubMenuFlag == false && riverFlag == false && storeFlag == false) {
+				if(storeFlag == false) {
 					menuFlag = false;
 				}
 				
