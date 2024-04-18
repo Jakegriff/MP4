@@ -20,10 +20,12 @@ public class Menu extends Wagon{
 	Random rand = new Random();
 	CharSequence baseMenuOptions = "12345";
 
-	public Menu() {
+	public Menu() {}
 
-	}
-
+	/*
+	 * Sets the text area to the intro menu screen.
+	 * @param text - a JTextArea that determines which text area is changed.
+	 */
 	public void introMenu(JTextArea text) {
 		text.setText(" Welcome to Oregon Trail! This is a MVP version of the game, and will only include a short distance "
 				+ " with two landmarks. In addition, the wagon is already loaded with food, water, and basic supplies."
@@ -31,6 +33,10 @@ public class Menu extends Wagon{
 				+ "updated later on. To continue press enter");
 	}
 
+	/*
+	 * Sets the text area to the base menu screen.
+	 * @param text - a JTextArea that determines which text area is changed.
+	 */
 	public void baseMenu(JTextArea text) {
 		text.setText(" Weather: " + getWeather() + "\n"
 				+ " Health: " + "Good" + "\n"
@@ -46,6 +52,13 @@ public class Menu extends Wagon{
 	}
 
 
+	/*
+	 * Sets the text area to the checkSupplies menu screen
+	 * @param text - a JTextArea that determines which text area is changed.
+	 * @param food - an integer value based on the current user's food supply.
+	 * @param oxen - an integer value containing the number of oxen in the party.
+	 * @param money - a double value of the user's money value.
+	 */
 	public void checkSupplies(JTextArea text, int food, int oxen, double money) {
 
 		text.setText(" Food: " + food
@@ -54,6 +67,10 @@ public class Menu extends Wagon{
 				+ "\n \n \n \n Enter q to go back");
 	}
 
+	/*
+	 * Sets the text area to the changePace menu screen.
+	 * @param text - a JTextArea that determines which text area is changed.
+	 */
 	public void changePace(JTextArea text) {
 
 		text.setText(" Change Pace. Current Pace: " + getPace()
@@ -62,6 +79,10 @@ public class Menu extends Wagon{
 		+ "\n 3. A Grueling Pace");
 	}
 
+	/*
+	 * Sets the text area to the changeRations menu screen.
+	 * @param text - a JTextArea that determines which text area is changed.
+	 */
 	public void changeRations(JTextArea text) {
 
 		text.setText(" Change Rations. Current Rations: " + getRations()
@@ -70,13 +91,24 @@ public class Menu extends Wagon{
 		+ "\n 3. Barebones");
 	}
 
+	/*
+	 * Sets the text area to the travelling menu screen.
+	 * @param text - a JTextArea that determines which text area is changed.
+	 * @food - an integer value containing the food value from the current user's wagon.
+	 * @currentLoc - a double value that determines the current location of the wagon.
+	 * @nextLoc - a double value containing the location of the next landmark.
+	 */
 	public void travelling(JTextArea text, int food, double currentLoc, double nextLoc) {
 		text.setText(" Travelling... Current Location = " + currentLoc
 				+ "\n Food: " + food + "\n Press q to stop"
 				+ "\n Distance to next location: " + nextLoc);
 	}
 
-
+	/*
+	 * Sets the text area to the fort menu screen.
+	 * @param text - a JTextArea that determines which text area is changed.
+	 * @param name - the String name of the fort being used.
+	 */
 	public void fortMenu(JTextArea text, String name) {
 		text.setText(" Welcome to " + name + "\n"
 				+ " Weather: " + getWeather() + "\n"
@@ -92,6 +124,11 @@ public class Menu extends Wagon{
 	}
 
 
+	/*
+	 * Sets the text area to the river menu screen.
+	 * @param text - a JTextArea that determines which text area is changed.
+	 * @param name - the name of the current river being implemented.
+	 */
 	public void riverMenu(JTextArea text, String name) {
 
 		text.setText(" Welcome to " + name + "\n"
@@ -106,12 +143,25 @@ public class Menu extends Wagon{
 				+ " 4. Change rations \n");
 	}
 
+	/*
+	 * Sets the text area to the information about the river menu screen.
+	 * @param text - a JTextArea that determines which text area is changed.
+	 * @param double wid - the double value of the width of the river.
+	 * @param dep - the double value of the depth of the river.
+	 * @param spd - the double value representing the speed of the river.
+	 */
 	public void riverInfoMenu(JTextArea text, double wid, double dep, double spd) {
 
 		text.setText(" You must cross the river to continue. The river at this point is " + wid
 				+ " feet wide and " + dep + " feet deep in the middle and has " + spd  + " units of flow \n Press enter to continue");
 	}
 
+	/*
+	 * Sets the text area to the information about the river choice screen.
+	 * @param text - a JTextArea that determines which text area is changed.
+	 * @param double wid - the double value of the width of the river.
+	 * @param dep - the double value of the depth of the river.
+	 */
 	public void riverChoices(JTextArea text, double wid, double dep) {
 
 		text.setText(" Weather: " + getWeather() + "\n"
@@ -125,8 +175,6 @@ public class Menu extends Wagon{
 	}
 
 	public boolean riverActions(JTextArea text, JTextField in, String input, double dep) {
-
-
 		int temp = rand.nextInt(100)+1;
 
 		if(input.equals("1")) {
@@ -259,9 +307,7 @@ public class Menu extends Wagon{
 	}
 
 
-
 	public int landmarkCheck(ActionEvent evt, JTextArea text, Timer time, int nextLandmark, double currentLoc, String name, String tag, int counter) {
-
 		double temp = nextLandmark - currentLoc;
 
 		//	System.out.println("QQEQWEOJQEOI: " + temp);
@@ -284,7 +330,5 @@ public class Menu extends Wagon{
 		}
 		return 0;
 	}
-
-
 
 }
