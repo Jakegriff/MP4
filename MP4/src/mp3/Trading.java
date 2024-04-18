@@ -52,7 +52,7 @@ public class Trading extends Menu{
 	}
 	
 	/*
-	 *Displays the supplies to the user
+	 *Returns the supplies to the user as a string for stringL
 	 *@param food - an integer value representing the amount of food the player currently has (in lbs).
 	 *@param oxen - an integer value representing the number of oxen present in the player's party.
 	 *@param (eventually) - int setsClothes, int wagTongues, int wagWheels, int bullets

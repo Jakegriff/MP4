@@ -17,7 +17,7 @@ public class Item {
 	String name = "";
 
 	int weight;
-	
+
 	boolean edible;
 	/**
 	 * Default Constructor
@@ -30,17 +30,17 @@ public class Item {
 		this.name = nameIn;
 
 		this.weight = weightIn;
-		
+
 		this.edible = food;
 
 	}
-	
+
 	/**
 	 * Getter for the name of an item
 	 * @return the name of the item in String form
 	 */
 	public String getName() {
-		
+
 		return(name);
 	}
 	/**
@@ -48,7 +48,7 @@ public class Item {
 	 * @return the weight of the item in int for (assuming all weights are ints from handout)
 	 */
 	public int getWeight() {
-		
+
 		return(weight);
 	}
 	/**
