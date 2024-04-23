@@ -56,7 +56,7 @@ public class Trading extends Menu{
 			baseMenu(text);
 			return false;
 		}
-		else {return true;}
+		else return true;
 	}
 
 	/*

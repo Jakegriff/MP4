@@ -62,9 +62,9 @@ public class Menu extends Wagon{
 	public void checkSupplies(JTextArea text, int food, int oxen, double money) {
 
 		text.setText(" Food: " + food
-				+ "\n Oxen: " + oxen
+				+ " \n Oxen: " + oxen
 				+ " \n Money:" + money
-				+ "\n \n \n \n Enter q to go back");
+				+ " \n \n \n \n Enter q to go back");
 	}
 
 	/*
