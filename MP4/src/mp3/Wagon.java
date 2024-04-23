@@ -14,7 +14,7 @@ import javax.swing.JTextArea;
  * @filename Wagon.java
  */
 
-public class Wagon extends Item{
+public class Wagon{
 	// Initialize Variables.
 	protected int wagonMax = 2400;
 	protected int wagonWeight = 0;
@@ -34,6 +34,7 @@ public class Wagon extends Item{
 
 	// Items are stored in an array list.
 	ArrayList<Item> supplies = new ArrayList<Item>();
+	
 
 	/**
 	 * Default Constructor
@@ -44,6 +45,7 @@ public class Wagon extends Item{
 	 * Gets the bill value.
 	 * @return totalBill - returns a double.
 	 */
+	
 	public  double getTotalBill() {
 		return totalBill;
 	}

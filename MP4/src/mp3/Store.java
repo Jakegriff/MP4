@@ -47,9 +47,9 @@ public class Store extends Menu {
 	 * @param input - players input
 	 * @return - returns a flag to close the current menu to avoid conflicts 
 	 */
-	public Boolean storeMenu(JTextArea text, JTextField in, String input) {
+	public Boolean storeMenu(JTextArea text, JTextField in, String input, Wagon wagon) {
 		if(input.equals("6")) {
-			baseMenu(text);
+			baseMenu(text, wagon);
 		}
 		if(input.equals("1")) {
 			oxenMenu(text, 10);
