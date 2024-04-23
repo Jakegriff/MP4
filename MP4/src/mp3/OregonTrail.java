@@ -342,7 +342,7 @@ public class OregonTrail {
 					textArea.setText(null);	
 					menuFlag = true;
 					storeFlag = true;
-					store.baseStoreMenu(textArea, wagon.getTotalBill() , wagon.getMoney()); 
+					store.baseStoreMenu(textArea, wagon); 
 				}
 				// If the food flag is true, calculates total bill after user buys food.
 				else if(foodFlag == true) {
@@ -355,7 +355,7 @@ public class OregonTrail {
 					textArea.setText(null);
 					menuFlag = true;
 					storeFlag = true;
-					store.baseStoreMenu(textArea, wagon.getTotalBill() , wagon.getMoney());	 
+					store.baseStoreMenu(textArea, wagon);	 
 				}
 
 				// If the cloth flag is true, calculates total bill after user buys sets of clothing.
@@ -369,7 +369,7 @@ public class OregonTrail {
 					textArea.setText(null);
 					menuFlag = true;
 					storeFlag = true;
-					store.baseStoreMenu(textArea, wagon.getTotalBill() , wagon.getMoney());	 
+					store.baseStoreMenu(textArea, wagon);	 
 				}
 
 				// If the ammunition flag is true, calculates total bill after user buys ammunition.
@@ -383,7 +383,18 @@ public class OregonTrail {
 					textArea.setText(null);
 					menuFlag = true;
 					storeFlag = true;
-					store.baseStoreMenu(textArea, wagon.getTotalBill() , wagon.getMoney());
+					store.baseStoreMenu(textArea, wagon);
+				}
+				
+				else if (sparePartsFlag == true) {
+					
+					sparePartsFlag = false;
+					storeFlag = true;
+					inputField.setText(null);
+					textArea.setText(null);
+					menuFlag = true;
+					storeFlag = true;
+					store.baseStoreMenu(textArea, wagon);
 				}
 
 				// If the store flag is true, asks user which sub-menu to pull.
@@ -403,6 +414,9 @@ public class OregonTrail {
 					}
 					if(Integer.parseInt(input) == 4) {
 						ammunitionFlag = true;
+					}
+					if(Integer.parseInt(input) == 5) {
+						sparePartsFlag = true;
 					}
 					if(Integer.parseInt(input) == 6) {
 						wagon.setTotalBill();
@@ -509,7 +523,7 @@ public class OregonTrail {
 						textArea.setText(null);
 						menuFlag = true;
 						storeFlag = true;
-						store.baseStoreMenu(textArea, wagon.getTotalBill() , wagon.getMoney());
+						store.baseStoreMenu(textArea, wagon);
 						break;
 					}
 

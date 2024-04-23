@@ -35,7 +35,7 @@ public class Trading extends Menu{
 	 * @param obj - an object of type Item, used to determine which objects are being traded.
 	 */
 	public void initiateTrade(JTextArea text, Trading trader, int multiplier, int objPrice1, int objPrice2, int obj1, int obj2, Wagon wagon) {
-		text.setText(" Oxen: " + wagon.numOxen + "\n Boxes of Bullets: " + "\n Sets of Clothing: " + "\n Food: " + wagon.getFoodAmt() 
+		text.setText(" Oxen: " + wagon.numOxen + "\n Boxes of Bullets: "+ (wagon.getAmmo()/20) + "\n Sets of Clothing: "+wagon.getClothSet() + "\n Food: " + wagon.getFoodAmt() 
 		+ "\n Wagon Wheels: " + "\n Wagon Tongues: " + "\n Wagon Axels: " + "\n\n The " + trader.name + " would like to trade\n " + (multiplier *objPrice1) + " clothes" + " for " + (multiplier * objPrice2) 
 				+ " ammo" + ".\n\n Would you like to trade? (yes or no)\n"); //obj1 and ob2 names
 	}

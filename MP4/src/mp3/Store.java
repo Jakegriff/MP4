@@ -25,7 +25,7 @@ public class Store extends Menu {
 	 * @param totalBill - current bill when in the store
 	 * @param money - current amount of money the player has
 	 */
-	public void baseStoreMenu(JTextArea Text, double totalBill, double money) {
+	public void baseStoreMenu(JTextArea Text, Wagon wagon) {
 		Text.setText(" 1. Oxen" + "\n"
 				+" 2. Food" + "\n"
 				+" 3. Clothing" +"\n"
@@ -33,9 +33,9 @@ public class Store extends Menu {
 				+" 5. Spare Parts" +"\n"
 				+" 6. Exit Store" + "\n"
 				+" -----------------" +"\n"
-				+" Total bill: " + totalBill +"\n"
+				+" Total bill: " + wagon.getTotalBill() +"\n"
 				+"\n"
-				+" Amount you have:" + money + "\n"
+				+" Amount you have:" + wagon.getMoney() + "\n"
 				+" What item would you like to buy?");
 	}
 	/**\
@@ -66,9 +66,14 @@ public class Store extends Menu {
 		if(input.equals("5")) {
 			sparePartsMenu(text, 20, 20, 20);
 		}
-
 		return false;
-
+	}
+	
+	public Boolean sparePartsMenu(JTextArea text, JTextField in, String input, Wagon wagon) {
+		if(input.equals("q")) {
+			baseStoreMenu(text, wagon);
+		}
+		return false;
 	}
 
 	/**
@@ -130,27 +135,11 @@ public class Store extends Menu {
 	 * @param tonguePrice - current price for a tongue
 	 */
 	public void sparePartsMenu(JTextArea Text, int wheelPrice, int axelPrice, int tonguePrice) {
-		for(int i = 0; i < 3; i++) {
-			if(i == 0) {
-				Text.setText("wagon wheel  - $" + wheelPrice + " each" + "\n"
-						+"wagon axel   - $" + axelPrice + " each" + "\n"
-						+"wagon tongue - $" + tonguePrice + "each" + "\n"
-						+"How many wagon wheels do you want?");
-			}
-			if(i == 1) {
-				Text.setText("wagon wheel  - $" + wheelPrice + " each" + "\n"
-						+"wagon axel   - $" + axelPrice + " each" + "\n"
-						+"wagon tongue - $" + tonguePrice + "each" + "\n"
-						+"How many wagon axels do you want?");
-			}
-			if(i == 2) {
-				Text.setText("wagon wheel  - $" + wheelPrice + " each" + "\n"
-						+"wagon axel   - $" + axelPrice + " each" + "\n"
-						+"wagon tongue - $" + tonguePrice + "each" + "\n"
-						+"How many wagon tongues do you want?");
-			}
-
-		}
+		Text.setText(" 1. Wagon Wheel - $" + wheelPrice + " each" + "\n"
+				+" 2. Wagon axel - $" + axelPrice + " each"+ "\n"
+				+" 3. Wagon tongue -$" + tonguePrice + " each" + "\n"
+				+" q. Back to Store" + "\n"
+				+" Make a selection");
 	}
 
 }
