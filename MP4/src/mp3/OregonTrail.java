@@ -213,6 +213,9 @@ public class OregonTrail {
 	Boolean sparePartsFlag = false;
 	Boolean foodFlag = false;
 	Boolean tradeFlag = false;
+	Boolean wheelFlag = false;
+	Boolean axelFlag = false;
+	Boolean tongueFlag = false;
 
 	// Creating the main timer
 	private Timer timer;
@@ -268,6 +271,7 @@ public class OregonTrail {
 			public void actionPerformed(ActionEvent e) {
 				// Resets user inputs.
 				input = "";
+
 				if(end == false && alive == true) //checks if user is alive or dead.
 				{
 					input = inputField.getText();
@@ -386,16 +390,55 @@ public class OregonTrail {
 					store.baseStoreMenu(textArea, wagon);
 				}
 				
-				else if (sparePartsFlag == true) {
-					
-					sparePartsFlag = false;
-					storeFlag = true;
+				else if (wheelFlag == true) {
+					System.out.println("HEREEEEEEEEEEEE");
+					wagon.setWheelNum(Integer.parseInt(input));
+					wagon.calcTotalBill(10, Integer.parseInt(input));
+					wagon.calcMoney(10, Integer.parseInt(input));
+					wheelFlag = false;
+					sparePartsFlag = true;
 					inputField.setText(null);
 					textArea.setText(null);
-					menuFlag = true;
 					storeFlag = true;
-					store.baseStoreMenu(textArea, wagon);
+			//		menuFlag = true;
+					store.sparePartsBase(textArea, 10, 10, 10);
 				}
+				
+				else if (sparePartsFlag == true) {
+					if(Integer.parseInt(input) == 1) {
+						
+						store.sparePartsMenu(textArea, inputField, input, wagon);
+						storeFlag = false;
+						wheelFlag = true;
+					}
+
+					if(Integer.parseInt(input) == 2) {
+						axelFlag = true;
+					}
+
+					if(Integer.parseInt(input) == 3) {
+						tongueFlag = true;
+					}
+					if(Integer.parseInt(input) == 4) {
+						System.out.println("0909090909090909");
+						sparePartsFlag = false;
+						storeFlag = true;
+						store.baseStoreMenu(textArea, wagon);
+						inputField.setText(null);
+					}
+					
+					
+					sparePartsFlag = false;
+					//storeFlag = true;
+					inputField.setText(null);
+//					textArea.setText(null);
+					//menuFlag = true;
+//					store.baseStoreMenu(textArea, wagon);
+					//storeFlag = false;
+					
+					
+				}
+
 
 				// If the store flag is true, asks user which sub-menu to pull.
 				else if(storeFlag == true) 
@@ -424,6 +467,7 @@ public class OregonTrail {
 						menuFlag = false;
 					}
 					input = "";
+					System.out.println(storeFlag);
 				}
 
 				// If the trade flag is raised, calls the trading menu. 
@@ -564,8 +608,11 @@ public class OregonTrail {
 					System.out.println("menuFlag:" + menuFlag);
 					System.out.println("storeFlag: " + storeFlag);
 					System.out.println("______________");
+					System.out.println(wagon.getWheelNum());
 				}
+				inputField.setText("");
 			}
+			
 		});
 
 		inputField.setFont(new Font("Monospaced", Font.BOLD, 18));

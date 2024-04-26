@@ -31,6 +31,9 @@ public class Wagon{
 	private int clothSetNum = 0;
 	private int ammunitionAmt = 0;
 	private double totalBill = 0;
+	private int wheelNum = 0;
+	private int axelNum = 0;
+	private int tongueNum = 0;
 
 	// Items are stored in an array list.
 	ArrayList<Item> supplies = new ArrayList<Item>();
@@ -40,6 +43,14 @@ public class Wagon{
 	 * Default Constructor
 	 */
 	public Wagon() {}
+	
+	public void setWheelNum(int wheelNum) {
+		this.wheelNum = wheelNum;
+	}
+	
+	public int getWheelNum() {
+		return wheelNum;
+	}
 
 	/*
 	 * Gets the bill value.
