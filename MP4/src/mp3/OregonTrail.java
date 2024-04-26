@@ -322,6 +322,7 @@ public class OregonTrail {
 				// If you reach a fort, show the fort menu.
 				if(fortFlag == true) {
 					menu.fortMenu(textArea, Locations[locCounter].getName(), wagon);
+					menuFlag = true;
 				}
 
 				// If you reach a river, show the river menu.
@@ -495,18 +496,18 @@ public class OregonTrail {
 				}
 
 				// If the menu flag is false, then display the base Menu (default)
-				if(menuFlag == false) {
+				if(menuFlag == false && fortFlag == false) {
 					menu.baseMenu(textArea, wagon);
 				}
 
 				// If the menu flag is false and the user is at a river or fort, calculates and shows the corresponding screen.
-				if(menuFlag == false || fortFlag == true || riverFlag == true ) {
+				if(menuFlag == false || fortFlag == true && storeFlag == false || riverFlag == true ) {
 					switch(input) {
 
 					// Travel
 					case "1":
 					{
-						if(fortFlag == true) {
+						if(fortFlag == true ) {
 							fortFlag = false;
 							locCounter++;
 						}
@@ -609,19 +610,19 @@ public class OregonTrail {
 					}
 
 					//Relays all flags and their status to the console.
-					System.out.println("loccounter: " + locCounter);
-					System.out.println("Oxen num: "+wagon.getOxen());
-					System.out.println("Cloth num: " +wagon.getClothSet());
-					System.out.println("Food num:" + wagon.getFoodNum());
-					System.out.println("Ammo num: " + wagon.getAmmo());
-					System.out.println("SupplyFlag:" + supplyFlag);
-					System.out.println("PaceFlag:" + paceFlag);
-					System.out.println("RatFlag:" + ratFlag);
+					//System.out.println("loccounter: " + locCounter);
+					//System.out.println("Oxen num: "+wagon.getOxen());
+					//System.out.println("Cloth num: " +wagon.getClothSet());
+					//System.out.println("Food num:" + wagon.getFoodNum());
+					//System.out.println("Ammo num: " + wagon.getAmmo());
+					//System.out.println("SupplyFlag:" + supplyFlag);
+					//System.out.println("PaceFlag:" + paceFlag);
+					//System.out.println("RatFlag:" + ratFlag);
 					System.out.println("travelFlag:" + travelFlag);
 					System.out.println("fortFlag:" + fortFlag);
-					System.out.println("riverFlag:" + riverFlag);
-					System.out.println("riverSubMenuFlag:" + rivSubMenuFlag);
-					System.out.println("tradeFlag:" + tradeFlag);
+					//System.out.println("riverFlag:" + riverFlag);
+					//System.out.println("riverSubMenuFlag:" + rivSubMenuFlag);
+					//System.out.println("tradeFlag:" + tradeFlag);
 					System.out.println("menuFlag:" + menuFlag);
 					System.out.println("storeFlag: " + storeFlag);
 					System.out.println("______________");

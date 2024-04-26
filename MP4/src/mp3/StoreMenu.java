@@ -49,7 +49,7 @@ public class StoreMenu extends Menu {
 	 */
 	public Boolean storeMenu(JTextArea text, JTextField in, String input, Wagon wagon) {
 		if(input.equals("6")) {
-			baseMenu(text, wagon);
+			//baseMenu(text, wagon);
 		}
 		if(input.equals("1")) {
 			oxenMenu(text, 10);
@@ -66,7 +66,7 @@ public class StoreMenu extends Menu {
 		if(input.equals("5")) {
 			sparePartsBase(text, 20, 20, 20);
 		}
-		return false;
+		return true;
 	}
 	
 	public Boolean sparePartsMenu(JTextArea text, JTextField in, String input, Wagon wagon) {

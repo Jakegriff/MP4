@@ -25,7 +25,7 @@ public class Wagon{
 	private double location = 0;
 	private double nextLoc = 0;
 	private double numPace = 1;
-	protected int numOxen = 0;
+	protected int numOxen = 4;
 	private double money = 1000;
 	private int consumption;
 	private int clothSetNum = 0;
