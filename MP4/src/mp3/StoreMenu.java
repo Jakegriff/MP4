@@ -13,9 +13,9 @@ import javax.swing.JTextField;
  */
 
 
-public class Store extends Menu {
+public class StoreMenu extends Menu {
 
-	public Store(){
+	public StoreMenu(){
 
 	}
 	/**

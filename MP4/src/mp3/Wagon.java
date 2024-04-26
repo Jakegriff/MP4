@@ -51,6 +51,22 @@ public class Wagon{
 	public int getWheelNum() {
 		return wheelNum;
 	}
+	
+	public void setAxelNum (int axelNum) {
+		this.axelNum = axelNum;
+	}
+	
+	public int getAxelNum() {
+		return axelNum;
+	}
+	
+	public void setTongueNum(int tongueNum) {
+		this.tongueNum = tongueNum;
+	}
+	
+	public int getTongueNum() {
+		return tongueNum;
+	}
 
 	/*
 	 * Gets the bill value.

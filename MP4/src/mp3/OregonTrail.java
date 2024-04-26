@@ -175,7 +175,7 @@ public class OregonTrail {
 	private JTextField inputField;
 
 	Menu menu = new Menu();
-	Store store = new Store();
+	StoreMenu store = new StoreMenu();
 
 	// Creating trader objects using the trading class.
 	Trading trappers = new Trading(0);
@@ -330,7 +330,7 @@ public class OregonTrail {
 					menu.riverChoices(textArea, temp.getRiverWidth(), temp.getRiverDepth(), wagon);
 					rivSubMenuFlag = menu.riverActions(textArea, inputField, input, temp.getRiverDepth());
 
-					if(rivSubMenuFlag == false) {
+					if(rivSubMenuFlag == false){
 						locCounter++;
 					}
 				}
@@ -391,7 +391,6 @@ public class OregonTrail {
 				}
 				
 				else if (wheelFlag == true) {
-					System.out.println("HEREEEEEEEEEEEE");
 					wagon.setWheelNum(Integer.parseInt(input));
 					wagon.calcTotalBill(10, Integer.parseInt(input));
 					wagon.calcMoney(10, Integer.parseInt(input));
@@ -400,27 +399,52 @@ public class OregonTrail {
 					inputField.setText(null);
 					textArea.setText(null);
 					storeFlag = true;
-			//		menuFlag = true;
+					store.sparePartsBase(textArea, 10, 10, 10);
+				}
+				
+				else if(axelFlag == true){
+					wagon.setAxelNum(Integer.parseInt(input));
+					wagon.calcTotalBill(10, Integer.parseInt(input));
+					wagon.calcMoney(10, Integer.parseInt(input));
+					axelFlag = false;
+					sparePartsFlag = true;
+					inputField.setText(null);
+					textArea.setText(null);
+					storeFlag = true;
+					store.sparePartsBase(textArea, 10, 10, 10);
+				}
+				
+				else if(tongueFlag == true) {
+					wagon.setTongueNum(Integer.parseInt(input));
+					wagon.calcTotalBill(10, Integer.parseInt(input));
+					wagon.calcMoney(10, Integer.parseInt(input));
+					tongueFlag = false;
+					sparePartsFlag = true;
+					inputField.setText(null);
+					textArea.setText(null);
+					storeFlag = true;
 					store.sparePartsBase(textArea, 10, 10, 10);
 				}
 				
 				else if (sparePartsFlag == true) {
 					if(Integer.parseInt(input) == 1) {
-						
 						store.sparePartsMenu(textArea, inputField, input, wagon);
 						storeFlag = false;
 						wheelFlag = true;
 					}
 
 					if(Integer.parseInt(input) == 2) {
+						store.sparePartsMenu(textArea, inputField, input, wagon);
+						storeFlag = false;
 						axelFlag = true;
 					}
 
 					if(Integer.parseInt(input) == 3) {
+						store.sparePartsMenu(textArea, inputField, input, wagon);
+						storeFlag = false;
 						tongueFlag = true;
 					}
 					if(Integer.parseInt(input) == 4) {
-						System.out.println("0909090909090909");
 						sparePartsFlag = false;
 						storeFlag = true;
 						store.baseStoreMenu(textArea, wagon);
@@ -429,14 +453,7 @@ public class OregonTrail {
 					
 					
 					sparePartsFlag = false;
-					//storeFlag = true;
 					inputField.setText(null);
-//					textArea.setText(null);
-					//menuFlag = true;
-//					store.baseStoreMenu(textArea, wagon);
-					//storeFlag = false;
-					
-					
 				}
 
 
