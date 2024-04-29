@@ -175,7 +175,7 @@ public class OregonTrail {
 	private JTextField inputField;
 
 	Menu menu = new Menu();
-	Store store = new Store();
+	StoreMenu store = new StoreMenu();
 
 	// Creating trader objects using the trading class.
 	Trading trappers = new Trading(0);
@@ -213,6 +213,9 @@ public class OregonTrail {
 	Boolean sparePartsFlag = false;
 	Boolean foodFlag = false;
 	Boolean tradeFlag = false;
+	Boolean wheelFlag = false;
+	Boolean axelFlag = false;
+	Boolean tongueFlag = false;
 
 	// Creating the main timer
 	private Timer timer;
@@ -268,6 +271,7 @@ public class OregonTrail {
 			public void actionPerformed(ActionEvent e) {
 				// Resets user inputs.
 				input = "";
+
 				if(end == false && alive == true) //checks if user is alive or dead.
 				{
 					input = inputField.getText();
@@ -294,39 +298,40 @@ public class OregonTrail {
 
 				// If the supply flag is true, call the supply menu.
 				if(supplyFlag == true) {
-					supplyFlag = menu.supplyMenu(textArea, inputField, input);
+					supplyFlag = menu.supplyMenu(textArea, inputField, input, wagon);
 					input = "";
 				}
 
 				// If the pace flag is true, call the pace menu.
 				if(paceFlag == true) {
-					paceFlag =  menu.paceMenu(textArea, inputField, input);
+					paceFlag =  menu.paceMenu(textArea, inputField, input, wagon);
 					input = "";
 				}
 
 				// If the rations flag is true, call the rations menu.
 				if(ratFlag == true) {
-					ratFlag = menu.rationsMenu(textArea, inputField, input);
+					ratFlag = menu.rationsMenu(textArea, inputField, input, wagon);
 					input = "";
 				}
 
 				// If the travel flag is true, call the travel menu.
 				if(travelFlag == true) {
-					travelFlag = menu.travelMenu(textArea, inputField, input, timer);
+					travelFlag = menu.travelMenu(textArea, inputField, input, timer, wagon);
 				}
 
 				// If you reach a fort, show the fort menu.
 				if(fortFlag == true) {
-					menu.fortMenu(textArea, Locations[locCounter].getName());
+					menu.fortMenu(textArea, Locations[locCounter].getName(), wagon);
+					menuFlag = true;
 				}
 
 				// If you reach a river, show the river menu.
 				if(rivSubMenuFlag == true) {
 					River temp = (River) Locations[locCounter];
-					menu.riverChoices(textArea, temp.getRiverWidth(), temp.getRiverDepth());
+					menu.riverChoices(textArea, temp.getRiverWidth(), temp.getRiverDepth(), wagon);
 					rivSubMenuFlag = menu.riverActions(textArea, inputField, input, temp.getRiverDepth());
 
-					if(rivSubMenuFlag == false) {
+					if(rivSubMenuFlag == false){
 						locCounter++;
 					}
 				}
@@ -342,7 +347,7 @@ public class OregonTrail {
 					textArea.setText(null);	
 					menuFlag = true;
 					storeFlag = true;
-					store.baseStoreMenu(textArea, wagon.getTotalBill() , wagon.getMoney()); 
+					store.baseStoreMenu(textArea, wagon); 
 				}
 				// If the food flag is true, calculates total bill after user buys food.
 				else if(foodFlag == true) {
@@ -355,7 +360,7 @@ public class OregonTrail {
 					textArea.setText(null);
 					menuFlag = true;
 					storeFlag = true;
-					store.baseStoreMenu(textArea, wagon.getTotalBill() , wagon.getMoney());	 
+					store.baseStoreMenu(textArea, wagon);	 
 				}
 
 				// If the cloth flag is true, calculates total bill after user buys sets of clothing.
@@ -369,7 +374,7 @@ public class OregonTrail {
 					textArea.setText(null);
 					menuFlag = true;
 					storeFlag = true;
-					store.baseStoreMenu(textArea, wagon.getTotalBill() , wagon.getMoney());	 
+					store.baseStoreMenu(textArea, wagon);	 
 				}
 
 				// If the ammunition flag is true, calculates total bill after user buys ammunition.
@@ -383,13 +388,80 @@ public class OregonTrail {
 					textArea.setText(null);
 					menuFlag = true;
 					storeFlag = true;
-					store.baseStoreMenu(textArea, wagon.getTotalBill() , wagon.getMoney());
+					store.baseStoreMenu(textArea, wagon);
 				}
+				
+				else if (wheelFlag == true) {
+					wagon.setWheelNum(Integer.parseInt(input));
+					wagon.calcTotalBill(10, Integer.parseInt(input));
+					wagon.calcMoney(10, Integer.parseInt(input));
+					wheelFlag = false;
+					sparePartsFlag = true;
+					inputField.setText(null);
+					textArea.setText(null);
+					storeFlag = true;
+					store.sparePartsBase(textArea, 10, 10, 10);
+				}
+				
+				else if(axelFlag == true){
+					wagon.setAxelNum(Integer.parseInt(input));
+					wagon.calcTotalBill(10, Integer.parseInt(input));
+					wagon.calcMoney(10, Integer.parseInt(input));
+					axelFlag = false;
+					sparePartsFlag = true;
+					inputField.setText(null);
+					textArea.setText(null);
+					storeFlag = true;
+					store.sparePartsBase(textArea, 10, 10, 10);
+				}
+				
+				else if(tongueFlag == true) {
+					wagon.setTongueNum(Integer.parseInt(input));
+					wagon.calcTotalBill(10, Integer.parseInt(input));
+					wagon.calcMoney(10, Integer.parseInt(input));
+					tongueFlag = false;
+					sparePartsFlag = true;
+					inputField.setText(null);
+					textArea.setText(null);
+					storeFlag = true;
+					store.sparePartsBase(textArea, 10, 10, 10);
+				}
+				
+				else if (sparePartsFlag == true) {
+					if(Integer.parseInt(input) == 1) {
+						store.sparePartsMenu(textArea, inputField, input, wagon);
+						storeFlag = false;
+						wheelFlag = true;
+					}
+
+					if(Integer.parseInt(input) == 2) {
+						store.sparePartsMenu(textArea, inputField, input, wagon);
+						storeFlag = false;
+						axelFlag = true;
+					}
+
+					if(Integer.parseInt(input) == 3) {
+						store.sparePartsMenu(textArea, inputField, input, wagon);
+						storeFlag = false;
+						tongueFlag = true;
+					}
+					if(Integer.parseInt(input) == 4) {
+						sparePartsFlag = false;
+						storeFlag = true;
+						store.baseStoreMenu(textArea, wagon);
+						inputField.setText(null);
+					}
+					
+					
+					sparePartsFlag = false;
+					inputField.setText(null);
+				}
+
 
 				// If the store flag is true, asks user which sub-menu to pull.
 				else if(storeFlag == true) 
 				{
-					storeFlag = store.storeMenu(textArea, inputField, input);
+					storeFlag = store.storeMenu(textArea, inputField, input, wagon);
 					if(Integer.parseInt(input) == 1) {
 						oxenFlag = true;
 					}
@@ -404,34 +476,38 @@ public class OregonTrail {
 					if(Integer.parseInt(input) == 4) {
 						ammunitionFlag = true;
 					}
+					if(Integer.parseInt(input) == 5) {
+						sparePartsFlag = true;
+					}
 					if(Integer.parseInt(input) == 6) {
 						wagon.setTotalBill();
 						storeFlag = false;
 						menuFlag = false;
 					}
 					input = "";
+					System.out.println(storeFlag);
 				}
 
 				// If the trade flag is raised, calls the trading menu. 
 				if (tradeFlag == true) {
 					randTrader = randomNum.nextInt(3);
-					tradeFlag = traders[randTrader].tradeMenu(textArea, inputField, input);
+					tradeFlag = traders[randTrader].tradeMenu(textArea, inputField, input, wagon);
 					input = "";
 				}
 
 				// If the menu flag is false, then display the base Menu (default)
-				if(menuFlag == false) {
-					menu.baseMenu(textArea);
+				if(menuFlag == false && fortFlag == false) {
+					menu.baseMenu(textArea, wagon);
 				}
 
 				// If the menu flag is false and the user is at a river or fort, calculates and shows the corresponding screen.
-				if(menuFlag == false || fortFlag == true || riverFlag == true ) {
+				if(menuFlag == false || fortFlag == true && storeFlag == false || riverFlag == true ) {
 					switch(input) {
 
 					// Travel
 					case "1":
 					{
-						if(fortFlag == true) {
+						if(fortFlag == true ) {
 							fortFlag = false;
 							locCounter++;
 						}
@@ -445,7 +521,7 @@ public class OregonTrail {
 							}
 
 							else {
-								menu.riverChoices(textArea, temp.getRiverWidth(), temp.getRiverDepth());
+								menu.riverChoices(textArea, temp.getRiverWidth(), temp.getRiverDepth(),wagon);
 							}
 						}
 
@@ -458,7 +534,7 @@ public class OregonTrail {
 							timer = new javax.swing.Timer(100, new ActionListener() {
 								public void actionPerformed(ActionEvent evt) {
 									wagon.travel(evt, textArea, wagon.getFoodNum(), Locations[locCounter].getLocation());
-									flagCheck =	menu.landmarkCheck(evt, textArea, timer,Locations[locCounter].getLocation(), wagon.getLocation(),Locations[locCounter].getName(),Locations[locCounter].getTag(), locCounter );
+									flagCheck =	menu.landmarkCheck(evt, textArea, timer,Locations[locCounter].getLocation(), wagon.getLocation(),Locations[locCounter].getName(),Locations[locCounter].getTag(), locCounter, wagon );
 									if(flagCheck != 0) {
 										travelFlag = false;
 									}
@@ -487,7 +563,7 @@ public class OregonTrail {
 						textArea.setText(null);
 						menuFlag = true;
 						paceFlag = true;
-						menu.changePace(textArea);
+						menu.changePace(textArea, wagon);
 						break;
 					}
 
@@ -498,7 +574,7 @@ public class OregonTrail {
 						textArea.setText(null);
 						ratFlag = true;
 						menuFlag = true;
-						menu.changeRations(textArea);
+						menu.changeRations(textArea, wagon);
 						break;
 					}
 
@@ -509,7 +585,7 @@ public class OregonTrail {
 						textArea.setText(null);
 						menuFlag = true;
 						storeFlag = true;
-						store.baseStoreMenu(textArea, wagon.getTotalBill() , wagon.getMoney());
+						store.baseStoreMenu(textArea, wagon);
 						break;
 					}
 
@@ -519,7 +595,7 @@ public class OregonTrail {
 						textArea.setText(null);
 						menuFlag = true;
 						tradeFlag = true;
-						traders[randTrader].initiateTrade(textArea, traders[randTrader], fortMultiplier, 2, 1, wagon.getClothSet(), wagon.getAmmo());
+						traders[randTrader].initiateTrade(textArea, traders[randTrader], fortMultiplier, 2, 1, wagon.getClothSet(), wagon.getAmmo(), wagon);
 						break;
 					}
 					}
@@ -534,24 +610,27 @@ public class OregonTrail {
 					}
 
 					//Relays all flags and their status to the console.
-					System.out.println("loccounter: " + locCounter);
-					System.out.println("Oxen num: "+wagon.getOxen());
-					System.out.println("Cloth num: " +wagon.getClothSet());
-					System.out.println("Food num:" + wagon.getFoodNum());
-					System.out.println("Ammo num: " + wagon.getAmmo());
-					System.out.println("SupplyFlag:" + supplyFlag);
-					System.out.println("PaceFlag:" + paceFlag);
-					System.out.println("RatFlag:" + ratFlag);
+					//System.out.println("loccounter: " + locCounter);
+					//System.out.println("Oxen num: "+wagon.getOxen());
+					//System.out.println("Cloth num: " +wagon.getClothSet());
+					//System.out.println("Food num:" + wagon.getFoodNum());
+					//System.out.println("Ammo num: " + wagon.getAmmo());
+					//System.out.println("SupplyFlag:" + supplyFlag);
+					//System.out.println("PaceFlag:" + paceFlag);
+					//System.out.println("RatFlag:" + ratFlag);
 					System.out.println("travelFlag:" + travelFlag);
 					System.out.println("fortFlag:" + fortFlag);
-					System.out.println("riverFlag:" + riverFlag);
-					System.out.println("riverSubMenuFlag:" + rivSubMenuFlag);
-					System.out.println("tradeFlag:" + tradeFlag);
+					//System.out.println("riverFlag:" + riverFlag);
+					//System.out.println("riverSubMenuFlag:" + rivSubMenuFlag);
+					//System.out.println("tradeFlag:" + tradeFlag);
 					System.out.println("menuFlag:" + menuFlag);
 					System.out.println("storeFlag: " + storeFlag);
 					System.out.println("______________");
+					System.out.println(wagon.getWheelNum());
 				}
+				inputField.setText("");
 			}
+			
 		});
 
 		inputField.setFont(new Font("Monospaced", Font.BOLD, 18));

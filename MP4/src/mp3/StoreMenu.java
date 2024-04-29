@@ -13,9 +13,9 @@ import javax.swing.JTextField;
  */
 
 
-public class Store extends Menu {
+public class StoreMenu extends Menu {
 
-	public Store(){
+	public StoreMenu(){
 
 	}
 	/**
@@ -25,7 +25,7 @@ public class Store extends Menu {
 	 * @param totalBill - current bill when in the store
 	 * @param money - current amount of money the player has
 	 */
-	public void baseStoreMenu(JTextArea Text, double totalBill, double money) {
+	public void baseStoreMenu(JTextArea Text, Wagon wagon) {
 		Text.setText(" 1. Oxen" + "\n"
 				+" 2. Food" + "\n"
 				+" 3. Clothing" +"\n"
@@ -33,9 +33,9 @@ public class Store extends Menu {
 				+" 5. Spare Parts" +"\n"
 				+" 6. Exit Store" + "\n"
 				+" -----------------" +"\n"
-				+" Total bill: " + totalBill +"\n"
+				+" Total bill: " + wagon.getTotalBill() +"\n"
 				+"\n"
-				+" Amount you have:" + money + "\n"
+				+" Amount you have:" + wagon.getMoney() + "\n"
 				+" What item would you like to buy?");
 	}
 	/**\
@@ -47,9 +47,9 @@ public class Store extends Menu {
 	 * @param input - players input
 	 * @return - returns a flag to close the current menu to avoid conflicts 
 	 */
-	public Boolean storeMenu(JTextArea text, JTextField in, String input) {
+	public Boolean storeMenu(JTextArea text, JTextField in, String input, Wagon wagon) {
 		if(input.equals("6")) {
-			baseMenu(text);
+			//baseMenu(text, wagon);
 		}
 		if(input.equals("1")) {
 			oxenMenu(text, 10);
@@ -64,11 +64,25 @@ public class Store extends Menu {
 			ammunitionMenu(text, 20);
 		}
 		if(input.equals("5")) {
-			sparePartsMenu(text, 20, 20, 20);
+			sparePartsBase(text, 20, 20, 20);
 		}
-
+		return true;
+	}
+	
+	public Boolean sparePartsMenu(JTextArea text, JTextField in, String input, Wagon wagon) {
+		if(input.equals("q")) {
+			baseStoreMenu(text, wagon);
+		}
+		if(input.equals("1")) {
+			wheelMenu(text, 10);
+		}
+		if(input.equals("2")) {
+			axelMenu(text, 10);
+		}
+		if(input.equals("3")) {
+			tongueMenu(text, 10);
+		}
 		return false;
-
 	}
 
 	/**
@@ -129,28 +143,26 @@ public class Store extends Menu {
 	 * @param axelPrice - current price for an axle
 	 * @param tonguePrice - current price for a tongue
 	 */
-	public void sparePartsMenu(JTextArea Text, int wheelPrice, int axelPrice, int tonguePrice) {
-		for(int i = 0; i < 3; i++) {
-			if(i == 0) {
-				Text.setText("wagon wheel  - $" + wheelPrice + " each" + "\n"
-						+"wagon axel   - $" + axelPrice + " each" + "\n"
-						+"wagon tongue - $" + tonguePrice + "each" + "\n"
-						+"How many wagon wheels do you want?");
-			}
-			if(i == 1) {
-				Text.setText("wagon wheel  - $" + wheelPrice + " each" + "\n"
-						+"wagon axel   - $" + axelPrice + " each" + "\n"
-						+"wagon tongue - $" + tonguePrice + "each" + "\n"
-						+"How many wagon axels do you want?");
-			}
-			if(i == 2) {
-				Text.setText("wagon wheel  - $" + wheelPrice + " each" + "\n"
-						+"wagon axel   - $" + axelPrice + " each" + "\n"
-						+"wagon tongue - $" + tonguePrice + "each" + "\n"
-						+"How many wagon tongues do you want?");
-			}
-
-		}
+	public void sparePartsBase(JTextArea Text, int wheelPrice, int axelPrice, int tonguePrice) {
+		Text.setText(" 1. Wagon Wheel - $" + wheelPrice + " each" + "\n"
+				+" 2. Wagon axel - $" + axelPrice + " each"+ "\n"
+				+" 3. Wagon tongue -$" + tonguePrice + " each" + "\n"
+				+" 4. Back to Store" + "\n"
+				+" Make a selection");
+	}
+	
+	public void wheelMenu(JTextArea Text, int wheelPrice) {
+		Text.setText("Each wheel is $"+ wheelPrice + "\n"
+				+ "How many wheels do you want?");
+	}
+	
+	public void axelMenu(JTextArea Text, int axelPrice) {
+		Text.setText("Each axel is $" + axelPrice + "\n"
+				+ "How manu axels do you want?");
+	}
+	public void tongueMenu(JTextArea Text, int tonguePrice) {
+		Text.setText("Each tongue is $" + tonguePrice + "\n"
+				+ "How many tongues do you want?");
 	}
 
 }

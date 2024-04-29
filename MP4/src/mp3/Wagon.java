@@ -14,7 +14,7 @@ import javax.swing.JTextArea;
  * @filename Wagon.java
  */
 
-public class Wagon extends Item{
+public class Wagon{
 	// Initialize Variables.
 	protected int wagonMax = 2400;
 	protected int wagonWeight = 0;
@@ -25,25 +25,54 @@ public class Wagon extends Item{
 	private double location = 0;
 	private double nextLoc = 0;
 	private double numPace = 1;
-	protected int numOxen = 0;
+	protected int numOxen = 4;
 	private double money = 1000;
 	private int consumption;
 	private int clothSetNum = 0;
 	private int ammunitionAmt = 0;
 	private double totalBill = 0;
+	private int wheelNum = 0;
+	private int axelNum = 0;
+	private int tongueNum = 0;
 
 	// Items are stored in an array list.
 	ArrayList<Item> supplies = new ArrayList<Item>();
+	
 
 	/**
 	 * Default Constructor
 	 */
 	public Wagon() {}
+	
+	public void setWheelNum(int wheelNum) {
+		this.wheelNum = wheelNum;
+	}
+	
+	public int getWheelNum() {
+		return wheelNum;
+	}
+	
+	public void setAxelNum (int axelNum) {
+		this.axelNum = axelNum;
+	}
+	
+	public int getAxelNum() {
+		return axelNum;
+	}
+	
+	public void setTongueNum(int tongueNum) {
+		this.tongueNum = tongueNum;
+	}
+	
+	public int getTongueNum() {
+		return tongueNum;
+	}
 
 	/*
 	 * Gets the bill value.
 	 * @return totalBill - returns a double.
 	 */
+	
 	public  double getTotalBill() {
 		return totalBill;
 	}

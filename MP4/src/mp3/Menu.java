@@ -15,7 +15,7 @@ import javax.swing.Timer;
  * @filename Menu.java
  */
 
-public class Menu extends Wagon{
+public class Menu{
 
 	Random rand = new Random();
 	CharSequence baseMenuOptions = "12345";
@@ -37,11 +37,11 @@ public class Menu extends Wagon{
 	 * Sets the text area to the base menu screen.
 	 * @param text - a JTextArea that determines which text area is changed.
 	 */
-	public void baseMenu(JTextArea text) {
-		text.setText(" Weather: " + getWeather() + "\n"
+	public void baseMenu(JTextArea text, Wagon wagon) {
+		text.setText(" Weather: " + wagon.getWeather() + "\n"
 				+ " Health: " + "Good" + "\n"
-				+ " Pace: " + getPace() + "\n"
-				+ " Rations: " + getRations() + "\n"
+				+ " Pace: " + wagon.getPace() + "\n"
+				+ " Rations: " + wagon.getRations() + "\n"
 				+ " You may:" + "\n \n"
 				+ " 1. Continue on trail \n"
 				+ " 2. Check supplies \n"
@@ -71,9 +71,9 @@ public class Menu extends Wagon{
 	 * Sets the text area to the changePace menu screen.
 	 * @param text - a JTextArea that determines which text area is changed.
 	 */
-	public void changePace(JTextArea text) {
+	public void changePace(JTextArea text, Wagon wagon) {
 
-		text.setText(" Change Pace. Current Pace: " + getPace()
+		text.setText(" Change Pace. Current Pace: " + wagon.getPace()
 		+ "\n 1. A Steady Pace"
 		+ "\n 2. A Strenuous Pace"
 		+ "\n 3. A Grueling Pace");
@@ -83,9 +83,9 @@ public class Menu extends Wagon{
 	 * Sets the text area to the changeRations menu screen.
 	 * @param text - a JTextArea that determines which text area is changed.
 	 */
-	public void changeRations(JTextArea text) {
+	public void changeRations(JTextArea text, Wagon wagon) {
 
-		text.setText(" Change Rations. Current Rations: " + getRations()
+		text.setText(" Change Rations. Current Rations: " + wagon.getRations()
 		+ "\n 1. Filling"
 		+ "\n 2. Meager"
 		+ "\n 3. Barebones");
@@ -109,12 +109,12 @@ public class Menu extends Wagon{
 	 * @param text - a JTextArea that determines which text area is changed.
 	 * @param name - the String name of the fort being used.
 	 */
-	public void fortMenu(JTextArea text, String name) {
+	public void fortMenu(JTextArea text, String name, Wagon wagon) {
 		text.setText(" Welcome to " + name + "\n"
-				+ " Weather: " + getWeather() + "\n"
+				+ " Weather: " + wagon.getWeather() + "\n"
 				+ " Health: " + "Good" + "\n"
-				+ " Pace: " + getPace() + "\n"
-				+ " Rations: " + getRations() + "\n"
+				+ " Pace: " + wagon.getPace() + "\n"
+				+ " Rations: " + wagon.getRations() + "\n"
 				+ " \n You may:" + "\n \n"
 				+ " 1. Continue on trail \n"
 				+ " 2. Check supplies \n"
@@ -129,13 +129,13 @@ public class Menu extends Wagon{
 	 * @param text - a JTextArea that determines which text area is changed.
 	 * @param name - the name of the current river being implemented.
 	 */
-	public void riverMenu(JTextArea text, String name) {
+	public void riverMenu(JTextArea text, String name, Wagon wagon) {
 
 		text.setText(" Welcome to " + name + "\n"
-				+ " Weather: " + getWeather() + "\n"
+				+ " Weather: " + wagon.getWeather() + "\n"
 				+ " Health: " + "Good" + "\n"
-				+ " Pace: " + getPace() + "\n"
-				+ " Rations: " + getRations() + "\n"
+				+ " Pace: " + wagon.getPace() + "\n"
+				+ " Rations: " + wagon.getRations() + "\n"
 				+ " \n You may:" + "\n \n"
 				+ " 1. Continue on trail \n"
 				+ " 2. Check supplies \n"
@@ -162,9 +162,9 @@ public class Menu extends Wagon{
 	 * @param double wid - the double value of the width of the river.
 	 * @param dep - the double value of the depth of the river.
 	 */
-	public void riverChoices(JTextArea text, double wid, double dep) {
+	public void riverChoices(JTextArea text, double wid, double dep, Wagon wagon) {
 
-		text.setText(" Weather: " + getWeather() + "\n"
+		text.setText(" Weather: " + wagon.getWeather() + "\n"
 				+ " River Width: " + wid + "\n" 
 				+ " River Depth " + dep + "\n"
 				+ " \n You may:" + "\n \n"
@@ -241,63 +241,63 @@ public class Menu extends Wagon{
 
 	}
 
-	public boolean paceMenu(JTextArea text, JTextField in, String input) {
+	public boolean paceMenu(JTextArea text, JTextField in, String input, Wagon wagon) {
 
 		if(input.equals("1")) {
-			setPace("Steady");
-			baseMenu(text);
+			wagon.setPace("Steady");
+			baseMenu(text, wagon);
 			return false;
 		}
 		else if(input.equals("2")) {
-			setPace("Strenuous");
-			baseMenu(text);
+			wagon.setPace("Strenuous");
+			baseMenu(text,wagon);
 			return false;
 		}
 		else if(input.equals("3")) {
-			setPace("Grueling");
-			baseMenu(text);
+			wagon.setPace("Grueling");
+			baseMenu(text, wagon);
 			return false;
 		}
-		calcPace();
+		wagon.calcPace();
 		return true;
 	}
 
-	public boolean rationsMenu(JTextArea text, JTextField in, String input) {
+	public boolean rationsMenu(JTextArea text, JTextField in, String input, Wagon wagon) {
 
 		if(input.equals("1")) {
-			setRations("Filling");
-			baseMenu(text);
+			wagon.setRations("Filling");
+			baseMenu(text, wagon);
 			return false;
 		}
 		else if(input.equals("2")) {
-			setRations("Meager");
-			baseMenu(text);
+			wagon.setRations("Meager");
+			baseMenu(text, wagon);
 			return false;
 		}
 		else if(input.equals("3")) {
-			setRations("Barebones");
-			baseMenu(text);
+			wagon.setRations("Barebones");
+			baseMenu(text, wagon);
 			return false;
 		}
 		return true;
 
 	}
 
-	public boolean supplyMenu(JTextArea text, JTextField in, String input) {
+	public boolean supplyMenu(JTextArea text, JTextField in, String input, Wagon wagon) {
 
 
 		if(input.equals("q")) {
-			baseMenu(text);	
+			baseMenu(text, wagon);	
 			return false;
 		}
 		else return true;
 	}
 
-	public boolean travelMenu(JTextArea text, JTextField in, String input, Timer time) {
+	public boolean travelMenu(JTextArea text, JTextField in, String input, Timer time, Wagon wagon) {
 		if(input.equals("q")) {
 			time.stop();
 			input = "";
-			baseMenu(text);
+			baseMenu(text, wagon);
 			return false;
 		}
 		else {
@@ -307,7 +307,7 @@ public class Menu extends Wagon{
 	}
 
 
-	public int landmarkCheck(ActionEvent evt, JTextArea text, Timer time, int nextLandmark, double currentLoc, String name, String tag, int counter) {
+	public int landmarkCheck(ActionEvent evt, JTextArea text, Timer time, int nextLandmark, double currentLoc, String name, String tag, int counter, Wagon wagon) {
 		double temp = nextLandmark - currentLoc;
 
 		//	System.out.println("QQEQWEOJQEOI: " + temp);
@@ -316,14 +316,14 @@ public class Menu extends Wagon{
 			time.stop();
 
 			if(tag.equals("F")) {
-				fortMenu(text,name);
+				fortMenu(text,name, wagon);
 				counter++;
 				System.out.println("COUNTER: " + counter);
 				return 1;
 			}
 
 			if(tag.equals("R")) {
-				riverMenu(text,name);
+				riverMenu(text,name, wagon);
 				counter++;
 				return 2;
 			}

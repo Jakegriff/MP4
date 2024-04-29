@@ -15,7 +15,6 @@ import javax.swing.JTextField;
 public class Trading extends Menu{
 	protected String name;
 	String names[] = {"trappers" , "natives" , "other travelers"};
-	String suppliesL = displaySupplies(foodAmt, numOxen);
 
 
 	/*
@@ -35,8 +34,9 @@ public class Trading extends Menu{
 	 * @param onjPrice - an integer describing the prices of the given object.
 	 * @param obj - an object of type Item, used to determine which objects are being traded.
 	 */
-	public void initiateTrade(JTextArea text, Trading trader, int multiplier, int objPrice1, int objPrice2, int obj1, int obj2) {
-		text.setText(suppliesL + "\n\n The " + trader.name + " would like to trade\n " + (multiplier *objPrice1) + " clothes" + " for " + (multiplier * objPrice2) 
+	public void initiateTrade(JTextArea text, Trading trader, int multiplier, int objPrice1, int objPrice2, int obj1, int obj2, Wagon wagon) {
+		text.setText(" Oxen: " + wagon.numOxen + "\n Boxes of Bullets: "+ (wagon.getAmmo()/20) + "\n Sets of Clothing: "+wagon.getClothSet() + "\n Food: " + wagon.getFoodAmt() 
+		+ "\n Wagon Wheels: " + "\n Wagon Tongues: " + "\n Wagon Axels: " + "\n\n The " + trader.name + " would like to trade\n " + (multiplier *objPrice1) + " clothes" + " for " + (multiplier * objPrice2) 
 				+ " ammo" + ".\n\n Would you like to trade? (yes or no)\n"); //obj1 and ob2 names
 	}
 
@@ -46,14 +46,14 @@ public class Trading extends Menu{
 	 * @param in - A JTextField that ___.
 	 * @param text - The main JTextArea for the game's communication with player.
 	 * @return - Returns false when the player answers "yes" or "no". Otherwise, returns true.*/
-	public Boolean tradeMenu(JTextArea text, JTextField in, String input) {
+	public Boolean tradeMenu(JTextArea text, JTextField in, String input, Wagon wagon) {
 		if (input.equals("yes")) {
 			System.out.println("item added.");
 			text.setText(" Trade complete! Press enter to continue");
 			return false;
 		}
 		else if (input.equals("no")){
-			baseMenu(text);
+			baseMenu(text, wagon);
 			return false;
 		}
 		else return true;
@@ -65,10 +65,5 @@ public class Trading extends Menu{
 	 *@param oxen - an integer value representing the number of oxen present in the player's party.
 	 *@param (eventually) - int setsClothes, int wagTongues, int wagWheels, int bullets
 	 */
-	public String displaySupplies(int food, int oxen) {
-		String supplies = " Oxen: " + oxen + "\n Boxes of Bullets: " + "\n Sets of Clothing: " + "\n Food: " + food 
-				+ "\n Wagon Wheels: " + "\n Wagon Tongues: " + "\n Wagon Axels: ";
-		return supplies;
-	}
 
 }
