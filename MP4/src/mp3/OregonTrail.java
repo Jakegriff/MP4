@@ -216,15 +216,32 @@ public class OregonTrail {
 	Boolean wheelFlag = false;
 	Boolean axelFlag = false;
 	Boolean tongueFlag = false;
+	Boolean rivResults = false;
 
 	// Creating the main timer
 	private Timer timer;
 
 	// Declaring the landmarks, landmark array, and location counter.
-	Fort FortKea = new Fort("Fort Kearny", 200);
-	River Kansas = new River("Kansas River Crossing", 400);
-	Fort FortFu = new Fort("Fort Fub", 1000);
-	Landmarks[] Locations = {FortKea, Kansas, FortFu};
+	
+	River Kansas = new River("Kansas River Crossing", 200);
+	River BBlue = new River("Big Blue River Crossing", 400);
+	Fort FortKea = new Fort("Fort Kearny", 600);
+	NaturalLandmark Chimney = new NaturalLandmark("Chimney Rock", 800);
+	Fort FortL = new Fort("Fort Laramie", 1000);
+	NaturalLandmark IRock = new NaturalLandmark("Independence Rock", 1200);
+	NaturalLandmark SPass = new NaturalLandmark("South Pass", 1400);
+	River GRiver = new River("Green River Crossing", 1600);
+	Fort FortB = new Fort("Fort Bridger", 1800);
+	NaturalLandmark SSprings = new NaturalLandmark("Soda Springs", 2000);
+	Fort FortH = new Fort("Fort Hall", 2200);
+	River SRiver = new River("Snake River Crossing", 2400);
+	Fort FortBo = new Fort("Fort Boise", 2600);
+	NaturalLandmark BMountain = new NaturalLandmark("Blue Mountains", 2800);
+	Fort FortWW = new Fort("Fort Walla Walla", 3000);
+	NaturalLandmark Dalles = new NaturalLandmark("The Dalles", 2800);
+	NaturalLandmark Oregon = new NaturalLandmark("Willamette Valley, Oregon", 3000);
+	Landmarks[] Locations = {Kansas, BBlue, FortKea, Chimney, FortL, IRock, SPass, GRiver, FortB, SSprings, FortH, SRiver, FortBo,
+			BMountain, FortWW, Dalles, Oregon};
 	int locCounter = 0;
 
 
@@ -324,14 +341,20 @@ public class OregonTrail {
 					menu.fortMenu(textArea, Locations[locCounter].getName(), wagon);
 					menuFlag = true;
 				}
+				
+				if(rivResults ==  true) {
+					menuFlag = false;
+				}
 
 				// If you reach a river, show the river menu.
 				if(rivSubMenuFlag == true) {
+					menuFlag = true;
 					River temp = (River) Locations[locCounter];
 					menu.riverChoices(textArea, temp.getRiverWidth(), temp.getRiverDepth(), wagon);
 					rivSubMenuFlag = menu.riverActions(textArea, inputField, input, temp.getRiverDepth());
 
 					if(rivSubMenuFlag == false){
+						rivResults = true;
 						locCounter++;
 					}
 				}
@@ -620,7 +643,7 @@ public class OregonTrail {
 					//System.out.println("RatFlag:" + ratFlag);
 					System.out.println("travelFlag:" + travelFlag);
 					System.out.println("fortFlag:" + fortFlag);
-					//System.out.println("riverFlag:" + riverFlag);
+					System.out.println("riverFlag:" + riverFlag);
 					//System.out.println("riverSubMenuFlag:" + rivSubMenuFlag);
 					//System.out.println("tradeFlag:" + tradeFlag);
 					System.out.println("menuFlag:" + menuFlag);
