@@ -1595,13 +1595,6 @@ public class OregonTrail {
 		lblNewLabel_2.setBounds(65, 153, 75, 25);
 		layeredPane.add(lblNewLabel_2);
 
-		lblNewLabel_3 = new JLabel("Coffee ");
-		lblNewLabel_3.setOpaque(false);
-		lblNewLabel_3.setForeground(Color.BLACK);
-		lblNewLabel_3.setBackground(new Color(255, 128, 64));
-		lblNewLabel_3.setBounds(65, 178, 75, 25);
-		layeredPane.add(lblNewLabel_3);
-
 		lblNewLabel_7 = new JLabel("");
 		lblNewLabel_7.setBackground(new Color(255, 128, 0));
 		lblNewLabel_7.setBounds(18, 24, 700, 522);
