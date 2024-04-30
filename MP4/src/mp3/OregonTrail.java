@@ -1,7 +1,9 @@
 package mp3;
 
+import java.awt.CardLayout;
 //Imports
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -22,6 +24,9 @@ import javax.swing.JSlider;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  * The gui implementation of packing a wagon in an implementation of the game Oregon Trail.
@@ -176,6 +181,8 @@ public class OregonTrail {
 
 	Menu menu = new Menu();
 	StoreMenu store = new StoreMenu();
+	
+
 
 	// Creating trader objects using the trading class.
 	Trading trappers = new Trading(0);
@@ -243,6 +250,24 @@ public class OregonTrail {
 	Landmarks[] Locations = {Kansas, BBlue, FortKea, Chimney, FortL, IRock, SPass, GRiver, FortB, SSprings, FortH, SRiver, FortBo,
 			BMountain, FortWW, Dalles, Oregon};
 	int locCounter = 0;
+	private JTextField numOxenTF;
+	private JLabel lblNewLabel_62;
+	private JLabel lblNewLabel_63;
+	private JTextField foodTF;
+	private JLabel lblNewLabel_64;
+	private JTextField clothTF;
+	private JLabel lblNewLabel_65;
+	private JTextField ammoTF;
+	private JLabel lblNewLabel_66;
+	private JTextField wheelsTF;
+	private JLabel lblNewLabel_67;
+	private JTextField axelsTF;
+	private JLabel lblNewLabel_68;
+	private JTextField tonguesTF;
+	private JLabel lblNewLabel_69;
+	private JLabel totalBillLB;
+	private JLabel lblNewLabel_71;
+	private JLabel amountLeftLB;
 
 
 	/**
@@ -266,13 +291,142 @@ public class OregonTrail {
 	 */
 	public OregonTrail() {
 		initialize();
+		
+		JPanel cardPanel = new JPanel(new CardLayout());
 
 		backgroundImage = new ImageIcon(this.getClass().getResource("/Images/mp3img2.JPG"));
+		
+		JPanel Store = new JPanel();
+		Store.setBounds(0, 0, 736, 556);
+		frmOregontrailv.getContentPane().add(Store);
+		Store.setLayout(null);
+		Store.setVisible(false);
+		
 		JPanel gamePanel = new JPanel();
 		gamePanel.setBackground(new Color(0, 0, 0));
 		gamePanel.setBounds(0, 0, 736, 556);
 		frmOregontrailv.getContentPane().add(gamePanel);
 		gamePanel.setLayout(null);
+		
+		numOxenTF = new JTextField();
+		numOxenTF.setBounds(33, 112, 96, 20);
+		Store.add(numOxenTF);
+		numOxenTF.setColumns(10);
+		
+		JLabel lblNewLabel_61 = new JLabel("Number of Yoke:");
+		lblNewLabel_61.setBounds(33, 87, 167, 14);
+		Store.add(lblNewLabel_61);
+		
+		//wagon.calcTotalBill(10, Integer.parseInt(numOxenTF.getText()));
+		//wagon.calcTotalBill(.10, Integer.parseInt(foodTF.getText()));
+		//wagon.calcTotalBill(10, Integer.parseInt(clothTF.getText()));
+		//wagon.calcTotalBill(10, Integer.parseInt(ammoTF.getText()));
+		//wagon.calcTotalBill(10, Integer.parseInt(wheelsTF.getText()));
+		//wagon.calcTotalBill(10, Integer.parseInt(axelsTF.getText()));
+		//wagon.calcTotalBill(10, Integer.parseInt(tonguesTF.getText()));
+		
+		//totalBillLB.setText(""+wagon.getTotalBill());
+		
+		
+		JButton setButton = new JButton("Start Game");
+		setButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				wagon.setOxen(Integer.parseInt(numOxenTF.getText()));
+				wagon.setFoodAmt(Integer.parseInt(foodTF.getText()));
+				wagon.setClothSet(Integer.parseInt(clothTF.getText()));
+				wagon.setAmmo(Integer.parseInt(ammoTF.getText()));
+				wagon.setWheelNum(Integer.parseInt(wheelsTF.getText()));
+				wagon.setAxelNum(Integer.parseInt(axelsTF.getText()));
+				wagon.setTongueNum(Integer.parseInt(tonguesTF.getText()));
+				
+				Store.setVisible(false);
+				gamePanel.setVisible(true);
+			}
+		});
+		setButton.setBounds(117, 412, 250, 23);
+		Store.add(setButton);
+		
+		lblNewLabel_62 = new JLabel("Load your wagon");
+		lblNewLabel_62.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel_62.setBounds(161, 31, 507, 45);
+		Store.add(lblNewLabel_62);
+		
+		lblNewLabel_63 = new JLabel("Pounds of Food:");
+		lblNewLabel_63.setBounds(33, 164, 134, 14);
+		Store.add(lblNewLabel_63);
+		
+		foodTF = new JTextField();
+		foodTF.setBounds(33, 189, 96, 20);
+		Store.add(foodTF);
+		foodTF.setColumns(10);
+		
+		lblNewLabel_64 = new JLabel("Sets of Cloth:");
+		lblNewLabel_64.setBounds(33, 233, 96, 14);
+		Store.add(lblNewLabel_64);
+		
+		clothTF = new JTextField();
+		clothTF.setBounds(33, 258, 96, 20);
+		Store.add(clothTF);
+		clothTF.setColumns(10);
+		
+		lblNewLabel_65 = new JLabel("Boxes of Ammunition:");
+		lblNewLabel_65.setBounds(255, 87, 118, 14);
+		Store.add(lblNewLabel_65);
+		
+		ammoTF = new JTextField();
+		ammoTF.setBounds(253, 112, 96, 20);
+		Store.add(ammoTF);
+		ammoTF.setColumns(10);
+		
+		lblNewLabel_66 = new JLabel("Number of spare Wheels:");
+		lblNewLabel_66.setBounds(255, 164, 177, 14);
+		Store.add(lblNewLabel_66);
+		
+		wheelsTF = new JTextField();
+		wheelsTF.setBounds(255, 189, 96, 20);
+		Store.add(wheelsTF);
+		wheelsTF.setColumns(10);
+		
+		lblNewLabel_67 = new JLabel("Number of spare Axles");
+		lblNewLabel_67.setBounds(258, 233, 185, 14);
+		Store.add(lblNewLabel_67);
+		
+		axelsTF = new JTextField();
+		axelsTF.setBounds(255, 258, 96, 20);
+		Store.add(axelsTF);
+		axelsTF.setColumns(10);
+		
+		lblNewLabel_68 = new JLabel("Number of spare Tongues:");
+		lblNewLabel_68.setBounds(436, 87, 218, 14);
+		Store.add(lblNewLabel_68);
+		
+		tonguesTF = new JTextField();
+		tonguesTF.setBounds(436, 112, 96, 20);
+		Store.add(tonguesTF);
+		tonguesTF.setColumns(10);
+		
+		lblNewLabel_69 = new JLabel("Total Bill:");
+		lblNewLabel_69.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_69.setBounds(89, 311, 71, 14);
+		Store.add(lblNewLabel_69);
+		
+		totalBillLB = new JLabel("New label");
+		totalBillLB.setBounds(89, 348, 48, 14);
+		Store.add(totalBillLB);
+		
+		lblNewLabel_71 = new JLabel("Amount Left:");
+		lblNewLabel_71.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_71.setBounds(255, 311, 76, 14);
+		Store.add(lblNewLabel_71);
+		
+		amountLeftLB = new JLabel("New label");
+		amountLeftLB.setBounds(255, 348, 48, 14);
+		Store.add(amountLeftLB);
+		
+		
+		
+//		cardPanel.add(gamePanel, "Game");
+//		cardPanel.add(Store, "Store");
 
 		JTextArea textArea = new JTextArea();
 		textArea.setWrapStyleWord(true);
@@ -680,26 +834,28 @@ public class OregonTrail {
 			public void actionPerformed(ActionEvent e) {
 
 				layeredPane.setVisible(false);
-				gamePanel.setVisible(true);
+				gamePanel.setVisible(false);
+				//gamePanel.setEnabled(false);
+				Store.setVisible(true);
 
 				wagon.clearWagon();
-				wagon.addItem(Bacon);
-				wagon.addItem(Beans);
-				wagon.addItem(Coffee);
-				wagon.addItem(dApples);
-				wagon.addItem(Flour);
-				wagon.addItem(Hardtack);
-				wagon.addItem(Lard);
-				wagon.addItem(Salt);
-				wagon.addItem(Sugar);
-				wagon.addItem(Rice);
-				wagon.addItem(Whiskey);
-				wagon.addItem(Water);
-				wagon.addItem(Medicine);
-				wagon.addItem(Bedroll);
-				wagon.addItem(Tent);
-				wagon.addItem(Tools);
-				wagon.addItem(Chair);
+//				wagon.addItem(Bacon);
+//				wagon.addItem(Beans);
+//				wagon.addItem(Coffee);
+//				wagon.addItem(dApples);
+//				wagon.addItem(Flour);
+//				wagon.addItem(Hardtack);
+//				wagon.addItem(Lard);
+//				wagon.addItem(Salt);
+//				wagon.addItem(Sugar);
+//				wagon.addItem(Rice);
+//				wagon.addItem(Whiskey);
+//				wagon.addItem(Water);
+//				wagon.addItem(Medicine);
+//				wagon.addItem(Bedroll);
+//				wagon.addItem(Tent);
+//				wagon.addItem(Tools);
+//				wagon.addItem(Chair);
 				wagon.getFoodAmt();
 
 				menu.introMenu(textArea);
