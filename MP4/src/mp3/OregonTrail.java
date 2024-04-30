@@ -514,7 +514,7 @@ public class OregonTrail {
 				// If the trade flag is raised, calls the trading menu. 
 				if (tradeFlag == true) {
 					randTrader = randomNum.nextInt(3);
-					tradeFlag = traders[randTrader].tradeMenu(textArea, inputField, input, wagon);
+					tradeFlag = traders[randTrader].tradeMenu(textArea, inputField, input, wagon, traders[randTrader].getrandOptNum2(), traders[randTrader].gettradeAmt2());
 					input = "";
 				}
 
@@ -618,7 +618,7 @@ public class OregonTrail {
 						textArea.setText(null);
 						menuFlag = true;
 						tradeFlag = true;
-						traders[randTrader].initiateTrade(textArea, traders[randTrader], fortMultiplier, 2, 1, wagon.getClothSet(), wagon.getAmmo(), wagon);
+						traders[randTrader].initiateTrade(textArea, traders[randTrader], fortMultiplier, wagon);
 						break;
 					}
 					}

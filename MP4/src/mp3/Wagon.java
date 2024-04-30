@@ -28,12 +28,12 @@ public class Wagon{
 	protected int numOxen = 4;
 	private double money = 1000;
 	private int consumption;
-	private int clothSetNum = 0;
-	private int ammunitionAmt = 0;
+	protected int clothSetNum = 0;
+	protected int ammunitionAmt = 0;
 	private double totalBill = 0;
-	private int wheelNum = 0;
-	private int axelNum = 0;
-	private int tongueNum = 0;
+	protected int wheelNum = 0;
+	protected int axelNum = 0;
+	protected int tongueNum = 0;
 
 	// Items are stored in an array list.
 	ArrayList<Item> supplies = new ArrayList<Item>();
