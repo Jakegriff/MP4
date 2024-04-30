@@ -203,7 +203,7 @@ public class OregonTrail {
 	Boolean paceFlag = false;
 	Boolean ratFlag = false;
 	Boolean travelFlag = false;
-	Boolean fortFlag = false;
+	Boolean fortFlag = true;
 	Boolean riverFlag = false;
 	Boolean rivSubMenuFlag = false;
 	Boolean storeFlag = false;
@@ -223,6 +223,7 @@ public class OregonTrail {
 
 	// Declaring the landmarks, landmark array, and location counter.
 	
+	Fort FortI = new Fort("Fort Independence",0);
 	River Kansas = new River("Kansas River Crossing", 200);
 	River BBlue = new River("Big Blue River Crossing", 400);
 	Fort FortKea = new Fort("Fort Kearny", 600);
@@ -240,7 +241,7 @@ public class OregonTrail {
 	Fort FortWW = new Fort("Fort Walla Walla", 3000);
 	NaturalLandmark Dalles = new NaturalLandmark("The Dalles", 2800);
 	NaturalLandmark Oregon = new NaturalLandmark("Willamette Valley, Oregon", 3000);
-	Landmarks[] Locations = {Kansas, BBlue, FortKea, Chimney, FortL, IRock, SPass, GRiver, FortB, SSprings, FortH, SRiver, FortBo,
+	Landmarks[] Locations = { FortI , Kansas, BBlue, FortKea, Chimney, FortL, IRock, SPass, GRiver, FortB, SSprings, FortH, SRiver, FortBo,
 			BMountain, FortWW, Dalles, Oregon};
 	int locCounter = 0;
 
