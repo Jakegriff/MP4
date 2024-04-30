@@ -188,7 +188,7 @@ public class OregonTrail {
 	int randTrader;
 
 	// Fort multiplier for trader class.
-	int fortMultiplier = 1;
+	double fortMultiplier = 1;
 
 	// Creates user input and flag.
 	String input = "";
@@ -217,6 +217,7 @@ public class OregonTrail {
 	Boolean axelFlag = false;
 	Boolean tongueFlag = false;
 	Boolean rivResults = false;
+	
 
 	// Creating the main timer
 	private Timer timer;
@@ -534,6 +535,7 @@ public class OregonTrail {
 						if(fortFlag == true ) {
 							fortFlag = false;
 							locCounter++;
+							fortMultiplier = fortMultiplier + .25;
 						}
 
 						if(riverFlag == true) {
