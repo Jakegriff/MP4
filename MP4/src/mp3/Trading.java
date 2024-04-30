@@ -36,7 +36,7 @@ public class Trading extends Menu{
 	 * @param multiplier - An integer value which determines how expensive the trade is (based on the wagon's distance).
 	 * @param wagon - an object of type Wagon that contains inventory.
 	 */
-	public void initiateTrade(JTextArea text, Trading trader, int multiplier, Wagon wagon) {
+	public void initiateTrade(JTextArea text, Trading trader, double multiplier, Wagon wagon) {
 		randOpt1 = getRandomOpt();
 		randOpt2 = getRandomOpt();
 		tradeAmt1 = getTradeAmount(tradeAmt1, randOpt1);

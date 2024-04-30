@@ -578,7 +578,7 @@ public class OregonTrail {
 						textArea.setText(null);
 						menuFlag = true;
 						supplyFlag = true;
-						menu.checkSupplies(textArea, wagon.getFoodNum(),wagon.getOxen(),wagon.getMoney());
+						menu.checkSupplies(textArea, wagon.getFoodNum(),wagon.getOxen(),wagon.getMoney(), wagon);
 						break;
 					}
 
