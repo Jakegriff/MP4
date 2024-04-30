@@ -295,7 +295,142 @@ public class OregonTrail {
 						//you have the code for if the num is typed in, now work on the function that changes the screen,
 						//the different screen classes, and adding in the text options if at a fort. 
 					}
+<<<<<<< Updated upstream
 					
+=======
+
+					if(Integer.parseInt(input) == 3) {
+						clothFlag = true;
+					}
+					if(Integer.parseInt(input) == 4) {
+						ammunitionFlag = true;
+					}
+					if(Integer.parseInt(input) == 5) {
+						sparePartsFlag = true;
+					}
+					if(Integer.parseInt(input) == 6) {
+						wagon.setTotalBill();
+						storeFlag = false;
+						menuFlag = false;
+					}
+					input = "";
+					System.out.println(storeFlag);
+				}
+
+				// If the trade flag is raised, calls the trading menu. 
+				if (tradeFlag == true) {
+					randTrader = randomNum.nextInt(3);
+					tradeFlag = traders[randTrader].tradeMenu(textArea, inputField, input, wagon, traders[randTrader].getrandOptNum2(), traders[randTrader].gettradeAmt2());
+					input = "";
+				}
+
+				// If the menu flag is false, then display the base Menu (default)
+				if(menuFlag == false && fortFlag == false) {
+					menu.baseMenu(textArea, wagon);
+				}
+
+				// If the menu flag is false and the user is at a river or fort, calculates and shows the corresponding screen.
+				if(menuFlag == false || fortFlag == true && storeFlag == false || riverFlag == true ) {
+					switch(input) {
+
+					// Travel
+					case "1":
+					{
+						if(fortFlag == true ) {
+							fortFlag = false;
+							locCounter++;
+						}
+
+						if(riverFlag == true) {
+							River temp = (River) Locations[locCounter];
+							if(rivSubMenuFlag == false) {
+								menu.riverInfoMenu(textArea, temp.getRiverWidth(), temp.getRiverDepth(), temp.getRiverSpeed());
+								rivSubMenuFlag = true;
+								riverFlag = false;
+							}
+
+							else {
+								menu.riverChoices(textArea, temp.getRiverWidth(), temp.getRiverDepth(),wagon);
+							}
+						}
+
+						else {
+							inputField.setText(null);
+							textArea.setText(null);
+							menuFlag = true;
+							travelFlag = true;
+							menu.travelling(textArea, wagon.getFoodNum(),wagon.getLocation(),wagon.getNextLocation(Locations[locCounter].getLocation()));
+							timer = new javax.swing.Timer(100, new ActionListener() {
+								public void actionPerformed(ActionEvent evt) {
+									wagon.travel(evt, textArea, wagon.getFoodNum(), Locations[locCounter].getLocation());
+									flagCheck =	menu.landmarkCheck(evt, textArea, timer,Locations[locCounter].getLocation(), wagon.getLocation(),Locations[locCounter].getName(),Locations[locCounter].getTag(), locCounter, wagon );
+									if(flagCheck != 0) {
+										travelFlag = false;
+									}
+								}
+							});
+							timer.start();
+						}
+						break;	
+					}
+
+					// Supplies
+					case "2": 
+					{ 
+						inputField.setText(null);
+						textArea.setText(null);
+						menuFlag = true;
+						supplyFlag = true;
+						menu.checkSupplies(textArea, wagon.getFoodNum(),wagon.getOxen(),wagon.getMoney());
+						break;
+					}
+
+					// Pace
+					case "3":
+					{
+						inputField.setText(null);
+						textArea.setText(null);
+						menuFlag = true;
+						paceFlag = true;
+						menu.changePace(textArea, wagon);
+						break;
+					}
+
+					// Rations
+					case "4":
+					{
+						inputField.setText(null);
+						textArea.setText(null);
+						ratFlag = true;
+						menuFlag = true;
+						menu.changeRations(textArea, wagon);
+						break;
+					}
+
+					// Store
+					case "5":
+					{
+						inputField.setText(null);
+						textArea.setText(null);
+						menuFlag = true;
+						storeFlag = true;
+						store.baseStoreMenu(textArea, wagon);
+						break;
+					}
+
+					// Trade
+					case "6":{
+						inputField.setText(null);
+						textArea.setText(null);
+						menuFlag = true;
+						tradeFlag = true;
+						traders[randTrader].initiateTrade(textArea, traders[randTrader], fortMultiplier, wagon);
+						break;
+					}
+					}
+
+					//Clears text field
+>>>>>>> Stashed changes
 					System.out.println(menuFlag);
 					inputField.setText(null);
 					if(supplyFlag == false && paceFlag == false && ratFlag == false && travelFlag == false && tradeFlag == false)

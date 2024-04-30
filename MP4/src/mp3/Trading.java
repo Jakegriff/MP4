@@ -118,7 +118,11 @@ public class Trading extends Menu{
 			return tradePrice;
 
 		default:
+<<<<<<< Updated upstream
 			System.out.println("plplplplplplplplplplpl");
+=======
+			// Debugging Purposes - System.out.println("plplplplplplplplplplpl");
+>>>>>>> Stashed changes
 			tradePrice = 0;
 			return tradePrice;
 		}
