@@ -281,7 +281,7 @@ public class OregonTrail {
 		textArea.setFont(new Font("Monospaced", Font.BOLD, 18));
 		textArea.setLineWrap(true);
 		textArea.setBackground(new Color(0, 128, 0));
-		textArea.setBounds(93, 54, 550, 314);
+		textArea.setBounds(93, 25, 550, 335);
 		gamePanel.add(textArea);
 		textArea.setEditable(false);
 

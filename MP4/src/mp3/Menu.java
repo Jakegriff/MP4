@@ -120,11 +120,13 @@ public class Menu{
 				+ " Health: " + "Good" + "\n"
 				+ " Pace: " + wagon.getPace() + "\n"
 				+ " Rations: " + wagon.getRations() + "\n"
-				+ " \n You may:" + "\n \n"
+				+ " \n You may:" + "\n"
 				+ " 1. Continue on trail \n"
 				+ " 2. Check supplies \n"
 				+ " 3. Change pace \n"
-				+ " 4. Change rations \n");
+				+ " 4. Change rations \n"
+				+ " 5. Store \n"
+				+ " 6. Trading \n");
 
 	}
 
