@@ -47,40 +47,40 @@ public class StoreMenu extends Menu {
 	 * @param input - players input
 	 * @return - returns a flag to close the current menu to avoid conflicts 
 	 */
-	public Boolean storeMenu(JTextArea text, JTextField in, String input, Wagon wagon) {
+	public Boolean storeMenu(JTextArea text, JTextField in, String input, Wagon wagon, double multiplier) {
 		if(input.equals("6")) {
 			//baseMenu(text, wagon);
 		}
 		if(input.equals("1")) {
-			oxenMenu(text, 10);
+			oxenMenu(text, (int)(40*multiplier));
 		}
 		if(input.equals("2")) {
-			foodMenu(text, .20);
+			foodMenu(text, (.20*multiplier));
 		}
 		if(input.equals("3")) {
-			clothMenu(text, 20);
+			clothMenu(text, (int)(10*multiplier));
 		}
 		if(input.equals("4")) {
-			ammunitionMenu(text, 20);
+			ammunitionMenu(text, (int)(2*multiplier));
 		}
 		if(input.equals("5")) {
-			sparePartsBase(text, 20, 20, 20);
+			sparePartsBase(text, (int)(10*multiplier), (int)(10*multiplier), (int)(10*multiplier));
 		}
 		return true;
 	}
 	
-	public Boolean sparePartsMenu(JTextArea text, JTextField in, String input, Wagon wagon) {
+	public Boolean sparePartsMenu(JTextArea text, JTextField in, String input, Wagon wagon, double multiplier) {
 		if(input.equals("q")) {
 			baseStoreMenu(text, wagon);
 		}
 		if(input.equals("1")) {
-			wheelMenu(text, 10);
+			wheelMenu(text, (int)(10*multiplier));
 		}
 		if(input.equals("2")) {
-			axelMenu(text, 10);
+			axelMenu(text, (int)(10*multiplier));
 		}
 		if(input.equals("3")) {
-			tongueMenu(text, 10);
+			tongueMenu(text, (int)(10*multiplier));
 		}
 		return false;
 	}

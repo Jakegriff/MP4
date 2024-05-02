@@ -59,14 +59,15 @@ public class Menu{
 	 * @param money - a double value of the user's money value.
 	 */
 	public void checkSupplies(JTextArea text, Wagon wagon) {
-		text.setText(" Money:" + wagon.getMoney()
-				+ "\n Oxen: " + wagon.numOxen 
-				+ "\n Boxes of Bullets: " + (wagon.ammunitionAmt/20)
-				+ "\n Sets of Clothing: " + wagon.clothSetNum 
-				+ "\n Food: " + wagon.foodAmt
-				+ "\n Wagon Wheels: " + wagon.wheelNum 
-				+ "\n Wagon Tongues: " + wagon.tongueNum 
-				+ "\n Wagon Axels: " + wagon.axelNum 
+
+		text.setText( " Money: $" + wagon.getMoney()
+				+ " \n Oxen: " + wagon.getOxen()
+				+ " \n Bullets: " + wagon.ammunitionAmt
+				+ " \n Sets of Clothes: " + wagon.clothSetNum
+				+ " \n Pounds of Food: " + wagon.getFoodAmt()
+				+ " \n Wagon Wheels: " + wagon.wheelNum
+				+ " \n Wagon Tongues: " + wagon.tongueNum
+				+ " \n Wagon Axels: " + wagon.axelNum
 				+ " \n \n \n \n Enter q to go back");
 	}
 
@@ -118,7 +119,7 @@ public class Menu{
 				+ " Health: " + "Good" + "\n"
 				+ " Pace: " + wagon.getPace() + "\n"
 				+ " Rations: " + wagon.getRations() + "\n"
-				+ " \n You may:" + "\n \n"
+				+ " \n You may:" + "\n"
 				+ " 1. Continue on trail \n"
 				+ " 2. Check supplies \n"
 				+ " 3. Change pace \n"
