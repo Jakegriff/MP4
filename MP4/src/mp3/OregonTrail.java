@@ -1,26 +1,20 @@
 package mp3;
 
-import java.awt.CardLayout;
 //Imports
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 import javax.swing.Timer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JSlider;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -40,9 +34,7 @@ public class OregonTrail {
 	private JFrame frmOregontrailv;
 	private ImageIcon backgroundImage;
 	private JLayeredPane layeredPane;
-	private JLabel bgImage;
 	private JLabel lblNewLabel_3;
-	private JLabel lblNewLabel_7;
 	private JLabel lblOverweight;
 
 	// Initialize variables used for party member calculations & hunger
@@ -359,8 +351,6 @@ public class OregonTrail {
 		lblOverweight.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		lblOverweight.setBounds(30, 429, 349, 56);
 		layeredPane.add(lblOverweight);
-
-		lblNewLabel_7 = new JLabel("");
 
 
 		inputField = new JTextField();
@@ -931,6 +921,17 @@ public class OregonTrail {
 		lblNewLabel_77 = new JLabel("Tongues are $" +tonguePrice+"each");
 		lblNewLabel_77.setBounds(253, 230, 129, 14);
 		Store.add(lblNewLabel_77);
+		
+		ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Store.png"));
+        Image image = icon.getImage();
+        Image newImage = image.getScaledInstance(1200,  1800,  Image.SCALE_SMOOTH);
+        ImageIcon newIcon = new ImageIcon(newImage);
+		JLabel StoreImg = new JLabel("New label");
+		StoreImg.setHorizontalAlignment(SwingConstants.CENTER);
+		StoreImg.setBounds(377, 82, 362, 562);
+		Store.add(StoreImg);
+		StoreImg.setIcon(newIcon);
+		
 	}
 
 
