@@ -59,13 +59,13 @@ public class Menu{
 	 * @param oxen - an integer value containing the number of oxen in the party.
 	 * @param money - a double value of the user's money value.
 	 */
-	public void checkSupplies(JTextArea text, int food, int oxen, double money, Wagon wagon) {
+	public void checkSupplies(JTextArea text, Wagon wagon) {
 
-		text.setText( " Money: $" + money
-				+ " \n Oxen: " + oxen
+		text.setText( " Money: $" + wagon.getMoney()
+				+ " \n Oxen: " + wagon.getOxen()
 				+ " \n Bullets: " + wagon.ammunitionAmt
 				+ " \n Sets of Clothes: " + wagon.clothSetNum
-				+ " \n Pounds of Food: " + food
+				+ " \n Pounds of Food: " + wagon.getFoodAmt()
 				+ " \n Wagon Wheels: " + wagon.wheelNum
 				+ " \n Wagon Tongues: " + wagon.tongueNum
 				+ " \n Wagon Axels: " + wagon.axelNum

@@ -1,7 +1,9 @@
 package mp3;
 
+import java.awt.CardLayout;
 //Imports
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -22,6 +24,9 @@ import javax.swing.JSlider;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  * The gui implementation of packing a wagon in an implementation of the game Oregon Trail.
@@ -80,12 +85,9 @@ public class OregonTrail {
 
 	Menu menu = new Menu();
 	StoreMenu store = new StoreMenu();
-<<<<<<< Updated upstream
-=======
 	People People = new People();
 
 
->>>>>>> Stashed changes
 
 	// Creating trader objects using the trading class.
 	Trading trappers = new Trading(0);
@@ -98,7 +100,7 @@ public class OregonTrail {
 	int randTrader;
 
 	// Fort multiplier for trader class.
-	double fortMultiplier = 1;
+	int fortMultiplier = 1;
 
 	// Creates user input and flag.
 	String input = "";
@@ -113,7 +115,7 @@ public class OregonTrail {
 	Boolean paceFlag = false;
 	Boolean ratFlag = false;
 	Boolean travelFlag = false;
-	Boolean fortFlag = true;
+	Boolean fortFlag = false;
 	Boolean riverFlag = false;
 	Boolean rivSubMenuFlag = false;
 	Boolean storeFlag = false;
@@ -127,7 +129,6 @@ public class OregonTrail {
 	Boolean axelFlag = false;
 	Boolean tongueFlag = false;
 	Boolean rivResults = false;
-	
 
 	// Creating the main timer
 	private Timer timer;
@@ -143,12 +144,7 @@ public class OregonTrail {
 	int tonguePrice = 10 * fortMultiplier;
 
 	// Declaring the landmarks, landmark array, and location counter.
-<<<<<<< Updated upstream
-	
-	Fort FortI = new Fort("Fort Independence",0);
-=======
 
->>>>>>> Stashed changes
 	River Kansas = new River("Kansas River Crossing", 200);
 	River BBlue = new River("Big Blue River Crossing", 400);
 	Fort FortKea = new Fort("Fort Kearny", 600);
@@ -166,11 +162,9 @@ public class OregonTrail {
 	Fort FortWW = new Fort("Fort Walla Walla", 3000);
 	NaturalLandmark Dalles = new NaturalLandmark("The Dalles", 2800);
 	NaturalLandmark Oregon = new NaturalLandmark("Willamette Valley, Oregon", 3000);
-	Landmarks[] Locations = { FortI , Kansas, BBlue, FortKea, Chimney, FortL, IRock, SPass, GRiver, FortB, SSprings, FortH, SRiver, FortBo,
+	Landmarks[] Locations = {Kansas, BBlue, FortKea, Chimney, FortL, IRock, SPass, GRiver, FortB, SSprings, FortH, SRiver, FortBo,
 			BMountain, FortWW, Dalles, Oregon};
 	int locCounter = 0;
-<<<<<<< Updated upstream
-=======
 	private JTextField numOxenTF;
 	private JLabel lblNewLabel_62;
 	private JLabel lblNewLabel_63;
@@ -204,7 +198,6 @@ public class OregonTrail {
 	private JTextField member3TF;
 	private JTextField member4TF;
 	private JTextField member5TF;
->>>>>>> Stashed changes
 
 
 	/**
@@ -229,9 +222,6 @@ public class OregonTrail {
 	public OregonTrail() {
 		initialize();
 
-<<<<<<< Updated upstream
-		backgroundImage = new ImageIcon(this.getClass().getResource("/Images/mp3img2.JPG"));
-=======
 
 		JPanel Store = new JPanel();
 		Store.setBounds(0, 0, 736, 556);
@@ -239,23 +229,19 @@ public class OregonTrail {
 		Store.setLayout(null);
 		Store.setVisible(false);
 
->>>>>>> Stashed changes
 		JPanel gamePanel = new JPanel();
 		gamePanel.setBackground(new Color(0, 0, 0));
 		gamePanel.setBounds(0, 0, 736, 556);
 		frmOregontrailv.getContentPane().add(gamePanel);
 		gamePanel.setLayout(null);
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 
 		JTextArea textArea = new JTextArea();
 		textArea.setWrapStyleWord(true);
 		textArea.setFont(new Font("Monospaced", Font.BOLD, 18));
 		textArea.setLineWrap(true);
 		textArea.setBackground(new Color(0, 128, 0));
-		textArea.setBounds(93, 25, 550, 335);
+		textArea.setBounds(93, 54, 550, 314);
 		gamePanel.add(textArea);
 		textArea.setEditable(false);
 
@@ -607,7 +593,7 @@ public class OregonTrail {
 				// If the trade flag is raised, calls the trading menu. 
 				if (tradeFlag == true) {
 					randTrader = randomNum.nextInt(3);
-					tradeFlag = traders[randTrader].tradeMenu(textArea, inputField, input, wagon, traders[randTrader].getrandOptNum2(), traders[randTrader].gettradeAmt2());
+					//tradeFlag = traders[randTrader].tradeMenu(textArea, inputField, input, wagon);
 					input = "";
 				}
 
@@ -626,7 +612,6 @@ public class OregonTrail {
 						if(fortFlag == true ) {
 							fortFlag = false;
 							locCounter++;
-							fortMultiplier = fortMultiplier + .25;
 						}
 
 						if(riverFlag == true) {
@@ -669,7 +654,7 @@ public class OregonTrail {
 						textArea.setText(null);
 						menuFlag = true;
 						supplyFlag = true;
-						menu.checkSupplies(textArea, wagon.getFoodNum(),wagon.getOxen(),wagon.getMoney(), wagon);
+						menu.checkSupplies(textArea, wagon);
 						break;
 					}
 
@@ -712,7 +697,7 @@ public class OregonTrail {
 						textArea.setText(null);
 						menuFlag = true;
 						tradeFlag = true;
-						traders[randTrader].initiateTrade(textArea, traders[randTrader], fortMultiplier, wagon);
+						//traders[randTrader].initiateTrade(textArea, traders[randTrader], fortMultiplier, 2, 1, wagon.getClothSet(), wagon.getAmmo(), wagon);
 						break;
 					}
 					}
@@ -781,37 +766,8 @@ public class OregonTrail {
 			public void actionPerformed(ActionEvent e) {
 				wagon.setTotalBill();
 
-<<<<<<< Updated upstream
-				layeredPane.setVisible(false);
-				gamePanel.setVisible(true);
-
-				wagon.clearWagon();
-				wagon.addItem(Bacon);
-				wagon.addItem(Beans);
-				wagon.addItem(Coffee);
-				wagon.addItem(dApples);
-				wagon.addItem(Flour);
-				wagon.addItem(Hardtack);
-				wagon.addItem(Lard);
-				wagon.addItem(Salt);
-				wagon.addItem(Sugar);
-				wagon.addItem(Rice);
-				wagon.addItem(Whiskey);
-				wagon.addItem(Water);
-				wagon.addItem(Medicine);
-				wagon.addItem(Bedroll);
-				wagon.addItem(Tent);
-				wagon.addItem(Tools);
-				wagon.addItem(Chair);
-				wagon.getFoodAmt();
-
-				menu.introMenu(textArea);
-
-
-=======
 				Store.setVisible(false);
 				gamePanel.setVisible(true);
->>>>>>> Stashed changes
 			}
 		});
 		setButton.setBounds(117, 412, 250, 23);
