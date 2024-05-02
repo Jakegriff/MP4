@@ -51,7 +51,6 @@ public class Menu{
 				+ " 6. Trade");
 	}
 
-
 	/*
 	 * Sets the text area to the checkSupplies menu screen
 	 * @param text - a JTextArea that determines which text area is changed.
@@ -123,7 +122,9 @@ public class Menu{
 				+ " 1. Continue on trail \n"
 				+ " 2. Check supplies \n"
 				+ " 3. Change pace \n"
-				+ " 4. Change rations \n");
+				+ " 4. Change rations \n"
+				+ " 5. Store \n"
+				+ " 6. Trade \n");
 
 	}
 
