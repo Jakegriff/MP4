@@ -45,7 +45,7 @@ public class Wagon{
 	public Wagon() {}
 	
 	public void setWheelNum(int wheelNum) {
-		this.wheelNum = wheelNum;
+		this.wheelNum = this.wheelNum + wheelNum;
 	}
 	
 	public int getWheelNum() {
@@ -53,7 +53,7 @@ public class Wagon{
 	}
 	
 	public void setAxelNum (int axelNum) {
-		this.axelNum = axelNum;
+		this.axelNum = this.axelNum + axelNum;
 	}
 	
 	public int getAxelNum() {
@@ -61,7 +61,7 @@ public class Wagon{
 	}
 	
 	public void setTongueNum(int tongueNum) {
-		this.tongueNum = tongueNum;
+		this.tongueNum = this.tongueNum + tongueNum;
 	}
 	
 	public int getTongueNum() {
