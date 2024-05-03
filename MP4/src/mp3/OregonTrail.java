@@ -32,7 +32,6 @@ import javax.swing.DefaultComboBoxModel;
 public class OregonTrail {
 
 	private JFrame frmOregontrailv;
-	private ImageIcon backgroundImage;
 	private JLayeredPane layeredPane;
 	private JLabel lblNewLabel_3;
 	private JLabel lblOverweight;
@@ -237,8 +236,6 @@ public class OregonTrail {
 		textArea.setBackground(new Color(0, 128, 0));
 		gamePanel.add(textArea);
 		textArea.setEditable(false);
-
-		backgroundImage = new ImageIcon(this.getClass().getResource("/Images/mp3img2.JPG"));
 
 		layeredPane = new JLayeredPane();
 		layeredPane.setBounds(0, 0, 736, 556);
