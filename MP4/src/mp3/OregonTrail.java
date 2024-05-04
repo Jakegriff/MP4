@@ -213,14 +213,15 @@ public class OregonTrail {
 	 */
 	public OregonTrail() {
 		initialize();
-
-
+		
+		// Creates panel for the initial store menu
 		JPanel Store = new JPanel();
 		Store.setBounds(0, 0, 736, 556);
 		frmOregontrailv.getContentPane().add(Store);
 		Store.setLayout(null);
 		Store.setVisible(false);
 
+		// Creates the panel where the game is played
 		JPanel gamePanel = new JPanel();
 		gamePanel.setBackground(new Color(0, 0, 0));
 		gamePanel.setBounds(0, 0, 736, 556);
@@ -241,26 +242,23 @@ public class OregonTrail {
 		layeredPane.setBounds(0, 0, 736, 556);
 		frmOregontrailv.getContentPane().add(layeredPane);
 
+		// Hides the initial screen where party members are entered. 
+		// Makes the store panel visible. 
 		JButton btnTravelTest = new JButton("Go to Store");
 		btnTravelTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				layeredPane.setVisible(false);
 				gamePanel.setVisible(false);
 				Store.setVisible(true);
-
 				amountLeftLB.setText("$"+ wagon.getMoney());
-
 				wagon.clearWagon();
-
 				wagon.getFoodAmt();
-
 				menu.introMenu(textArea);
-
-
 			}
 		});
 
+		// The following "member" text fields set the names for the 
+		// members of the party. 
 		member5TF = new JTextField();
 		member5TF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -749,11 +747,11 @@ public class OregonTrail {
 		Store.add(lblNewLabel_61);
 
 
+		// Hides the store panel and makes the game panel visible, starting the game.
 		JButton setButton = new JButton("Start Game");
 		setButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wagon.setTotalBill();
-
 				Store.setVisible(false);
 				gamePanel.setVisible(true);
 			}
@@ -770,6 +768,7 @@ public class OregonTrail {
 		lblNewLabel_63.setBounds(33, 157, 134, 14);
 		Store.add(lblNewLabel_63);
 
+		// Sets the amount of food in the initial store.
 		foodTF = new JTextField();
 		foodTF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -788,6 +787,7 @@ public class OregonTrail {
 		lblNewLabel_64.setBounds(33, 230, 96, 14);
 		Store.add(lblNewLabel_64);
 
+		// Sets the amount of cloth in the initial store.
 		clothTF = new JTextField();
 		clothTF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -806,6 +806,7 @@ public class OregonTrail {
 		lblNewLabel_65.setBounds(253, 64, 154, 14);
 		Store.add(lblNewLabel_65);
 
+		// Sets the amount of ammo in the initial store.
 		ammoTF = new JTextField();
 		ammoTF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -847,6 +848,8 @@ public class OregonTrail {
 		lblNewLabel_66.setBounds(253, 157, 94, 14);
 		Store.add(lblNewLabel_66);
 
+		// Sets the amount of spare parts in the initial store
+		// depending the the user selection from the combo Box.
 		sparePartsTF = new JTextField();
 		sparePartsTF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
