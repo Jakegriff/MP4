@@ -57,7 +57,11 @@ public class RandomEvent extends OregonTrail {
                 break;            
         	case 1:
                 if (thunderstorm()) {
-                    if(randomValue <= 3){
+                    if(randomValue <= 300){
+                    	eventFlag = true;
+                        eventName = "A thunderstorm occurred." 
+                        + "\n A thunderstorm occurred."
+                        + "\n ";
                         return;
                     }                        
                 }
@@ -65,6 +69,10 @@ public class RandomEvent extends OregonTrail {
         	case 2:
                 if (blizzard()) {
                     if(randomValue <= 15){
+                    	eventFlag = true;
+                        eventName = "A blizzard occurred." 
+                        + "\n A blizzard occurred."
+                        + "\n ";
                         return;
                     }                        
                 }
@@ -72,6 +80,10 @@ public class RandomEvent extends OregonTrail {
         	case 3:
                 if (heavyFog()) {
                     if(randomValue <= 6){
+                    	eventFlag = true;
+                        eventName = "A heavy fog occurred." 
+                        + "\n A heavy fog occurred."
+                        + "\n ";
                         return;
                     }                        
                 }
@@ -79,6 +91,10 @@ public class RandomEvent extends OregonTrail {
         	case 4:
                 if (hailStorm()) {
                     if(randomValue <= 6){
+                    	eventFlag = true;
+                        eventName = "A hail storm occurred." 
+                        + "\n A hail storm occurred."
+                        + "\n ";
                         return;
                     }                        
                 }
@@ -100,6 +116,10 @@ public class RandomEvent extends OregonTrail {
         	case 7:
                 if (snakeBite()) {
                     if(randomValue <= 1){
+                    	eventFlag = true;
+                        eventName = "A snake bite." 
+                        + "\n Someone was bitten by a snake."
+                        + "\n The health of the party deteriorated.";
                         return;
                     }                        
                 }
