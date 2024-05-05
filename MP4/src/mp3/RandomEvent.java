@@ -241,10 +241,10 @@ public class RandomEvent extends OregonTrail {
 	 * @return - Returns true, if weather is cold or very cold
      * */
     private boolean blizzard() {
-    	if(wagon.getWeather() == "cold") {
+    	if(weather.getWeather() == "Cold") {
     		return true;
     	}
-    	else if(wagon.getWeather() == "very cold") {
+    	else if(weather.getWeather() == "Very Cold") {
     		return true;
     	}
     	else {
