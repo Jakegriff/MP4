@@ -47,7 +47,6 @@ public class Menu{
 				+ " 2. Check supplies \n"
 				+ " 3. Change pace \n"
 				+ " 4. Change rations \n"
-				+ " 5. Store Test \n"
 				+ " 6. Trade");
 	}
 
