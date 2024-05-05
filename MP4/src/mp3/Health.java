@@ -36,17 +36,17 @@ public class Health {
 	/*
 	 * Checks the health of the player, if the health is more than 200 or everyone is dead, then the player loses; Changes the healthStr to reflect the current health status.
 	 */
-	private void CheckHealth(ArrayList<People> Party, Wagon wagon, String weather, String foodCons, String paceSet, String evt) {
+	private void CheckHealth(ArrayList<People> Party, Wagon wagon, Weather weather, String evt) {
 		//removes 10% of health each day.
 		genHealth -= (genHealth*.10);
 		
 		//calculates adder values.
 		weatherAdder = calcWeatherAdder(weather, Party, wagon);
-		foodAdder = calcFoodAdder(foodCons, wagon);
+		foodAdder = calcFoodAdder(wagon);
 		illnessRate = calcIllness(Party);
 		randEvtAdder = randomEventAdder(wagon, evt);
 		stFAdder = starveOrFreeze(wagon);
-		paceAdder = calcPace(paceSet);
+		paceAdder = calcPace(wagon);
 		
 		//checks player death.
 		calcDeath(Party);
@@ -81,14 +81,15 @@ public class Health {
 	
 	/*
 	 * Calculates the value of the weather condition adder and returns that value according to the weather and the number of people in the party.
-	 * @param weather - a String value representing the current weather
+	 * @param weather - an object of t6ype Weather used to determine the value representing the current weather
 	 * @param Party - an ArrayList of type People, used to calculate the number of people in the party.
 	 * @param wagon - an object of type Wagon, holding all the current player's inventory.
 	 * @return weatherAdder - an integer value between 0 and 4, representing the amount of bad health accumulated because of the weather.
 	 */
-	public int calcWeatherAdder(String weather, ArrayList<People> Party, Wagon wagon) {
-		switch(weather) {
-		case ("Very hot"):
+	public int calcWeatherAdder(Weather weather, ArrayList<People> Party, Wagon wagon) {
+		String Weather = weather.getWeather();
+		switch(Weather) {
+		case ("Very Hot"):
 			weatherAdder = 2;
 			lacksClothSet = false;
 		case ("Hot"):
@@ -105,7 +106,7 @@ public class Health {
 				weatherAdder = 0;
 				lacksClothSet = false;
 			}
-		case ("Very cold"):
+		case ("Very Cold"):
 			if (wagon.clothSetNum == 0) {
 				lacksClothSet = true;
 				weatherAdder = 4;
@@ -126,12 +127,11 @@ public class Health {
 	
 	/*
 	 * Calculates the value of the food consumption adder and returns that value according to the consumption rate and the amount of food in the wagon.
-	 * @param foodCons - a String value representing the current weather
 	 * @param wagon - an object of type Wagon, holding all the current player's inventory.
 	 * @return foodAdder - an integer value between 0 and 6, representing the amount of bad health accumulated because of food consumption.
 	 */
-	public int calcFoodAdder(String foodCons, Wagon wagon) {
-		String tempFoodCons = foodCons;
+	public int calcFoodAdder(Wagon wagon) {
+		String tempFoodCons = wagon.getRations();
 		if (wagon.getFoodAmt() == 0)
 			tempFoodCons = "Empty";
 		
@@ -166,6 +166,7 @@ public class Health {
 	/*
 	 * Calculates the starve or freeze adder based on whether the player lacks clothing sets or food.
 	 * @param wagon - an object of type Wagon containing the user's inventory.
+	 * @param evt - a String determining possible other events.
 	 * @return stFAdder - a double value representing the amount of bad health accumulated by freezing or starving.
 	 */
 	public int randomEventAdder(Wagon wagon, String evt) {
@@ -182,10 +183,11 @@ public class Health {
 	
 	/*
 	 * Calculates the value of the pace consumption adder and returns that value according to the pace rate.
-	 * @param paceSet - a String value representing the current pace.
+	 * @param wagon - an object of type Wagon used to get the pace.
 	 * @return foodAdder - an integer value between 0 and 6, representing the amount of bad health accumulated because of pace setting.
 	 */
-	public int calcPace(String paceSet) {
+	public int calcPace(Wagon wagon) {
+		String paceSet = wagon.getPace();
 		switch(paceSet) {
 		case ("Resting"):
 			paceAdder = 0;
