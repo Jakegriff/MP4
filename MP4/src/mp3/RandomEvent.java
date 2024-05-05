@@ -57,10 +57,9 @@ public class RandomEvent extends OregonTrail {
                 break;            
         	case 1:
                 if (thunderstorm()) {
-                    if(randomValue <= 300){
+                    if(randomValue <= 3){
                     	eventFlag = true;
                         eventName = "A thunderstorm occurred." 
-                        + "\n A thunderstorm occurred."
                         + "\n ";
                         return;
                     }                        
@@ -70,8 +69,7 @@ public class RandomEvent extends OregonTrail {
                 if (blizzard()) {
                     if(randomValue <= 15){
                     	eventFlag = true;
-                        eventName = "A blizzard occurred." 
-                        + "\n A blizzard occurred."
+                        eventName = "A blizzard occurred."
                         + "\n ";
                         return;
                     }                        
@@ -81,8 +79,7 @@ public class RandomEvent extends OregonTrail {
                 if (heavyFog()) {
                     if(randomValue <= 6){
                     	eventFlag = true;
-                        eventName = "A heavy fog occurred." 
-                        + "\n A heavy fog occurred."
+                        eventName = "A heavy fog occurred."
                         + "\n ";
                         return;
                     }                        
@@ -93,7 +90,6 @@ public class RandomEvent extends OregonTrail {
                     if(randomValue <= 6){
                     	eventFlag = true;
                         eventName = "A hail storm occurred." 
-                        + "\n A hail storm occurred."
                         + "\n ";
                         return;
                     }                        
@@ -102,6 +98,9 @@ public class RandomEvent extends OregonTrail {
         	case 5:
                 if (isOxInjured()) {
                     if(randomValue <= 2){
+//                    	eventFlag = true;
+                        eventName = "A ox is injured." 
+                        + "\n ";
                         return;
                     }                        
                 }
@@ -109,6 +108,9 @@ public class RandomEvent extends OregonTrail {
         	case 6:
                 if (isMemberInjured()) {
                     if(randomValue <= 2){
+//                    	eventFlag = true;
+                        eventName = "A member is injured." 
+                        + "\n ";
                         return;
                     }                        
                 }
@@ -139,7 +141,7 @@ public class RandomEvent extends OregonTrail {
         	case 9:
                 if (wrongTrail()) {
                     if(randomValue <= 1){
-                    	wagon.setFoodAmt(-20);  
+                    	wagon.setFoodAmt(-20);
                         eventFlag = true;
                         timer.stop();
                         eventName = "You take a wrong trail" 
@@ -177,6 +179,8 @@ public class RandomEvent extends OregonTrail {
         	case 12:
                 if (lostMember()) {
                     if(randomValue <= 2){
+                        eventName = "A member is dead." 
+                        + "\n ";
                         return;
                     }                        
                 }
@@ -200,10 +204,14 @@ public class RandomEvent extends OregonTrail {
                 	int health = 0;
                 	if(health >= 70) {
                     	if(randomValue <= 20) {
+                    		eventName = "A member's health is good." 
+                                    + "\n ";
                     		return;
                     	}
                     else if(health <= 69 ){
                     	if(randomValue <= 2) {
+                    		eventName = "A member's health is bad." 
+                                    + "\n ";
                     		return;         		
                     	}
                     }
@@ -220,7 +228,7 @@ public class RandomEvent extends OregonTrail {
 	 * @return - Returns true, if you are completely out of food
      * */
     private boolean indianFindFood() {
-    	if(wagon.getFoodNum() < 0) {
+    	if(wagon.getFoodNum() <= 0) {
     		return true;    		
     	}
     	else{
