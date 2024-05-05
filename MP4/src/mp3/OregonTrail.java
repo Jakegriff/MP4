@@ -190,6 +190,7 @@ public class OregonTrail {
 	private JTextField member3TF;
 	private JTextField member4TF;
 	private JTextField member5TF;
+	private JLabel wagonImgLbl;
 
 
 	/**
@@ -213,7 +214,9 @@ public class OregonTrail {
 	 */
 	public OregonTrail() {
 		initialize();
-		
+
+
+
 		// Creates panel for the initial store menu
 		JPanel Store = new JPanel();
 		Store.setBounds(0, 0, 736, 556);
@@ -237,115 +240,6 @@ public class OregonTrail {
 		textArea.setBackground(new Color(0, 128, 0));
 		gamePanel.add(textArea);
 		textArea.setEditable(false);
-
-		layeredPane = new JLayeredPane();
-		layeredPane.setBounds(0, 0, 736, 556);
-		frmOregontrailv.getContentPane().add(layeredPane);
-
-		// Hides the initial screen where party members are entered. 
-		// Makes the store panel visible. 
-		JButton btnTravelTest = new JButton("Go to Store");
-		btnTravelTest.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				layeredPane.setVisible(false);
-				gamePanel.setVisible(false);
-				Store.setVisible(true);
-				amountLeftLB.setText("$"+ wagon.getMoney());
-				wagon.clearWagon();
-				wagon.getFoodAmt();
-				menu.introMenu(textArea);
-			}
-		});
-
-		// The following "member" text fields set the names for the 
-		// members of the party. 
-		member5TF = new JTextField();
-		member5TF.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				People.setName(member5TF.getText(), 0);
-			}
-		});
-		member5TF.setBounds(160, 332, 96, 20);
-		layeredPane.add(member5TF);
-		member5TF.setColumns(10);
-
-		member4TF = new JTextField();
-		member4TF.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		member4TF.setBounds(160, 279, 96, 20);
-		layeredPane.add(member4TF);
-		member4TF.setColumns(10);
-
-		member3TF = new JTextField();
-		member3TF.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				People.setName(member3TF.getText(), 0);
-			}
-		});
-		member3TF.setBounds(160, 230, 96, 20);
-		layeredPane.add(member3TF);
-		member3TF.setColumns(10);
-
-		member2TF = new JTextField();
-		member2TF.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				People.setName(member2TF.getText(), 0);
-			}
-		});
-		member2TF.setBounds(160, 168, 96, 20);
-		layeredPane.add(member2TF);
-		member2TF.setColumns(10);
-
-		member1TF = new JTextField();
-		member1TF.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				People.setName(member1TF.getText(), 0);
-			}
-		});
-		member1TF.setBounds(160, 112, 96, 20);
-		layeredPane.add(member1TF);
-		member1TF.setColumns(10);
-
-		lblNewLabel_6 = new JLabel("Party Member 5:");
-		lblNewLabel_6.setBounds(61, 335, 103, 14);
-		layeredPane.add(lblNewLabel_6);
-
-		lblNewLabel_5 = new JLabel("Party Member 4:");
-		lblNewLabel_5.setBounds(61, 282, 93, 14);
-		layeredPane.add(lblNewLabel_5);
-
-		lblNewLabel_4 = new JLabel("Party Member 3:");
-		lblNewLabel_4.setBounds(61, 233, 93, 14);
-		layeredPane.add(lblNewLabel_4);
-
-		lblNewLabel_2 = new JLabel("Party Member 2:");
-		lblNewLabel_2.setBounds(61, 171, 93, 14);
-		layeredPane.add(lblNewLabel_2);
-
-		lblNewLabel_1 = new JLabel("Party Member 1:");
-		lblNewLabel_1.setBounds(61, 115, 93, 14);
-		layeredPane.add(lblNewLabel_1);
-
-		JLabel lblNewLabel = new JLabel("Who's in your party?\r\n");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel.setBounds(178, 42, 316, 46);
-		layeredPane.add(lblNewLabel);
-
-		btnTravelTest.setFont(new Font("Tahoma", Font.PLAIN, 8));
-		btnTravelTest.setBounds(282, 398, 85, 21);
-		layeredPane.add(btnTravelTest);
-
-		travelOutput = new JLabel("");
-		travelOutput.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		travelOutput.setBounds(282, 463, 85, 56);
-		layeredPane.add(travelOutput);
-
-		lblOverweight = new JLabel("");
-		lblOverweight.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		lblOverweight.setBounds(30, 429, 349, 56);
-		layeredPane.add(lblOverweight);
 
 
 		inputField = new JTextField();
@@ -921,17 +815,140 @@ public class OregonTrail {
 		lblNewLabel_77 = new JLabel("Tongues are $" +tonguePrice+"each");
 		lblNewLabel_77.setBounds(253, 230, 129, 14);
 		Store.add(lblNewLabel_77);
-		
+
+		//Creates Store Image for initial store screen
 		ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Store.png"));
-        Image image = icon.getImage();
-        Image newImage = image.getScaledInstance(1200,  1800,  Image.SCALE_SMOOTH);
-        ImageIcon newIcon = new ImageIcon(newImage);
+		Image image = icon.getImage();
+		Image newImage = image.getScaledInstance(1200,  1800,  Image.SCALE_SMOOTH);
+		ImageIcon newIcon = new ImageIcon(newImage);
 		JLabel StoreImg = new JLabel("New label");
 		StoreImg.setHorizontalAlignment(SwingConstants.CENTER);
 		StoreImg.setBounds(377, 82, 362, 562);
 		Store.add(StoreImg);
 		StoreImg.setIcon(newIcon);
+
+		layeredPane = new JLayeredPane();
+		layeredPane.setBounds(0, 0, 736, 556);
+		frmOregontrailv.getContentPane().add(layeredPane);
+
+		// Hides the initial screen where party members are entered. 
+		// Makes the store panel visible. 
+		JButton btnTravelTest = new JButton("Go to Store");
+		btnTravelTest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				layeredPane.setVisible(false);
+				gamePanel.setVisible(false);
+				Store.setVisible(true);
+				amountLeftLB.setText("$"+ wagon.getMoney());
+				wagon.clearWagon();
+				wagon.getFoodAmt();
+				menu.introMenu(textArea);
+			}
+		});
+
+		// The following "member" text fields set the names for the 
+		// members of the party. 
+		member5TF = new JTextField();
+		member5TF.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				People.setName(member5TF.getText(), 0);
+			}
+		});
+		member5TF.setBounds(160, 332, 96, 20);
+		layeredPane.add(member5TF);
+		member5TF.setColumns(10);
+
+		member4TF = new JTextField();
+		member4TF.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		member4TF.setBounds(160, 279, 96, 20);
+		layeredPane.add(member4TF);
+		member4TF.setColumns(10);
+
+		member3TF = new JTextField();
+		member3TF.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				People.setName(member3TF.getText(), 0);
+			}
+		});
+		member3TF.setBounds(160, 230, 96, 20);
+		layeredPane.add(member3TF);
+		member3TF.setColumns(10);
+
+		member2TF = new JTextField();
+		member2TF.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				People.setName(member2TF.getText(), 0);
+			}
+		});
+		member2TF.setBounds(160, 168, 96, 20);
+		layeredPane.add(member2TF);
+		member2TF.setColumns(10);
+
+		member1TF = new JTextField();
+		member1TF.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				People.setName(member1TF.getText(), 0);
+			}
+		});
+		member1TF.setBounds(160, 112, 96, 20);
+		layeredPane.add(member1TF);
+		member1TF.setColumns(10);
+
+		lblNewLabel_6 = new JLabel("Party Member 5:");
+		lblNewLabel_6.setBounds(61, 335, 103, 14);
+		layeredPane.add(lblNewLabel_6);
+
+		lblNewLabel_5 = new JLabel("Party Member 4:");
+		lblNewLabel_5.setBounds(61, 282, 93, 14);
+		layeredPane.add(lblNewLabel_5);
+
+		lblNewLabel_4 = new JLabel("Party Member 3:");
+		lblNewLabel_4.setBounds(61, 233, 93, 14);
+		layeredPane.add(lblNewLabel_4);
+
+		lblNewLabel_2 = new JLabel("Party Member 2:");
+		lblNewLabel_2.setBounds(61, 171, 93, 14);
+		layeredPane.add(lblNewLabel_2);
+
+		lblNewLabel_1 = new JLabel("Party Member 1:");
+		lblNewLabel_1.setBounds(61, 115, 93, 14);
+		layeredPane.add(lblNewLabel_1);
+
+		JLabel lblNewLabel = new JLabel("Who's in your party?\r\n");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel.setBounds(178, 42, 316, 46);
+		layeredPane.add(lblNewLabel);
+
+		//
+		btnTravelTest.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		btnTravelTest.setBounds(282, 398, 85, 21);
+		layeredPane.add(btnTravelTest);
+
+		travelOutput = new JLabel("");
+		travelOutput.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		travelOutput.setBounds(282, 463, 85, 56);
+		layeredPane.add(travelOutput);
+
+		lblOverweight = new JLabel("");
+		lblOverweight.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		lblOverweight.setBounds(30, 429, 349, 56);
+		layeredPane.add(lblOverweight);
+
+		//Creates Wagon Image for initial screen
+		ImageIcon wagonIcon = new ImageIcon(getClass().getResource("/Images/Wagon.png"));
+		Image wagonImage = wagonIcon.getImage();
+		Image newWagImage = wagonImage.getScaledInstance(378,  433,  Image.SCALE_SMOOTH);
+		ImageIcon newWagIcon = new ImageIcon(newWagImage);
 		
+		wagonImgLbl = new JLabel("New label");
+		wagonImgLbl.setHorizontalAlignment(SwingConstants.CENTER);
+		wagonImgLbl.setBounds(402, 47, 309, 353);
+		layeredPane.add(wagonImgLbl);
+		wagonImgLbl.setIcon(newWagIcon);
+
 	}
 
 
