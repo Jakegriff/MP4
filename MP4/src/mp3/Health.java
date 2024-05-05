@@ -36,7 +36,20 @@ public class Health {
 	/*
 	 * Checks the health of the player, if the health is more than 200 or everyone is dead, then the player loses; Changes the healthStr to reflect the current health status.
 	 */
-	private void CheckHealth(ArrayList<People> Party) {
+	private void CheckHealth(ArrayList<People> Party, Wagon wagon, String weather, String foodCons, String paceSet, String evt) {
+		//removes 10% of health each day.
+		genHealth -= (genHealth*.10);
+		
+		//calculates adder values.
+		weatherAdder = calcWeatherAdder(weather, Party, wagon);
+		foodAdder = calcFoodAdder(foodCons, wagon);
+		illnessRate = calcIllness(Party);
+		randEvtAdder = randomEventAdder(wagon, evt);
+		stFAdder = starveOrFreeze(wagon);
+		paceAdder = calcPace(paceSet);
+		
+		//checks player death.
+		calcDeath(Party);
 		calcHealth();
 		
 		if (genHealth >= 200 || Party.size() == 0)
@@ -56,9 +69,6 @@ public class Health {
 	 * @return genHealth - a double value representing the accumulation of bad health for the player
 	 */
 	public double calcHealth() {
-		//removes 10% of health each day
-		genHealth -= (genHealth*.10);
-		
 		genHealth += weatherAdder + foodAdder + stFAdder + paceAdder + illnessRate + randEvtAdder;
 		
 		weatherAdder = 0;
@@ -192,7 +202,6 @@ public class Health {
 		return paceAdder;
 	}
 	
-	
 	/*
 	 * Calculates the illnesses of those in the party. If any one person has more than one illness, it "kills" them by removing the person from the ArrayList
 	 * @param Party - an ArrayList containing all of the members of the party before checking deaths.
@@ -208,8 +217,7 @@ public class Health {
 			}
 		}
 	}
-	
-	
+		
 	/*
 	 * Calculates the illness rate by determining how many people have an illness.
 	 * @param ArrayList<People> Party - the ArrayList containing all the current party members.
@@ -223,9 +231,7 @@ public class Health {
 		}
 		return illnessRate;
 	}
-	
-	////////////////HELPHELPHELPHELPHELPHELPHELPHELPHELP///////////////////////////////////////////
-	
+		
 	/*
 	 * Shows a pop up window saying "You Died" because I don't really understand how the panes are implemented in this code. 
 	 */
