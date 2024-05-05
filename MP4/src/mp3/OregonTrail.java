@@ -37,7 +37,7 @@ public class OregonTrail {
 	private JLabel lblNewLabel_3;
 	private JLabel lblOverweight;
 
-	// Initialize variables used for party member calculations & hunger
+	// Initialize variables used for party member calculations & hunger.
 	int eatAmt = 1;
 	int partyMembers = 5;
 
@@ -48,6 +48,8 @@ public class OregonTrail {
 
 	Menu menu = new Menu();
 	StoreMenu store = new StoreMenu();
+	
+	//Creates new Persons using the People class.
 	People Person1 = new People();
 	People Person2 = new People();
 	People Person3 = new People();
@@ -55,6 +57,9 @@ public class OregonTrail {
 	People Person5 = new People();
 	ArrayList<People> Party = new ArrayList<>();
 
+	//Creating the Health Value
+	Health partyHealth = new Health();
+	
 	// Creating trader objects using the trading class.
 	Trading trappers = new Trading(0);
 	Trading natives = new Trading(1);
@@ -96,11 +101,10 @@ public class OregonTrail {
 	Boolean tongueFlag = false;
 	Boolean rivResults = false;
 
-	// Creating the main timer
+	// Creating the main timer.
 	private Timer timer;
 
-
-	// creates the initial prices for items
+	// creates the initial prices for items.
 	int oxenPrice = 40 * fortMultiplier;
 	double foodPrice = .20 * fortMultiplier;
 	int clothPrice = 10 * fortMultiplier;
@@ -110,7 +114,6 @@ public class OregonTrail {
 	int tonguePrice = 10 * fortMultiplier;
 
 	// Declaring the landmarks, landmark array, and location counter.
-
 	River Kansas = new River("Kansas River Crossing", 200);
 	River BBlue = new River("Big Blue River Crossing", 400);
 	Fort FortKea = new Fort("Fort Kearny", 600);
@@ -131,6 +134,8 @@ public class OregonTrail {
 	Landmarks[] Locations = {Kansas, BBlue, FortKea, Chimney, FortL, IRock, SPass, GRiver, FortB, SSprings, FortH, SRiver, FortBo,
 			BMountain, FortWW, Dalles, Oregon};
 	int locCounter = 0;
+	
+	//Initializes all Labels and 
 	private JTextField numOxenTF;
 	private JLabel lblNewLabel_62;
 	private JLabel lblNewLabel_63;
@@ -164,7 +169,6 @@ public class OregonTrail {
 	private JTextField member3TF;
 	private JTextField member4TF;
 	private JTextField member5TF;
-	private JLabel wagonImgLbl;
 
 
 	/**
@@ -694,7 +698,7 @@ public class OregonTrail {
 		Store.add(lblNewLabel_69);
 
 		totalBillLB = new JLabel("0");
-		totalBillLB.setBounds(46, 381, 48, 14);
+		totalBillLB.setBounds(46, 381, 83, 14);
 		Store.add(totalBillLB);
 
 		lblNewLabel_71 = new JLabel("Amount Left:");
@@ -703,7 +707,7 @@ public class OregonTrail {
 		Store.add(lblNewLabel_71);
 
 		amountLeftLB = new JLabel("0");
-		amountLeftLB.setBounds(134, 381, 48, 14);
+		amountLeftLB.setBounds(134, 381, 71, 14);
 		Store.add(amountLeftLB);
 
 		comboBox = new JComboBox();
@@ -812,7 +816,7 @@ public class OregonTrail {
 		member5TF = new JTextField();
 		member5TF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Person5.setName(member5TF.getText(), 0);
+				Person5.setName(member5TF.getText());
 				Party.add(Person5);
 			}
 		});
@@ -823,7 +827,7 @@ public class OregonTrail {
 		member4TF = new JTextField();
 		member4TF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Person4.setName(member3TF.getText(), 0);
+				Person4.setName(member3TF.getText());
 				Party.add(Person4);
 			}
 		});
@@ -834,7 +838,7 @@ public class OregonTrail {
 		member3TF = new JTextField();
 		member3TF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Person3.setName(member3TF.getText(), 0);
+				Person3.setName(member3TF.getText());
 				Party.add(Person3);
 			}
 		});
@@ -845,7 +849,7 @@ public class OregonTrail {
 		member2TF = new JTextField();
 		member2TF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Person2.setName(member2TF.getText(), 0);
+				Person2.setName(member2TF.getText());
 				Party.add(Person2);
 			}
 		});
@@ -856,7 +860,7 @@ public class OregonTrail {
 		member1TF = new JTextField();
 		member1TF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Person1.setName(member1TF.getText(), 0);
+				Person1.setName(member1TF.getText());
 				Party.add(Person1);
 			}
 		});
@@ -909,7 +913,7 @@ public class OregonTrail {
 		Image newWagImage = wagonIcon.getImage().getScaledInstance(378,  433,  Image.SCALE_SMOOTH);
 		ImageIcon newWagIcon = new ImageIcon(newWagImage);
 		
-		wagonImgLbl = new JLabel("New label");
+		JLabel wagonImgLbl = new JLabel("New label");
 		wagonImgLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		wagonImgLbl.setBounds(402, 47, 309, 353);
 		layeredPane.add(wagonImgLbl);
