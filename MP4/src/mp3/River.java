@@ -36,7 +36,7 @@ public class River extends Landmarks{
 
 		setName(newName);
 		setLoc(newLocation);
-		setTag("R");
+		setTag("River");
 		setRiverWidth(tempWid);
 		setRiverDepth(tempDep);
 		setRiverSpeed(tempSpd);
