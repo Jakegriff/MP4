@@ -34,7 +34,6 @@ public class OregonTrail {
 
 	private JFrame frmOregontrailv;
 	private JLayeredPane layeredPane;
-	private JLabel lblNewLabel_3;
 	private JLabel lblOverweight;
 
 	// Initialize variables used for party member calculations & hunger.
