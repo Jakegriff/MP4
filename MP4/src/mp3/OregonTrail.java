@@ -493,6 +493,7 @@ public class OregonTrail {
 								public void actionPerformed(ActionEvent evt) {
 									wagon.travel(evt, textArea, wagon.getFoodNum(), Locations[locCounter].getLocation());
 									flagCheck =	menu.landmarkCheck(evt, textArea, timer,Locations[locCounter].getLocation(), wagon.getLocation(),Locations[locCounter].getName(),Locations[locCounter].getTag(), locCounter, wagon );
+									//partyHealth.CheckHealth(party, wagon);
 									if(flagCheck != 0) {
 										travelFlag = false;
 									}
