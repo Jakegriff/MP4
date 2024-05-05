@@ -101,6 +101,7 @@ public class OregonTrail {
 	Boolean axelFlag = false;
 	Boolean tongueFlag = false;
 	Boolean rivResults = false;
+	Boolean eventFlag = false;
 
 	// Creating the main timer.
 	private Timer timer;
@@ -987,7 +988,7 @@ public class OregonTrail {
 		}
 		else return Zone1;
 }
-}
+
 
 	/*
 	 * Sets the inventory from the initial store screen and updates the money in the wagon according to the object bought.
