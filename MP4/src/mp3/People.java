@@ -3,7 +3,7 @@ package mp3;
 public class People {
 	
 	String name;
-	int numDisease; 
+	int numDisease = 0; 
 	
 	public People() {}
 	

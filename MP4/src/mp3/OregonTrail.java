@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.Timer;
 
@@ -42,43 +43,17 @@ public class OregonTrail {
 
 	// Initialize items before initialized into the wagon.
 	Wagon wagon = new Wagon();
-	Item appleVinegar = new Item("Apple Vinegar", 25, false);
-	Item Bacon = new Item("Bacon", 400, true );
-	Item Beans = new Item("Beans", 200, true );
-	Item Coffee = new Item("Coffee", 80, true  );
-	Item dApples = new Item("Dried Apples", 80, true );
-	Item Flour = new Item("Flour", 500, true );
-	Item Hardtack = new Item("Hardtack", 200, true );
-	Item Lard = new Item("Lard", 200, true );
-	Item Salt = new Item("Salt", 50, true );
-	Item Sugar = new Item("Sugar", 40, true );
-	Item Rice = new Item("Rice", 200, true );
-	Item Water = new Item("Water", 100, false );
-	Item Whiskey = new Item("Whiskey", 40, true );
-	Item Bedroll = new Item("Bedroll", 15, false );
-	Item bTools = new Item("Blacksmithing Tools", 200, false );
-	Item Books = new Item("Books", 75, false );
-	Item Medicine = new Item("Medicine", 10, false );
-	Item Stove = new Item("Cast Iron Stove", 300, false );
-	Item Chair = new Item("Chair", 20, false );
-	Item Cookware = new Item("Cookware & Eating Utensils", 75, false );
-	Item Clock = new Item("Granny's Clock", 15, false );
-	Item gTools = new Item("Gun Making Tools", 200, false );
-	Item Keepsakes = new Item("Keepsakes", 40, false );
-	Item leadShot = new Item("Lead Shot", 25, false );
-	Item Mirror = new Item("Mirror", 15, false );
-	Item Gunpowder = new Item("Gunpowder", 80, false );
-	Item Tent = new Item("Tent & Gear", 150, false );
-	Item Tools = new Item("Tools", 50, false );
-	Item Toys = new Item("Toys", 15, false );
 	private JLabel travelOutput;
 	private JTextField inputField;
 
 	Menu menu = new Menu();
 	StoreMenu store = new StoreMenu();
-	People People = new People();
-
-
+	People Person1 = new People();
+	People Person2 = new People();
+	People Person3 = new People();
+	People Person4 = new People();
+	People Person5 = new People();
+	ArrayList<People> Party = new ArrayList<>();
 
 	// Creating trader objects using the trading class.
 	Trading trappers = new Trading(0);
@@ -89,7 +64,6 @@ public class OregonTrail {
 	Trading[] traders = {trappers, natives, otherTravelers};
 	Random randomNum = new Random();
 	int randTrader;	
-
 
 	// Fort multiplier for trader class.
 	int fortMultiplier = 1;
@@ -214,7 +188,6 @@ public class OregonTrail {
 	 */
 	public OregonTrail() {
 		initialize();
-
 
 
 		// Creates panel for the initial store menu
@@ -749,33 +722,21 @@ public class OregonTrail {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(comboBox.getSelectedItem());
 				if(comboBox.getSelectedItem() == "Wheels") {
-					wagon.calcTotalBill(wheelPrice, Integer.parseInt(sparePartsTF.getText()));
-					wagon.calcMoney(wheelPrice, Integer.parseInt(sparePartsTF.getText()));
+					setInitInventory(wheelPrice);
 					wagon.setWheelNum(Integer.parseInt(sparePartsTF.getText()));
-					totalBillLB.setText("$"+wagon.getTotalBill());
-					amountLeftLB.setText("$"+ wagon.getMoney());
-					//sparePartsTF.setText(null);
+
 				}
 				if(comboBox.getSelectedItem() == "Axles") {
-					wagon.calcTotalBill(axelPrice, Integer.parseInt(sparePartsTF.getText()));
-					wagon.calcMoney(axelPrice, Integer.parseInt(sparePartsTF.getText()));
+					setInitInventory(axelPrice);
 					wagon.setAxelNum(Integer.parseInt(sparePartsTF.getText()));
-					totalBillLB.setText("$"+wagon.getTotalBill());
-					amountLeftLB.setText("$"+ wagon.getMoney());
-					//sparePartsTF.setText(null);
-				}
 				if(comboBox.getSelectedItem() == "Tongues") {
-					wagon.calcTotalBill(tonguePrice, Integer.parseInt(sparePartsTF.getText()));
-					wagon.calcMoney(tonguePrice, Integer.parseInt(sparePartsTF.getText()));
+					setInitInventory(tonguePrice);
 					wagon.setTongueNum(Integer.parseInt(sparePartsTF.getText()));
-					totalBillLB.setText("$"+wagon.getTotalBill());
-					amountLeftLB.setText("$"+ wagon.getMoney());
-					//sparePartsTF.setText(null);
 				}
 				sparePartsTF.setText(null);
-
-			}
-		});
+				}
+			}});
+		
 		sparePartsTF.setBounds(253, 296, 96, 20);
 		Store.add(sparePartsTF);
 		sparePartsTF.setColumns(10);
@@ -788,11 +749,11 @@ public class OregonTrail {
 		lblNewLabel_68.setBounds(33, 104, 123, 14);
 		Store.add(lblNewLabel_68);
 
-		lblNewLabel_70 = new JLabel("Food is $"+foodPrice+ " per pound");
+		lblNewLabel_70 = new JLabel("Food is $"+ foodPrice + "0 per pound");
 		lblNewLabel_70.setBounds(33, 171, 167, 14);
 		Store.add(lblNewLabel_70);
 
-		lblNewLabel_72 = new JLabel("Each set is $" +clothPrice+ " each");
+		lblNewLabel_72 = new JLabel("Each set is $" + clothPrice + " each");
 		lblNewLabel_72.setBounds(33, 243, 123, 14);
 		Store.add(lblNewLabel_72);
 
@@ -800,27 +761,27 @@ public class OregonTrail {
 		lblNewLabel_73.setBounds(253, 87, 271, 14);
 		Store.add(lblNewLabel_73);
 
-		lblNewLabel_74 = new JLabel("Each box is $"+ammoPrice+ " each");
+		lblNewLabel_74 = new JLabel("Each box is $"+ ammoPrice + " each");
 		lblNewLabel_74.setBounds(253, 104, 145, 14);
 		Store.add(lblNewLabel_74);
 
-		lblNewLabel_75 = new JLabel("Wheels are $" +wheelPrice+ " each");
+		lblNewLabel_75 = new JLabel("Wheels are $" + wheelPrice + " each");
 		lblNewLabel_75.setBounds(253, 182, 145, 14);
 		Store.add(lblNewLabel_75);
 
-		lblNewLabel_76 = new JLabel("Axles are $" +axelPrice+ " each");
+		lblNewLabel_76 = new JLabel("Axles are $" + axelPrice + " each");
 		lblNewLabel_76.setBounds(253, 205, 113, 14);
 		Store.add(lblNewLabel_76);
 
-		lblNewLabel_77 = new JLabel("Tongues are $" +tonguePrice+"each");
+		lblNewLabel_77 = new JLabel("Tongues are $" + tonguePrice + " each");
 		lblNewLabel_77.setBounds(253, 230, 129, 14);
 		Store.add(lblNewLabel_77);
 
 		//Creates Store Image for initial store screen
 		ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Store.png"));
-		Image image = icon.getImage();
-		Image newImage = image.getScaledInstance(1200,  1800,  Image.SCALE_SMOOTH);
+		Image newImage = icon.getImage().getScaledInstance(1200,  1800,  Image.SCALE_SMOOTH);
 		ImageIcon newIcon = new ImageIcon(newImage);
+		
 		JLabel StoreImg = new JLabel("New label");
 		StoreImg.setHorizontalAlignment(SwingConstants.CENTER);
 		StoreImg.setBounds(377, 82, 362, 562);
@@ -851,7 +812,8 @@ public class OregonTrail {
 		member5TF = new JTextField();
 		member5TF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				People.setName(member5TF.getText(), 0);
+				Person5.setName(member5TF.getText(), 0);
+				Party.add(Person5);
 			}
 		});
 		member5TF.setBounds(160, 332, 96, 20);
@@ -861,6 +823,8 @@ public class OregonTrail {
 		member4TF = new JTextField();
 		member4TF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Person4.setName(member3TF.getText(), 0);
+				Party.add(Person4);
 			}
 		});
 		member4TF.setBounds(160, 279, 96, 20);
@@ -870,7 +834,8 @@ public class OregonTrail {
 		member3TF = new JTextField();
 		member3TF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				People.setName(member3TF.getText(), 0);
+				Person3.setName(member3TF.getText(), 0);
+				Party.add(Person3);
 			}
 		});
 		member3TF.setBounds(160, 230, 96, 20);
@@ -880,7 +845,8 @@ public class OregonTrail {
 		member2TF = new JTextField();
 		member2TF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				People.setName(member2TF.getText(), 0);
+				Person2.setName(member2TF.getText(), 0);
+				Party.add(Person2);
 			}
 		});
 		member2TF.setBounds(160, 168, 96, 20);
@@ -890,7 +856,8 @@ public class OregonTrail {
 		member1TF = new JTextField();
 		member1TF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				People.setName(member1TF.getText(), 0);
+				Person1.setName(member1TF.getText(), 0);
+				Party.add(Person1);
 			}
 		});
 		member1TF.setBounds(160, 112, 96, 20);
@@ -939,8 +906,7 @@ public class OregonTrail {
 
 		//Creates Wagon Image for initial screen
 		ImageIcon wagonIcon = new ImageIcon(getClass().getResource("/Images/Wagon.png"));
-		Image wagonImage = wagonIcon.getImage();
-		Image newWagImage = wagonImage.getScaledInstance(378,  433,  Image.SCALE_SMOOTH);
+		Image newWagImage = wagonIcon.getImage().getScaledInstance(378,  433,  Image.SCALE_SMOOTH);
 		ImageIcon newWagIcon = new ImageIcon(newWagImage);
 		
 		wagonImgLbl = new JLabel("New label");
@@ -948,21 +914,27 @@ public class OregonTrail {
 		wagonImgLbl.setBounds(402, 47, 309, 353);
 		layeredPane.add(wagonImgLbl);
 		wagonImgLbl.setIcon(newWagIcon);
-
 	}
 
-
-	/**
+	/*
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-
 		frmOregontrailv = new JFrame();
 		frmOregontrailv.setTitle("OregonTrailV1");
-
-
 		frmOregontrailv.setBounds(100, 100, 750, 593);
 		frmOregontrailv.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmOregontrailv.getContentPane().setLayout(null);
 	}
-}
+
+	/*
+	 * Sets the inventory from the initial store screen and updates the money in the wagon according to the object bought.
+	 * @param objPrice - an integer value representing the price of the object bought.
+	 */
+	private void setInitInventory(int objPrice) {
+		wagon.calcTotalBill(objPrice, Integer.parseInt(sparePartsTF.getText()));
+		wagon.calcMoney(objPrice, Integer.parseInt(sparePartsTF.getText()));
+		totalBillLB.setText("$"+wagon.getTotalBill());
+		amountLeftLB.setText("$"+ wagon.getMoney());
+	}
+	}
