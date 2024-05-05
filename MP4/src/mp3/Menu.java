@@ -51,7 +51,6 @@ public class Menu{
 				+ " 6. Trade");
 	}
 
-
 	/*
 	 * Sets the text area to the checkSupplies menu screen
 	 * @param text - a JTextArea that determines which text area is changed.
@@ -62,10 +61,10 @@ public class Menu{
 	public void checkSupplies(JTextArea text, Wagon wagon) {
 
 		text.setText( " Money: $" + wagon.getMoney()
-				+ " \n Oxen: " + wagon.numOxen
+				+ " \n Oxen: " + wagon.getOxen()
 				+ " \n Bullets: " + wagon.ammunitionAmt
 				+ " \n Sets of Clothes: " + wagon.clothSetNum
-				+ " \n Pounds of Food: " + wagon.foodAmt
+				+ " \n Pounds of Food: " + wagon.getFoodAmt()
 				+ " \n Wagon Wheels: " + wagon.wheelNum
 				+ " \n Wagon Tongues: " + wagon.tongueNum
 				+ " \n Wagon Axels: " + wagon.axelNum
@@ -126,7 +125,7 @@ public class Menu{
 				+ " 3. Change pace \n"
 				+ " 4. Change rations \n"
 				+ " 5. Store \n"
-				+ " 6. Trading \n");
+				+ " 6. Trade \n");
 
 	}
 

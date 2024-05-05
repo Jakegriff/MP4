@@ -1,7 +1,5 @@
 package mp3;
 
-import java.util.*;
-
 /**
  * A template for items for an implementation of Oregon Trail
  * 

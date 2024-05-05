@@ -15,10 +15,13 @@ import javax.swing.JTextField;
  */
 
 public class Trading extends Menu{
-	protected String name;
+	protected String tradername;
 	String names[] = {"trappers" , "natives" , "other travelers"};
 	String tradeOpts[] = {"oxen", "boxes of bullets", "sets of clothes", "pounds of food", "wagon wheels", "wagon tongues", "wagon axels"};
-	int tradeAmt1 = 0, tradeAmt2 = 0, randOpt1 = getRandomOpt(), randOpt2 = getRandomOpt(), currentWagNum;
+	int tradeAmt1 = 0, tradeAmt2 = 0;
+	protected int randOpt1;
+	protected int randOpt2;
+	int currentWagNum;
 
 	/*
 	 * Constructs an object of type Trading using an indexed number to determine 
@@ -26,51 +29,75 @@ public class Trading extends Menu{
 	 * @param idx - An integer number used to assign the object an index with corresponding attributes.
 	 */
 	public Trading(int idx) {	
-		name = this.names[idx];
+		tradername = this.names[idx];
 	}
-
+	
 	/*
-	 * Displays the trade text to the player through a JTextArea and calculates the multiplier based on distance from Oregon.
+	 * Calculates the amount of the items traded via random numbers and multipliers, and decides whether the user can trade based off their current inventory and displays the correct trade prompt to the user.
 	 * @param text - the main JTextArea used to communicate with the player.
 	 * @param trader - An object of type Trading, used to determine who the player is trading with.
-	 * @param multiplier - An integer value which determines how expensive the trade is (based on the wagon's distance).
+	 * @param multiplier - A double value which determines how expensive the trade is, calculated based on the wagon's distance on the map.
 	 * @param wagon - an object of type Wagon that contains inventory.
-	 */
-	public void initiateTrade(JTextArea text, Trading trader, double multiplier, Wagon wagon) {
+	 */	
+	public void initiateTrade(JTextArea text, Trading trader, double multiplier, Wagon wagon ) {
 		randOpt1 = getRandomOpt();
 		randOpt2 = getRandomOpt();
+		
+		System.out.println("Opt 1: " + randOpt1);
+		System.out.println("Opt 2: " + randOpt2);
+		
 		tradeAmt1 = getTradeAmount(tradeAmt1, randOpt1);
 		tradeAmt2 = getTradeAmount(tradeAmt2, randOpt2);
+
+		currentWagNum = getCurrentWNum(randOpt2, wagon);
+		String tradeAction = isTradableAction();
+
+		
+		System.out.println("trading option: " + randOpt2);		
+		System.out.println("number of option in wagon: " + currentWagNum);
+		
 		text.setText(" Oxen: " + wagon.numOxen + "\n Boxes of Bullets: " + (wagon.ammunitionAmt/20) + "\n Sets of Clothing: " + wagon.clothSetNum + "\n Food: " + wagon.foodAmt 
-				+ "\n Wagon Wheels: " + wagon.wheelNum + "\n Wagon Tongues: " + wagon.tongueNum + "\n Wagon Axels: " + wagon.axelNum + "\n\n The " + trader.name + " would like to trade\n " + (multiplier *tradeAmt1) + " " + tradeOpts[randOpt1] + " for " + (multiplier * tradeAmt2) 
-				+ " " + tradeOpts[randOpt2] + ".\n\n Would you like to trade? (yes or no)\n");
+				+ "\n Wagon Wheels: " + wagon.wheelNum + "\n Wagon Tongues: " + wagon.tongueNum + "\n Wagon Axels: " + wagon.axelNum 
+				+ "\n\n The " + trader.tradername + " would like to trade\n " + (int)(multiplier *tradeAmt1) + " " + tradeOpts[randOpt1] + " for " + (int)(multiplier * tradeAmt2) 
+				+ " " + tradeOpts[randOpt2] + tradeAction);
 	}
 
 	/*
+	 * Checks whether or not the item inventory is less than the amount being asked to trade.
+	 * @return String - chooses one of two strings to return depending on the item amount. 
+	 */
+	public String isTradableAction() {
+		if(currentWagNum < tradeAmt2)
+			return "\n\n You lack the items they want. You continue on.\n Hit Enter to Continue";
+		else
+			return ".\n\n Would you like to trade? (yes or no)\n";
+	}
+	
+	/*
 	 * A Boolean function to determine whether the player input == "yes", "no", or something else. Updates wagon if "yes".
-	 * @param input - A string representing the player's answer to prompt.
-	 * @param in - A JTextField that ___.
 	 * @param text - The main JTextArea for the game's communication with player.
+	 * @param in - A JTextField that ___.
+	 * @param input - A string representing the player's answer to prompt.
 	 * @param wagon - An object of type Wagon used to determine the player's inventory.
-	 * @return - Returns false when the player answers "yes" or "no". Otherwise, returns true.*/
-	public Boolean tradeMenu(JTextArea text, JTextField in, String input, Wagon wagon, int randOpt2, int tradeAmt2) {
-		// Debugging Purposes - System.out.println(" trading option: " + randOpt2);
-		currentWagNum = getCurrentWNum(randOpt2, wagon);
-		
-		//Debugging Purposes - System.out.println(" number of thing in wagon: " + currentWagNum);
-		if(currentWagNum < tradeAmt2) {
-			System.out.println("You cannot trade, not enough items.");
+	 * @return - Returns false when the player answers "yes" or "no". Otherwise, returns true.
+	 */
+	public Boolean tradeMenu(JTextArea text, JTextField in, String input, Wagon wagon) {	
+		if(currentWagNum < tradeAmt2 && input.isEmpty()) {
 			return false;
 		}
-		else if (input.equals("yes") && currentWagNum >= tradeAmt2) {
-			System.out.println("item added.");
+		else if (currentWagNum >= tradeAmt2 && input.equals("yes")) {
+			updateWagon(wagon);
+			text.setText("Trade Complete. \n\n Hit Enter to Continue");
 			return false;
 		}
-		else if (input.equals("no")){
-			text.setText(" You said no.");
+		else if (currentWagNum >= tradeAmt2 && input.equals("no")){
+			text.setText("You said no.\n\n Hit Enter to Continue");
 			return false;
 		}
-		else return true;
+		else {
+			text.setText("incompatible answer. try again");
+			return false;
+		}
 	}
 
 	/*
@@ -155,19 +182,31 @@ public class Trading extends Menu{
 	}
 
 	/*
-	 * A value containing the random object the user is offering up.
-	 * @return randOpt2 - an integer value containing the current value of the randOpt2.
+	 * Updates the inventory of the wagon after a trade is completed.
+	 * @param wagon - an item of type Wagon, used to update variables within the wagon class.
 	 */
-	public int getrandOptNum2() {
-		return randOpt2;
+	public void updateWagon(Wagon wagon) {
+		//add items to wagon
+		switch(randOpt1) {
+		case 0: wagon.numOxen += tradeAmt1; break;
+		case 1: wagon.ammunitionAmt += tradeAmt1*20; break;
+		case 2: wagon.clothSetNum += tradeAmt1; break;
+		case 3: wagon.foodAmt += tradeAmt1; break;
+		case 4: wagon.wheelNum += tradeAmt1; break;
+		case 5: wagon.tongueNum += tradeAmt1; break;
+		case 6: wagon.axelNum += tradeAmt1; break;
+		}
+		
+		//remove items from wagon
+		switch(randOpt2) {
+		case 0: wagon.numOxen -= tradeAmt2; break;
+		case 1: wagon.ammunitionAmt -= tradeAmt2; break;
+		case 2: wagon.clothSetNum -= tradeAmt2; break;
+		case 3: wagon.foodAmt -= tradeAmt2; break;
+		case 4: wagon.wheelNum -= tradeAmt2; break;
+		case 5: wagon.tongueNum -= tradeAmt2; break;
+		case 6: wagon.axelNum -= tradeAmt2; break;
+		}
 	}
 	
-	/*
-	 * A value containing the amount of another item that the other party has requested.
-	 * @return tradeAmt2 - an integer value determined by previous code within the Trading class.
-	 */
-	public int gettradeAmt2() {
-		return tradeAmt2;
-	}
-
 }
