@@ -37,9 +37,9 @@ public class Menu{
 	 * Sets the text area to the base menu screen.
 	 * @param text - a JTextArea that determines which text area is changed.
 	 */
-	public void baseMenu(JTextArea text, Wagon wagon, Weather weather) {
+	public void baseMenu(JTextArea text, Wagon wagon, Weather weather, Health health) {
 		text.setText(" Weather: " + weather.getWeather() + "\n"
-				+ " Health: " + "Good" + "\n"
+				+ " Health: " + health.getHealthStr() + "\n"
 				+ " Pace: " + wagon.getPace() + "\n"
 				+ " Rations: " + wagon.getRations() + "\n"
 				+ " You may:" + "\n \n"
@@ -113,10 +113,10 @@ public class Menu{
 	 * @param text - a JTextArea that determines which text area is changed.
 	 * @param name - the String name of the fort being used.
 	 */
-	public void fortMenu(JTextArea text, String name, Wagon wagon, Weather weather) {
+	public void fortMenu(JTextArea text, String name, Wagon wagon, Weather weather, Health health) {
 		text.setText(" Welcome to " + name + "\n"
 				+ " Weather: " + weather.getWeather() + "\n"
-				+ " Health: " + "Good" + "\n"
+				+ " Health: " + health.getHealthStr() + "\n"
 				+ " Pace: " + wagon.getPace() + "\n"
 				+ " Rations: " + wagon.getRations() + "\n"
 				+ " \n You may:" + "\n"
@@ -135,11 +135,11 @@ public class Menu{
 	 * @param text - a JTextArea that determines which text area is changed.
 	 * @param name - the name of the current river being implemented.
 	 */
-	public void riverMenu(JTextArea text, String name, Wagon wagon, Weather weather) {
+	public void riverMenu(JTextArea text, String name, Wagon wagon, Weather weather, Health health) {
 
 		text.setText(" Welcome to " + name + "\n"
 				+ " Weather: " + weather.getWeather() + "\n"
-				+ " Health: " + "Good" + "\n"
+				+ " Health: " + health.getHealthStr() + "\n"
 				+ " Pace: " + wagon.getPace() + "\n"
 				+ " Rations: " + wagon.getRations() + "\n"
 				+ " \n You may:" + "\n \n"
@@ -149,11 +149,11 @@ public class Menu{
 				+ " 4. Change rations \n");
 	}
 	
-	public void naturalMenu(JTextArea text, String name, Wagon wagon, Weather weather) {
+	public void naturalMenu(JTextArea text, String name, Wagon wagon, Weather weather, Health health) {
 
 		text.setText(" Welcome to " + name + "\n"
 				+ " Weather: " + weather.getWeather() + "\n"
-				+ " Health: " + "Good" + "\n"
+				+ " Health: " + health.getHealthStr() + "\n"
 				+ " Pace: " + wagon.getPace() + "\n"
 				+ " Rations: " + wagon.getRations() + "\n"
 				+ " \n You may:" + "\n \n"
@@ -261,63 +261,63 @@ public class Menu{
 
 	}
 
-	public boolean paceMenu(JTextArea text, JTextField in, String input, Wagon wagon, Weather weather) {
+	public boolean paceMenu(JTextArea text, JTextField in, String input, Wagon wagon, Weather weather, Health health) {
 
 		if(input.equals("1")) {
 			wagon.setPace("Steady");
-			baseMenu(text, wagon, weather);
+			baseMenu(text, wagon, weather, health);
 			return false;
 		}
 		else if(input.equals("2")) {
 			wagon.setPace("Strenuous");
-			baseMenu(text,wagon, weather);
+			baseMenu(text,wagon, weather, health);
 			return false;
 		}
 		else if(input.equals("3")) {
 			wagon.setPace("Grueling");
-			baseMenu(text, wagon, weather);
+			baseMenu(text, wagon, weather, health);
 			return false;
 		}
 		wagon.calcPace();
 		return true;
 	}
 
-	public boolean rationsMenu(JTextArea text, JTextField in, String input, Wagon wagon, Weather weather) {
+	public boolean rationsMenu(JTextArea text, JTextField in, String input, Wagon wagon, Weather weather, Health health) {
 
 		if(input.equals("1")) {
 			wagon.setRations("Filling");
-			baseMenu(text, wagon, weather);
+			baseMenu(text, wagon, weather, health);
 			return false;
 		}
 		else if(input.equals("2")) {
 			wagon.setRations("Meager");
-			baseMenu(text, wagon, weather);
+			baseMenu(text, wagon, weather, health);
 			return false;
 		}
 		else if(input.equals("3")) {
 			wagon.setRations("Barebones");
-			baseMenu(text, wagon, weather);
+			baseMenu(text, wagon, weather, health);
 			return false;
 		}
 		return true;
 
 	}
 
-	public boolean supplyMenu(JTextArea text, JTextField in, String input, Wagon wagon, Weather weather) {
+	public boolean supplyMenu(JTextArea text, JTextField in, String input, Wagon wagon, Weather weather, Health health) {
 
 
 		if(input.equals("q")) {
-			baseMenu(text, wagon, weather);	
+			baseMenu(text, wagon, weather, health);	
 			return false;
 		}
 		else return true;
 	}
 
-	public boolean travelMenu(JTextArea text, JTextField in, String input, Timer time, Wagon wagon, Weather weather) {
+	public boolean travelMenu(JTextArea text, JTextField in, String input, Timer time, Wagon wagon, Weather weather, Health health) {
 		if(input.equals("q")) {
 			time.stop();
 			input = "";
-			baseMenu(text, wagon, weather);
+			baseMenu(text, wagon, weather, health);
 			return false;
 		}
 		else {
@@ -327,7 +327,7 @@ public class Menu{
 	}
 
 
-	public String landmarkCheck(ActionEvent evt, JTextArea text, Timer time, int nextLandmark, double currentLoc, String name, String tag, int counter, Wagon wagon, Weather weather) {
+	public String landmarkCheck(ActionEvent evt, JTextArea text, Timer time, int nextLandmark, double currentLoc, String name, String tag, int counter, Wagon wagon, Weather weather, Health health) {
 		double temp = nextLandmark - currentLoc;
 
 		//	System.out.println("QQEQWEOJQEOI: " + temp);
@@ -336,20 +336,20 @@ public class Menu{
 			time.stop();
 
 			if(tag.equals("Fort")) {
-				fortMenu(text,name, wagon, weather);
+				fortMenu(text,name, wagon, weather, health);
 				counter++;
 				System.out.println("COUNTER: " + counter);
 				return "Fort";
 			}
 
 			if(tag.equals("River")) {
-				riverMenu(text,name, wagon, weather);
+				riverMenu(text,name, wagon, weather, health);
 				counter++;
 				return "River";
 			}
 			
 			if(tag.equals("Natural")) {
-				naturalMenu(text,name,wagon, weather);
+				naturalMenu(text,name,wagon, weather, health);
 				counter++;
 				return "Natural";
 			}
