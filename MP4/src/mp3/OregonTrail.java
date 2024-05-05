@@ -775,15 +775,17 @@ public class OregonTrail {
 				if(comboBox.getSelectedItem() == "Wheels") {
 					setInitInventory(wheelPrice);
 					wagon.setWheelNum(Integer.parseInt(sparePartsTF.getText()));
+					sparePartsTF.setText(null);
 
 				}
 				if(comboBox.getSelectedItem() == "Axles") {
 					setInitInventory(axelPrice);
 					wagon.setAxelNum(Integer.parseInt(sparePartsTF.getText()));
-					if(comboBox.getSelectedItem() == "Tongues") {
-						setInitInventory(tonguePrice);
-						wagon.setTongueNum(Integer.parseInt(sparePartsTF.getText()));
-					}
+					sparePartsTF.setText(null);
+				}
+				if(comboBox.getSelectedItem() == "Tongues") {
+					setInitInventory(tonguePrice);
+					wagon.setTongueNum(Integer.parseInt(sparePartsTF.getText()));
 					sparePartsTF.setText(null);
 				}
 			}});

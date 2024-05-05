@@ -64,7 +64,7 @@ public class Menu{
 				+ " \n Oxen: " + wagon.getOxen()
 				+ " \n Bullets: " + wagon.ammunitionAmt
 				+ " \n Sets of Clothes: " + wagon.clothSetNum
-				+ " \n Pounds of Food: " + wagon.getFoodAmt()
+				+ " \n Pounds of Food: " + wagon.getFoodNum()
 				+ " \n Wagon Wheels: " + wagon.wheelNum
 				+ " \n Wagon Tongues: " + wagon.tongueNum
 				+ " \n Wagon Axels: " + wagon.axelNum
