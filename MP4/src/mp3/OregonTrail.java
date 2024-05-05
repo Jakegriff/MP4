@@ -55,6 +55,7 @@ public class OregonTrail {
 	People Person4 = new People();
 	People Person5 = new People();
 	ArrayList<People> Party = new ArrayList<>();
+	int nameCount = 0;
 
 	//Creating the Health Value
 	Health partyHealth = new Health();
@@ -76,6 +77,7 @@ public class OregonTrail {
 	String input = "";
 	int inputInt;
 	String flagCheck = "";
+
 
 	// Boolean values for flags.
 	Boolean alive = true;
@@ -136,7 +138,7 @@ public class OregonTrail {
 	Landmarks[] Locations = {FortI, Kansas, BBlue, FortKea, Chimney, FortL, IRock, SPass, GRiver, FortB, SSprings, FortH, SRiver, FortBo,
 			BMountain, FortWW, Dalles, Oregon};
 	int locCounter = 0;
-	
+
 	final String Zone1 = "Zone 1";
 	final String Zone2 = "Zone 2";
 	final String Zone3 = "Zone 3";
@@ -144,7 +146,7 @@ public class OregonTrail {
 	final String Zone5 = "Zone 5";
 	final String Zone6 = "Zone 6";
 	String currentZone = Zone1;
-	
+
 	Weather weather = new Weather();
 	//Initializes all Labels and 
 	private JTextField numOxenTF;
@@ -204,13 +206,6 @@ public class OregonTrail {
 	public OregonTrail() {
 		initialize();
 
-
-		// Creates panel for the initial store menu
-		JPanel Store = new JPanel();
-		Store.setBounds(0, 0, 736, 556);
-		frmOregontrailv.getContentPane().add(Store);
-		Store.setVisible(false);
-
 		// Creates the panel where the game is played
 		JPanel gamePanel = new JPanel();
 		gamePanel.setBackground(new Color(0, 0, 0));
@@ -254,7 +249,7 @@ public class OregonTrail {
 						travelFlag = false;
 						flagCheck = "";
 					}
-					
+
 					if(flagCheck.equals("Natural")) {
 						naturalLFlag = true;
 						menuFlag = true;
@@ -487,7 +482,7 @@ public class OregonTrail {
 							fortFlag = false;
 							locCounter++;
 						}
-						
+
 						if(naturalLFlag == true) {
 							naturalLFlag = false;
 							locCounter++;
@@ -506,7 +501,7 @@ public class OregonTrail {
 								menu.riverChoices(textArea, temp.getRiverWidth(), temp.getRiverDepth(),wagon, weather);
 							}
 						}
-						
+
 						else {
 							inputField.setText(null);
 							textArea.setText(null);
@@ -516,6 +511,7 @@ public class OregonTrail {
 							timer = new javax.swing.Timer(100, new ActionListener() {
 								public void actionPerformed(ActionEvent evt) {
 									wagon.travel(evt, textArea, wagon.getFoodNum(), Locations[locCounter].getLocation());
+									//partyHealth.CheckHealth(Party, wagon, weather);
 									RandomEvent randomEvent = new RandomEvent();
 									randomEvent.travelDay(timer);
 									//eventFlag = false;
@@ -574,14 +570,14 @@ public class OregonTrail {
 					{
 						if(fortFlag == true)
 						{
-						inputField.setText(null);
-						textArea.setText(null);
-						menuFlag = true;
-						storeFlag = true;
-						store.baseStoreMenu(textArea, wagon);
+							inputField.setText(null);
+							textArea.setText(null);
+							menuFlag = true;
+							storeFlag = true;
+							store.baseStoreMenu(textArea, wagon);
 						}
 						break;
-						
+
 					}
 
 					// Trade
@@ -626,7 +622,7 @@ public class OregonTrail {
 					//System.out.println(wagon.getWheelNum());
 					//System.out.println(currentZone);
 					System.out.println("______________");
-					
+
 				}
 				inputField.setText("");
 			}
@@ -638,6 +634,13 @@ public class OregonTrail {
 		gamePanel.add(inputField);
 		inputField.setColumns(10);
 		gamePanel.setVisible(false);
+
+
+		// Creates panel for the initial store menu
+		JPanel Store = new JPanel();
+		Store.setBounds(0, 0, 736, 556);
+		frmOregontrailv.getContentPane().add(Store);
+		Store.setVisible(false);
 
 		numOxenTF = new JTextField();
 		numOxenTF.setBounds(33, 129, 96, 20);
@@ -661,6 +664,7 @@ public class OregonTrail {
 
 		// Hides the store panel and makes the game panel visible, starting the game.
 		JButton setButton = new JButton("Start Game");
+		setButton.setEnabled(false);
 		setButton.setBounds(117, 412, 250, 23);
 		setButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -820,7 +824,7 @@ public class OregonTrail {
 		lblNewLabel_77 = new JLabel("Tongues are $" + tonguePrice + " each");
 		lblNewLabel_77.setBounds(253, 230, 129, 14);
 		Store.add(lblNewLabel_77);
-
+		
 		//Creates Store Image for initial store screen
 		ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Store.png"));
 		Image newImage = icon.getImage().getScaledInstance(1200,  1800,  Image.SCALE_SMOOTH);
@@ -832,11 +836,6 @@ public class OregonTrail {
 		Store.add(StoreImg);
 		StoreImg.setIcon(newIcon);
 
-		//Creates Wagon Image for initial screen
-		ImageIcon wagonIcon = new ImageIcon(getClass().getResource("/Images/Wagon.png"));
-		Image newWagImage = wagonIcon.getImage().getScaledInstance(378,  433,  Image.SCALE_SMOOTH);
-		ImageIcon newWagIcon = new ImageIcon(newWagImage);
-
 		layeredPane = new JLayeredPane();
 		layeredPane.setBounds(0, 0, 736, 556);
 		frmOregontrailv.getContentPane().add(layeredPane);
@@ -844,6 +843,9 @@ public class OregonTrail {
 		// Hides the initial screen where party members are entered. 
 		// Makes the store panel visible. 
 		JButton btnTravelTest = new JButton("Go to Store");
+		btnTravelTest.setEnabled(false);
+		
+
 		btnTravelTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				layeredPane.setVisible(false);
@@ -858,13 +860,20 @@ public class OregonTrail {
 
 		// The following "member" text fields set the names for the 
 		// members of the party. 
+
 		member5TF = new JTextField();
 		member5TF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Person5.setName(member5TF.getText());
 				Party.add(Person5);
+				nameCount++;
+				System.out.println(nameCount);
+				if(nameCount >= 5) {
+					btnTravelTest.setEnabled(true);
+				}
 			}
 		});
+
 		member5TF.setBounds(160, 332, 96, 20);
 		layeredPane.add(member5TF);
 		member5TF.setColumns(10);
@@ -874,6 +883,11 @@ public class OregonTrail {
 			public void actionPerformed(ActionEvent e) {
 				Person4.setName(member3TF.getText());
 				Party.add(Person4);
+				nameCount++;
+				System.out.println(nameCount);
+				if(nameCount >= 5) {
+					btnTravelTest.setEnabled(true);
+				}
 			}
 		});
 		member4TF.setBounds(160, 279, 96, 20);
@@ -885,6 +899,11 @@ public class OregonTrail {
 			public void actionPerformed(ActionEvent e) {
 				Person3.setName(member3TF.getText());
 				Party.add(Person3);
+				nameCount++;
+				System.out.println(nameCount);
+				if(nameCount >= 5) {
+					btnTravelTest.setEnabled(true);
+				}
 			}
 		});
 		member3TF.setBounds(160, 230, 96, 20);
@@ -896,6 +915,11 @@ public class OregonTrail {
 			public void actionPerformed(ActionEvent e) {
 				Person2.setName(member2TF.getText());
 				Party.add(Person2);
+				nameCount++;
+				System.out.println(nameCount);
+				if(nameCount >= 5) {
+					btnTravelTest.setEnabled(true);
+				}
 			}
 		});
 		member2TF.setBounds(160, 168, 96, 20);
@@ -907,11 +931,18 @@ public class OregonTrail {
 			public void actionPerformed(ActionEvent e) {
 				Person1.setName(member1TF.getText());
 				Party.add(Person1);
+				nameCount++;
+				System.out.println(nameCount);
+				if(nameCount >= 5) {
+					btnTravelTest.setEnabled(true);
+				}
+				
 			}
 		});
 		member1TF.setBounds(160, 112, 96, 20);
 		layeredPane.add(member1TF);
 		member1TF.setColumns(10);
+		
 
 		lblNewLabel_6 = new JLabel("Party Member 5:");
 		lblNewLabel_6.setBounds(61, 335, 103, 14);
@@ -952,12 +983,18 @@ public class OregonTrail {
 		lblOverweight.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		lblOverweight.setBounds(30, 429, 349, 56);
 		layeredPane.add(lblOverweight);
+		
+		//Creates Wagon Image for initial screen
+		ImageIcon wagonIcon = new ImageIcon(getClass().getResource("/Images/Wagon.png"));
+		Image newWagImage = wagonIcon.getImage().getScaledInstance(378,  433,  Image.SCALE_SMOOTH);
+		ImageIcon newWagIcon = new ImageIcon(newWagImage);
 
 		JLabel wagonImgLbl = new JLabel("New label");
 		wagonImgLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		wagonImgLbl.setBounds(402, 47, 309, 353);
 		layeredPane.add(wagonImgLbl);
 		wagonImgLbl.setIcon(newWagIcon);
+
 
 		JPanel Died_Screen = new JPanel();
 		Died_Screen.setBounds(0, 0, 646, 524);
@@ -968,7 +1005,7 @@ public class OregonTrail {
 		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 40));
 		lblNewLabel_7.setBounds(167, 131, 366, 187);
 		Died_Screen.add(lblNewLabel_7);
-		
+
 		Died_Screen.setVisible(false);
 	}
 
@@ -982,13 +1019,13 @@ public class OregonTrail {
 		frmOregontrailv.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmOregontrailv.getContentPane().setLayout(null);
 	}
-	
+
 	public String zoneCheck(Wagon wagon) {
-		
-		
+
+
 		if(wagon.getLocation() >= 600.0 && wagon.getLocation() < 1000.0) {
 			return Zone2;
-	    }
+		}
 		else if(wagon.getLocation() >= 1000.0 && wagon.getLocation() < 1200.0) {
 			return Zone3;
 		}
@@ -1002,7 +1039,7 @@ public class OregonTrail {
 			return Zone6;
 		}
 		else return Zone1;
-}
+	}
 
 
 	/*
