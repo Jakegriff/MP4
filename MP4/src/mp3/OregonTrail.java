@@ -213,7 +213,7 @@ public class OregonTrail {
 				{
 					input = inputField.getText();
 
-					// River or Fort boolean checks
+					// River, Fort, and Natural Landmark boolean checks
 					if(flagCheck.equals("Fort")) {
 						fortFlag = true;
 						menuFlag = true;
@@ -268,7 +268,10 @@ public class OregonTrail {
 					menu.fortMenu(textArea, Locations[locCounter].getName(), wagon, weather);
 					menuFlag = true;
 				}
+
 				
+				// If in river results set menu flag to false to avoid bringing up base menu
+
 				if(rivResults ==  true) {
 					menuFlag = false;
 				}
@@ -457,18 +460,20 @@ public class OregonTrail {
 					// Travel
 					case "1":
 					{
+						// If in fort and select travel, player is not longer in fort. Have to increment counter and reset flag.
 						if(fortFlag == true ) {
 							fortFlag = false;
 							locCounter++;
 							fortMultiplier = fortMultiplier + .25;
 						}
-						
+						// If in natural landmark and select travel, player is not longer in natural landmark.
+						// Have to increment counter and reset flag.
 						if(naturalLFlag == true) {
 							naturalLFlag = false;
 							locCounter++;
 						}
 
-
+						// If in river have to display river conditions and move on to sub menu.
 						if(riverFlag == true) {
 							River temp = (River) Locations[locCounter];
 							if(rivSubMenuFlag == false) {
@@ -476,12 +481,12 @@ public class OregonTrail {
 								rivSubMenuFlag = true;
 								riverFlag = false;
 							}
-
+							// After conditions is displayed, show options for traversing.
 							else {
 								menu.riverChoices(textArea, temp.getRiverWidth(), temp.getRiverDepth(),wagon, weather);
 							}
 						}
-						
+						// If in normal travel mode set travel flag, start random events and weather changes, and checking for landmarks.
 						else {
 							inputField.setText(null);
 							textArea.setText(null);
@@ -722,9 +727,15 @@ public class OregonTrail {
 		frmOregontrailv.getContentPane().setLayout(null);
 	}
 	
+	/**
+	 * Method to determine what zone the player is currently in. Used for Weather class to determine temp range and weather.
+	 * @param wagon: The wagon object, used to determine current location
+	 * @return returns the zone the player is currently in
+	 */
 	public String zoneCheck(Wagon wagon) {
 		
-		
+		// If the player is in the range for the zone, then it will return said zone.
+		// Zone ranges based on Ch 16 of "You have Died of Dysentery".
 		if(wagon.getLocation() >= 600.0 && wagon.getLocation() < 1000.0) {
 			return Zone2;
 	    }
