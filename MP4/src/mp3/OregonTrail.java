@@ -217,6 +217,7 @@ public class OregonTrail {
 	Boolean axelFlag = false;
 	Boolean tongueFlag = false;
 	Boolean rivResults = false;
+	Boolean eventFlag = false;
 	
 
 	// Creating the main timer
@@ -560,6 +561,13 @@ public class OregonTrail {
 							timer = new javax.swing.Timer(100, new ActionListener() {
 								public void actionPerformed(ActionEvent evt) {
 									wagon.travel(evt, textArea, wagon.getFoodNum(), Locations[locCounter].getLocation());
+									RandomEvent randomEvent = new RandomEvent();
+									randomEvent.travelDay(timer);
+									//eventFlag = false;
+									System.out.println("event: "+ randomEvent.getEvent());
+									if(randomEvent.getEvent() == true) {
+										randomEvent.eventtext(evt, textArea);
+									}
 									flagCheck =	menu.landmarkCheck(evt, textArea, timer,Locations[locCounter].getLocation(), wagon.getLocation(),Locations[locCounter].getName(),Locations[locCounter].getTag(), locCounter, wagon );
 									if(flagCheck != 0) {
 										travelFlag = false;
