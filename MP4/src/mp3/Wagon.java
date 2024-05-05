@@ -19,7 +19,6 @@ public class Wagon{
 	protected int wagonMax = 2400;
 	protected int wagonWeight = 0;
 	protected int foodAmt = 0;
-	private String weather = "Fair";
 	private String pace = "Steady";
 	private String rations = "Filling";
 	private double location = 0;
@@ -170,14 +169,6 @@ public class Wagon{
 	 */
 	public void clearWagon() {
 		supplies.clear();
-	}
-
-	/*
-	 * Gets the weather at the point when called.
-	 * @return weather - a string representing the current weather.
-	 */
-	public String getWeather() {
-		return(weather);
 	}
 
 	/*

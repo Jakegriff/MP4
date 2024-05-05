@@ -6,7 +6,7 @@ public class NaturalLandmark extends Landmarks{
 	public NaturalLandmark(String newName, int newLocation) {
 		setName(newName);
 		setLoc(newLocation);
-		setTag("N");
+		setTag("Natural");
 
 	}
 }
