@@ -48,7 +48,7 @@ public class OregonTrail {
 
 	Menu menu = new Menu();
 	StoreMenu store = new StoreMenu();
-	
+
 	//Creates new Persons using the People class.
 	People Person1 = new People();
 	People Person2 = new People();
@@ -59,7 +59,7 @@ public class OregonTrail {
 
 	//Creating the Health Value
 	Health partyHealth = new Health();
-	
+
 	// Creating trader objects using the trading class.
 	Trading trappers = new Trading(0);
 	Trading natives = new Trading(1);
@@ -210,7 +210,6 @@ public class OregonTrail {
 		JPanel Store = new JPanel();
 		Store.setBounds(0, 0, 736, 556);
 		frmOregontrailv.getContentPane().add(Store);
-		Store.setLayout(null);
 		Store.setVisible(false);
 
 		// Creates the panel where the game is played
@@ -642,6 +641,7 @@ public class OregonTrail {
 		gamePanel.setVisible(false);
 
 		numOxenTF = new JTextField();
+		numOxenTF.setBounds(33, 129, 96, 20);
 		numOxenTF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wagon.calcTotalBill(oxenPrice, Integer.parseInt(numOxenTF.getText()));
@@ -651,7 +651,7 @@ public class OregonTrail {
 				amountLeftLB.setText("$"+ wagon.getMoney());
 			}
 		});
-		numOxenTF.setBounds(33, 129, 96, 20);
+		Store.setLayout(null);
 		Store.add(numOxenTF);
 		numOxenTF.setColumns(10);
 
@@ -662,6 +662,7 @@ public class OregonTrail {
 
 		// Hides the store panel and makes the game panel visible, starting the game.
 		JButton setButton = new JButton("Start Game");
+		setButton.setBounds(117, 412, 250, 23);
 		setButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wagon.setTotalBill();
@@ -669,12 +670,11 @@ public class OregonTrail {
 				gamePanel.setVisible(true);
 			}
 		});
-		setButton.setBounds(117, 412, 250, 23);
 		Store.add(setButton);
 
 		lblNewLabel_62 = new JLabel("Load your wagon");
-		lblNewLabel_62.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNewLabel_62.setBounds(184, 8, 507, 45);
+		lblNewLabel_62.setFont(new Font("Tahoma", Font.BOLD, 20));
 		Store.add(lblNewLabel_62);
 
 		lblNewLabel_63 = new JLabel("Pounds of Food:");
@@ -683,6 +683,7 @@ public class OregonTrail {
 
 		// Sets the amount of food in the initial store.
 		foodTF = new JTextField();
+		foodTF.setBounds(33, 199, 96, 20);
 		foodTF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wagon.calcTotalBill(foodPrice, Integer.parseInt(foodTF.getText()));
@@ -692,7 +693,6 @@ public class OregonTrail {
 				amountLeftLB.setText("$"+ wagon.getMoney());
 			}
 		});
-		foodTF.setBounds(33, 199, 96, 20);
 		Store.add(foodTF);
 		foodTF.setColumns(10);
 
@@ -702,6 +702,7 @@ public class OregonTrail {
 
 		// Sets the amount of cloth in the initial store.
 		clothTF = new JTextField();
+		clothTF.setBounds(33, 268, 96, 20);
 		clothTF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wagon.calcTotalBill(clothPrice, Integer.parseInt(clothTF.getText()));
@@ -711,7 +712,6 @@ public class OregonTrail {
 				amountLeftLB.setText("$"+ wagon.getMoney());
 			}
 		});
-		clothTF.setBounds(33, 268, 96, 20);
 		Store.add(clothTF);
 		clothTF.setColumns(10);
 
@@ -721,6 +721,7 @@ public class OregonTrail {
 
 		// Sets the amount of ammo in the initial store.
 		ammoTF = new JTextField();
+		ammoTF.setBounds(253, 126, 96, 20);
 		ammoTF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wagon.calcTotalBill(ammoPrice, Integer.parseInt(ammoTF.getText()));
@@ -730,13 +731,12 @@ public class OregonTrail {
 				amountLeftLB.setText("$"+ wagon.getMoney());
 			}
 		});
-		ammoTF.setBounds(253, 126, 96, 20);
 		Store.add(ammoTF);
 		ammoTF.setColumns(10);
 
 		lblNewLabel_69 = new JLabel("Total Bill:");
-		lblNewLabel_69.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel_69.setBounds(33, 356, 71, 14);
+		lblNewLabel_69.setFont(new Font("Tahoma", Font.BOLD, 11));
 		Store.add(lblNewLabel_69);
 
 		totalBillLB = new JLabel("0");
@@ -744,8 +744,8 @@ public class OregonTrail {
 		Store.add(totalBillLB);
 
 		lblNewLabel_71 = new JLabel("Amount Left:");
-		lblNewLabel_71.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel_71.setBounds(124, 356, 76, 14);
+		lblNewLabel_71.setFont(new Font("Tahoma", Font.BOLD, 11));
 		Store.add(lblNewLabel_71);
 
 		amountLeftLB = new JLabel("0");
@@ -753,8 +753,8 @@ public class OregonTrail {
 		Store.add(amountLeftLB);
 
 		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Select a Part", "Wheels", "Axles", "Tongues"}));
 		comboBox.setBounds(253, 263, 134, 22);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Select a Part", "Wheels", "Axles", "Tongues"}));
 		Store.add(comboBox);
 
 		lblNewLabel_66 = new JLabel("Spare Parts:");
@@ -764,6 +764,7 @@ public class OregonTrail {
 		// Sets the amount of spare parts in the initial store
 		// depending the the user selection from the combo Box.
 		sparePartsTF = new JTextField();
+		sparePartsTF.setBounds(253, 296, 96, 20);
 		sparePartsTF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(comboBox.getSelectedItem());
@@ -775,15 +776,13 @@ public class OregonTrail {
 				if(comboBox.getSelectedItem() == "Axles") {
 					setInitInventory(axelPrice);
 					wagon.setAxelNum(Integer.parseInt(sparePartsTF.getText()));
-				if(comboBox.getSelectedItem() == "Tongues") {
-					setInitInventory(tonguePrice);
-					wagon.setTongueNum(Integer.parseInt(sparePartsTF.getText()));
-				}
-				sparePartsTF.setText(null);
+					if(comboBox.getSelectedItem() == "Tongues") {
+						setInitInventory(tonguePrice);
+						wagon.setTongueNum(Integer.parseInt(sparePartsTF.getText()));
+					}
+					sparePartsTF.setText(null);
 				}
 			}});
-		
-		sparePartsTF.setBounds(253, 296, 96, 20);
 		Store.add(sparePartsTF);
 		sparePartsTF.setColumns(10);
 
@@ -827,12 +826,17 @@ public class OregonTrail {
 		ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Store.png"));
 		Image newImage = icon.getImage().getScaledInstance(1200,  1800,  Image.SCALE_SMOOTH);
 		ImageIcon newIcon = new ImageIcon(newImage);
-		
+
 		JLabel StoreImg = new JLabel("New label");
-		StoreImg.setHorizontalAlignment(SwingConstants.CENTER);
 		StoreImg.setBounds(377, 82, 362, 562);
+		StoreImg.setHorizontalAlignment(SwingConstants.CENTER);
 		Store.add(StoreImg);
 		StoreImg.setIcon(newIcon);
+
+		//Creates Wagon Image for initial screen
+		ImageIcon wagonIcon = new ImageIcon(getClass().getResource("/Images/Wagon.png"));
+		Image newWagImage = wagonIcon.getImage().getScaledInstance(378,  433,  Image.SCALE_SMOOTH);
+		ImageIcon newWagIcon = new ImageIcon(newWagImage);
 
 		layeredPane = new JLayeredPane();
 		layeredPane.setBounds(0, 0, 736, 556);
@@ -950,16 +954,23 @@ public class OregonTrail {
 		lblOverweight.setBounds(30, 429, 349, 56);
 		layeredPane.add(lblOverweight);
 
-		//Creates Wagon Image for initial screen
-		ImageIcon wagonIcon = new ImageIcon(getClass().getResource("/Images/Wagon.png"));
-		Image newWagImage = wagonIcon.getImage().getScaledInstance(378,  433,  Image.SCALE_SMOOTH);
-		ImageIcon newWagIcon = new ImageIcon(newWagImage);
-		
 		JLabel wagonImgLbl = new JLabel("New label");
 		wagonImgLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		wagonImgLbl.setBounds(402, 47, 309, 353);
 		layeredPane.add(wagonImgLbl);
 		wagonImgLbl.setIcon(newWagIcon);
+
+		JPanel Died_Screen = new JPanel();
+		Died_Screen.setBounds(0, 0, 646, 524);
+		frmOregontrailv.getContentPane().add(Died_Screen);
+		Died_Screen.setLayout(null);
+
+		JLabel lblNewLabel_7 = new JLabel("YOU DIED!!!!");
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 40));
+		lblNewLabel_7.setBounds(167, 131, 366, 187);
+		Died_Screen.add(lblNewLabel_7);
+		
+		Died_Screen.setVisible(false);
 	}
 
 	/*
@@ -1005,4 +1016,4 @@ public class OregonTrail {
 		totalBillLB.setText("$"+wagon.getTotalBill());
 		amountLeftLB.setText("$"+ wagon.getMoney());
 	}
-	}
+}
