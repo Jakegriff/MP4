@@ -59,6 +59,7 @@ public class OregonTrail {
 
 	//Creating the Health Value
 	Health partyHealth = new Health();
+	String healStr;
 
 	// Creating trader objects using the trading class.
 	Trading trappers = new Trading(0);
@@ -264,30 +265,30 @@ public class OregonTrail {
 
 				// If the supply flag is true, call the supply menu.
 				if(supplyFlag == true) {
-					supplyFlag = menu.supplyMenu(textArea, inputField, input, wagon, weather);
+					supplyFlag = menu.supplyMenu(textArea, inputField, input, wagon, weather, partyHealth);
 					input = "";
 				}
 
 				// If the pace flag is true, call the pace menu.
 				if(paceFlag == true) {
-					paceFlag =  menu.paceMenu(textArea, inputField, input, wagon, weather);
+					paceFlag =  menu.paceMenu(textArea, inputField, input, wagon, weather, partyHealth);
 					input = "";
 				}
 
 				// If the rations flag is true, call the rations menu.
 				if(ratFlag == true) {
-					ratFlag = menu.rationsMenu(textArea, inputField, input, wagon, weather);
+					ratFlag = menu.rationsMenu(textArea, inputField, input, wagon, weather, partyHealth);
 					input = "";
 				}
 
 				// If the travel flag is true, call the travel menu.
 				if(travelFlag == true) {
-					travelFlag = menu.travelMenu(textArea, inputField, input, timer, wagon, weather);
+					travelFlag = menu.travelMenu(textArea, inputField, input, timer, wagon, weather, partyHealth);
 				}
 
 				// If you reach a fort, show the fort menu.
 				if(fortFlag == true) {
-					menu.fortMenu(textArea, Locations[locCounter].getName(), wagon, weather);
+					menu.fortMenu(textArea, Locations[locCounter].getName(), wagon, weather, partyHealth);
 					menuFlag = true;
 				}
 
@@ -470,7 +471,7 @@ public class OregonTrail {
 
 				// If the menu flag is false, then display the base Menu (default)
 				if(menuFlag == false && fortFlag == false) {
-					menu.baseMenu(textArea, wagon, weather);
+					menu.baseMenu(textArea, wagon, weather, partyHealth);
 				}
 
 				// If the menu flag is false and the user is at a river or fort, calculates and shows the corresponding screen.
@@ -515,7 +516,7 @@ public class OregonTrail {
 							timer = new javax.swing.Timer(100, new ActionListener() {
 								public void actionPerformed(ActionEvent evt) {
 									wagon.travel(evt, textArea, wagon.getFoodNum(), Locations[locCounter].getLocation());
-									//partyHealth.CheckHealth(Party, wagon, weather);
+									healStr = partyHealth.CheckHealth(Party, wagon, weather);
 									RandomEvent randomEvent = new RandomEvent();
 									randomEvent.travelDay(timer);
 									//eventFlag = false;
@@ -523,7 +524,7 @@ public class OregonTrail {
 									if(randomEvent.getEvent() == true) {
 										randomEvent.eventtext(evt, textArea);
 									}
-									flagCheck =	menu.landmarkCheck(evt, textArea, timer,Locations[locCounter].getLocation(), wagon.getLocation(),Locations[locCounter].getName(),Locations[locCounter].getTag(), locCounter, wagon, weather );
+									flagCheck =	menu.landmarkCheck(evt, textArea, timer,Locations[locCounter].getLocation(), wagon.getLocation(),Locations[locCounter].getName(),Locations[locCounter].getTag(), locCounter, wagon, weather, partyHealth);
 									currentZone = zoneCheck(wagon);
 									weather.calcWeather(currentZone);
 									if(!flagCheck.equals("0")) {

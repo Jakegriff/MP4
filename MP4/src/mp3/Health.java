@@ -1,5 +1,6 @@
 package mp3;
 import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -35,8 +36,12 @@ public class Health {
 	
 	/*
 	 * Checks the health of the player, if the health is more than 200 or everyone is dead, then the player loses; Changes the healthStr to reflect the current health status.
+	 * @param Party - an ArrayList of all the members in the current Party.
+	 * @param wagon - an object of type Wagon determining the user's wagon and related settings.
+	 * @param weather - an object of type Weather to determine the weather.
+	 * @return healthStr - a STring value representing the current party's health
 	 */
-	private void CheckHealth(ArrayList<People> Party, Wagon wagon, Weather weather, String evt) {
+	public String CheckHealth(ArrayList<People> Party, Wagon wagon, Weather weather) {
 		//removes 10% of health each day.
 		genHealth -= (genHealth*.10);
 		
@@ -44,7 +49,6 @@ public class Health {
 		weatherAdder = calcWeatherAdder(weather, Party, wagon);
 		foodAdder = calcFoodAdder(wagon);
 		illnessRate = calcIllness(Party);
-		randEvtAdder = randomEventAdder(wagon, evt);
 		stFAdder = starveOrFreeze(wagon);
 		paceAdder = calcPace(wagon);
 		
@@ -52,16 +56,20 @@ public class Health {
 		calcDeath(Party);
 		calcHealth();
 		
-		if (genHealth >= 200 || Party.size() == 0)
+		if (genHealth >= 1200 || Party.size() == 0)
 			lose();
-		else if (genHealth < 34)
+		else if (genHealth < 255)
 			healthStr = "Good";
-		else if (genHealth < 65)
+		else if (genHealth < 488)
 			healthStr = "Fair";
-		else if (genHealth < 104)
+		else if (genHealth < 780)
 			healthStr = "Poor";
-		else if (genHealth < 140)
-			healthStr = "critical";
+		else if (genHealth < 1050)
+			healthStr = "Critical";
+		else
+			healthStr = "Dire";
+		System.out.println(genHealth);
+		return healthStr;
 	}
 
 	/*
@@ -69,12 +77,12 @@ public class Health {
 	 * @return genHealth - a double value representing the accumulation of bad health for the player
 	 */
 	public double calcHealth() {
-		genHealth += weatherAdder + foodAdder + stFAdder + paceAdder + illnessRate + randEvtAdder;
+		genHealth += weatherAdder + foodAdder + stFAdder + paceAdder + illnessRate;
 		
+		//resets the adders
 		weatherAdder = 0;
 		foodAdder = 0;
 		illnessRate = 0;
-		randEvtAdder = 0;
 		
 		return Math.round(genHealth * 100.0) / 100.0;
 	}
@@ -92,35 +100,44 @@ public class Health {
 		case ("Very Hot"):
 			weatherAdder = 2;
 			lacksClothSet = false;
+			break;
 		case ("Hot"):
 			lacksClothSet = false;
 			weatherAdder = 1;
+			break;
 		case ("Cold"):
 			if (wagon.clothSetNum == 0) {
 				lacksClothSet = true;
 				weatherAdder = 2;
+				break;
 			} else if (wagon.clothSetNum < 2*Party.size()) {
 				lacksClothSet = true;
 				weatherAdder = 1;
+				break;
 			} else {
 				weatherAdder = 0;
 				lacksClothSet = false;
+				break;
 			}
 		case ("Very Cold"):
 			if (wagon.clothSetNum == 0) {
 				lacksClothSet = true;
 				weatherAdder = 4;
 				lacksClothSet = true;
+				break;
 			} else if (wagon.clothSetNum < 2*Party.size()) {
 				weatherAdder = 2;
 				lacksClothSet = true;
+				break;
 			} else {
 				weatherAdder = 0;
 				lacksClothSet = false;
+				break;
 			}
 		default:
 			weatherAdder = 0;
 			lacksClothSet = false;
+			break;
 		}	
 		return weatherAdder;
 	}
@@ -137,13 +154,13 @@ public class Health {
 		
 		switch(tempFoodCons) {
 		case ("Empty"):
-			foodAdder = 6;
+			foodAdder = 6; break;
 		case ("Meager"):
-			foodAdder = 4;
+			foodAdder = 4; break;
 		case ("Bare Bones"):
-			foodAdder = 2;
+			foodAdder = 2; break;
 		default:
-			foodAdder = 0;
+			foodAdder = 0; break;
 		}	
 		return foodAdder;
 	}
@@ -162,24 +179,7 @@ public class Health {
 			stFAdder /= 2;
 		return stFAdder;
 	}
-	
-	/*
-	 * Calculates the starve or freeze adder based on whether the player lacks clothing sets or food.
-	 * @param wagon - an object of type Wagon containing the user's inventory.
-	 * @param evt - a String determining possible other events.
-	 * @return stFAdder - a double value representing the amount of bad health accumulated by freezing or starving.
-	 */
-	public int randomEventAdder(Wagon wagon, String evt) {
-		if (evt == "Bad Water") 
-			randEvtAdder += 20;
-		else if (evt == "Little Water")
-			randEvtAdder += 10;
-		else if (evt == "Obtained Disease")
-			randEvtAdder += 20;
-		else
-			randEvtAdder = 0;
-		return randEvtAdder;
-	}
+
 	
 	/*
 	 * Calculates the value of the pace consumption adder and returns that value according to the pace rate.
@@ -190,16 +190,17 @@ public class Health {
 		String paceSet = wagon.getPace();
 		switch(paceSet) {
 		case ("Resting"):
-			paceAdder = 0;
+			paceAdder = 0; break;
 		case ("Steady"):
-			paceAdder = 2;
+			paceAdder = 2; break;
 		case ("Strenuous"):
-			paceAdder = 4;
+			paceAdder = 4; break;
 		case ("Grueling"):
-			paceAdder = 6;
+			paceAdder = 6; break;
 		default:
 			paceAdder = 0;
 			System.out.println("ERROR: DEFAULT CALCPACE");
+			break;
 		}	
 		return paceAdder;
 	}
@@ -234,6 +235,15 @@ public class Health {
 		return illnessRate;
 	}
 		
+	/*
+	 * Returns the health as a string.
+	 * @return healthStr - the party's health represented by a String value.
+	 */
+	public String getHealthStr() {
+		return healthStr;
+	}
+	
+	
 	/*
 	 * Shows a pop up window saying "You Died" because I don't really understand how the panes are implemented in this code. 
 	 */
