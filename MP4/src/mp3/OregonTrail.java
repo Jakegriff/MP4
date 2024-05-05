@@ -664,7 +664,7 @@ public class OregonTrail {
 
 		// Hides the store panel and makes the game panel visible, starting the game.
 		JButton setButton = new JButton("Start Game");
-		setButton.setEnabled(false);
+		setButton.setEnabled(true);
 		setButton.setBounds(117, 412, 250, 23);
 		setButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -774,15 +774,17 @@ public class OregonTrail {
 				if(comboBox.getSelectedItem() == "Wheels") {
 					setInitInventory(wheelPrice);
 					wagon.setWheelNum(Integer.parseInt(sparePartsTF.getText()));
+					sparePartsTF.setText(null);
 
 				}
 				if(comboBox.getSelectedItem() == "Axles") {
 					setInitInventory(axelPrice);
 					wagon.setAxelNum(Integer.parseInt(sparePartsTF.getText()));
-					if(comboBox.getSelectedItem() == "Tongues") {
-						setInitInventory(tonguePrice);
-						wagon.setTongueNum(Integer.parseInt(sparePartsTF.getText()));
-					}
+					sparePartsTF.setText(null);
+				}
+				if(comboBox.getSelectedItem() == "Tongues") {
+					setInitInventory(tonguePrice);
+					wagon.setTongueNum(Integer.parseInt(sparePartsTF.getText()));
 					sparePartsTF.setText(null);
 				}
 			}});
