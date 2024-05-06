@@ -225,7 +225,7 @@ public class OregonTrail {
 
 
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(93, 55, 550, 390);
+		textArea.setBounds(93, 55, 550, 400);
 		textArea.setWrapStyleWord(true);
 		textArea.setFont(new Font("Monospaced", Font.BOLD, 18));
 		textArea.setLineWrap(true);
