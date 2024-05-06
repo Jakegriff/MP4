@@ -21,7 +21,12 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.SystemColor;
+
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 /**
  * The gui implementation of packing a wagon in an implementation of the game Oregon Trail.
@@ -212,7 +217,8 @@ public class OregonTrail {
 
 		// Creates the panel where the game is played
 		JPanel gamePanel = new JPanel();
-		gamePanel.setBackground(new Color(0, 0, 0));
+		gamePanel.setBorder(null);
+		gamePanel.setBackground(SystemColor.menu);
 		gamePanel.setBounds(0, 0, 736, 556);
 		frmOregontrailv.getContentPane().add(gamePanel);
 		gamePanel.setLayout(null);
@@ -226,10 +232,13 @@ public class OregonTrail {
 		textArea.setBackground(new Color(0, 128, 0));
 		gamePanel.add(textArea);
 		textArea.setEditable(false);
+		Border border = BorderFactory.createLineBorder(Color.BLACK,3);
+		textArea.setBorder(BorderFactory.createCompoundBorder(border,BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 
 
 		inputField = new JTextField();
 		inputField.setBounds(93, 470, 550, 40);
+		inputField.setBorder(BorderFactory.createCompoundBorder(border,BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 		inputField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Resets user inputs.
@@ -316,7 +325,7 @@ public class OregonTrail {
 					menuFlag = true;
 					River temp = (River) Locations[locCounter];
 					menu.riverChoices(textArea, temp.getRiverWidth(), temp.getRiverDepth(), wagon, weather);
-					rivSubMenuFlag = menu.riverActions(textArea, inputField, input, temp.getRiverDepth());
+					rivSubMenuFlag = menu.riverActions(textArea, inputField, input, temp.getRiverDepth(), wagon);
 
 					if(rivSubMenuFlag == false){
 						rivResults = true;

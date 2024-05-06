@@ -201,8 +201,10 @@ public class Menu{
 				);			
 	}
 
-	public boolean riverActions(JTextArea text, JTextField in, String input, double dep) {
+	public boolean riverActions(JTextArea text, JTextField in, String input, double dep, Wagon wagon) {
+		
 		int temp = rand.nextInt(100)+1;
+		String lostItem = "";
 
 		if(input.equals("1")) {
 			if(dep <= 3) {
@@ -211,7 +213,8 @@ public class Menu{
 					return false;
 				}
 				else {
-					text.setText("You passed through the river, but lost some items");
+					lostItem = riverLoseItem(wagon);
+					text.setText("You passed through the river, but lost " + lostItem);
 					return false;
 				}
 
@@ -222,7 +225,8 @@ public class Menu{
 					return false;
 				}
 				else {
-					text.setText("You passed through the river, but lost some items");
+					lostItem = riverLoseItem(wagon);
+					text.setText("You passed through the river, but lost " + lostItem);
 					return false;
 				}
 			}
@@ -236,7 +240,8 @@ public class Menu{
 					return false;
 				}
 				else {
-					text.setText("You passed through the river, but lost some items");
+					lostItem = riverLoseItem(wagon);
+					text.setText("You passed through the river, but lost " + lostItem);
 					return false;
 				}
 
@@ -247,7 +252,8 @@ public class Menu{
 					return false;
 				}
 				else {
-					text.setText("You passed through the river, but lost some items");
+					lostItem = riverLoseItem(wagon);
+					text.setText("You passed through the river, but lost " + lostItem);
 					return false;
 				}
 			}
@@ -260,7 +266,8 @@ public class Menu{
 				return false;
 			}
 			else {
-				text.setText("You passed through the river, but lost some items");
+				lostItem = riverLoseItem(wagon);
+				text.setText("You passed through the river, but lost " + lostItem);
 				return false;
 			}
 		}
@@ -362,6 +369,45 @@ public class Menu{
 			}
 		}
 		return "0";
+	}
+	
+	public String riverLoseItem(Wagon wagon) {
+		
+		Random rand = new Random();
+		
+		int whichItem = rand.nextInt(4);
+		
+		switch(whichItem) {
+		
+		case 0:
+		{
+			wagon.setAmmo(-2);
+			return("40 Bullets");
+		}
+		case 1:
+		{
+			wagon.setClothSet(-2);
+			return("2 Sets of clothing");
+		}
+		case 2:
+		{
+			wagon.setFoodAmt(-25);
+			return("25 pounds of food");
+		}
+		case 3:
+		{
+			wagon.setOxen(-1);
+			return("Two oxen");
+		}
+		default:
+		{
+			wagon.setAmmo(-2);
+			return("40 Bullets");
+		}
+			
+		
+		
+		}
 	}
 
 }
