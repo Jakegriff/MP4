@@ -16,11 +16,13 @@ public class Conversations {
 
 	// Initialize random object to randomize conversations
 	Random rand = new Random();
+	int entryCounter = 0;
 
 	/**
 	 * Checks the players current location and then randomizes one of three conversations unique to each location
 	 * @param text : The text area that displays the conversation on method call
 	 * @param locName : The name of the current location
+	 * @wbp.parser.entryPoint
 	 */
 	public void showConversation(JTextArea text, String locName) {
 		// Temp variable that is used to choose the randomly selected conversation
@@ -549,6 +551,37 @@ public class Conversations {
 			}
 		}
 		break;
+		}
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public void showDiary(JTextArea text) {
+		entryCounter++;
+		
+		if(entryCounter == 4) {
+			entryCounter = 1;
+		}
+		
+		switch(entryCounter) {
+		case 1:
+		{
+			text.setText("Entry #1");
+			break;
+			
+		}
+		case 2:
+		{
+			text.setText("Entry #2");
+			break;
+			
+		}
+		case 3:
+		{
+			text.setText("Entry #3");
+			break;
+			
+		}
 		}
 	}
 }
