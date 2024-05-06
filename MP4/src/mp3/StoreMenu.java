@@ -68,7 +68,7 @@ public class StoreMenu extends Menu {
 		}
 		return true;
 	}
-	
+
 	public Boolean sparePartsMenu(JTextArea text, JTextField in, String input, Wagon wagon, double multiplier) {
 		if(input.equals("q")) {
 			baseStoreMenu(text, wagon);
@@ -150,12 +150,12 @@ public class StoreMenu extends Menu {
 				+" 4. Back to Store" + "\n"
 				+" Make a selection");
 	}
-	
+
 	public void wheelMenu(JTextArea Text, int wheelPrice) {
 		Text.setText("Each wheel is $"+ wheelPrice + "\n"
 				+ "How many wheels do you want?");
 	}
-	
+
 	public void axelMenu(JTextArea Text, int axelPrice) {
 		Text.setText("Each axel is $" + axelPrice + "\n"
 				+ "How manu axels do you want?");

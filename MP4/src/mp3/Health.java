@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
 public class Health {
 	double genHealth;
 	String healthStr;
-	
-	 //remember we still have to attribute this setting by CALLING THE FUNCTION calcWeatheAdder.
+
+	//remember we still have to attribute this setting by CALLING THE FUNCTION calcWeatheAdder.
 	double stFAdder = 0;
 	int illnessRate = 0;
 	int weatherAdder;
@@ -24,7 +24,7 @@ public class Health {
 	int paceAdder;
 	int randEvtAdder;
 	boolean lacksClothSet;
-	
+
 	/*
 	 * Constructs the initial values of the health status.
 	 */
@@ -33,7 +33,7 @@ public class Health {
 		healthStr = "Good";
 		lacksClothSet = false;
 	}
-	
+
 	/*
 	 * Checks the health of the player, if the health is more than 200 or everyone is dead, then the player loses; Changes the healthStr to reflect the current health status.
 	 * @param Party - an ArrayList of all the members in the current Party.
@@ -44,18 +44,18 @@ public class Health {
 	public String CheckHealth(ArrayList<People> Party, Wagon wagon, Weather weather) {
 		//removes 10% of health each day.
 		genHealth -= (genHealth*.10);
-		
+
 		//calculates adder values.
 		weatherAdder = calcWeatherAdder(weather, Party, wagon);
 		foodAdder = calcFoodAdder(wagon);
 		illnessRate = calcIllness(Party);
 		stFAdder = starveOrFreeze(wagon);
 		paceAdder = calcPace(wagon);
-		
+
 		//checks player death.
 		calcDeath(Party);
 		calcHealth();
-		
+
 		if (genHealth >= 1200 || Party.size() == 0)
 			lose();
 		else if (genHealth < 255)
@@ -78,15 +78,15 @@ public class Health {
 	 */
 	public double calcHealth() {
 		genHealth += weatherAdder + foodAdder + stFAdder + paceAdder + illnessRate;
-		
+
 		//resets the adders
 		weatherAdder = 0;
 		foodAdder = 0;
 		illnessRate = 0;
-		
+
 		return Math.round(genHealth * 100.0) / 100.0;
 	}
-	
+
 	/*
 	 * Calculates the value of the weather condition adder and returns that value according to the weather and the number of people in the party.
 	 * @param weather - an object of t6ype Weather used to determine the value representing the current weather
@@ -99,12 +99,12 @@ public class Health {
 		switch(Weather) {
 		case ("Very Hot"):
 			weatherAdder = 2;
-			lacksClothSet = false;
-			break;
+		lacksClothSet = false;
+		break;
 		case ("Hot"):
 			lacksClothSet = false;
-			weatherAdder = 1;
-			break;
+		weatherAdder = 1;
+		break;
 		case ("Cold"):
 			if (wagon.clothSetNum == 0) {
 				lacksClothSet = true;
@@ -141,7 +141,7 @@ public class Health {
 		}	
 		return weatherAdder;
 	}
-	
+
 	/*
 	 * Calculates the value of the food consumption adder and returns that value according to the consumption rate and the amount of food in the wagon.
 	 * @param wagon - an object of type Wagon, holding all the current player's inventory.
@@ -151,7 +151,7 @@ public class Health {
 		String tempFoodCons = wagon.getRations();
 		if (wagon.getFoodAmt() == 0)
 			tempFoodCons = "Empty";
-		
+
 		switch(tempFoodCons) {
 		case ("Empty"):
 			foodAdder = 6; break;
@@ -164,7 +164,7 @@ public class Health {
 		}	
 		return foodAdder;
 	}
-	
+
 	/*
 	 * Calculates the starve or freeze adder based on whether the player lacks clothing sets or food.
 	 * @param wagon - an object of type Wagon containing the user's inventory.
@@ -180,7 +180,7 @@ public class Health {
 		return stFAdder;
 	}
 
-	
+
 	/*
 	 * Calculates the value of the pace consumption adder and returns that value according to the pace rate.
 	 * @param wagon - an object of type Wagon used to get the pace.
@@ -204,7 +204,7 @@ public class Health {
 		}	
 		return paceAdder;
 	}
-	
+
 	/*
 	 * Calculates the illnesses of those in the party. If any one person has more than one illness, it "kills" them by removing the person from the ArrayList
 	 * @param Party - an ArrayList containing all of the members of the party before checking deaths.
@@ -220,7 +220,7 @@ public class Health {
 			}
 		}
 	}
-		
+
 	/*
 	 * Calculates the illness rate by determining how many people have an illness.
 	 * @param ArrayList<People> Party - the ArrayList containing all the current party members.
@@ -230,11 +230,11 @@ public class Health {
 		for (int i = 0; i < Party.size(); i++) {
 			if (Party.get(i).numDisease != 0) {
 				illnessRate++;
-				}
+			}
 		}
 		return illnessRate;
 	}
-		
+
 	/*
 	 * Returns the health as a string.
 	 * @return healthStr - the party's health represented by a String value.
@@ -242,8 +242,8 @@ public class Health {
 	public String getHealthStr() {
 		return healthStr;
 	}
-	
-	
+
+
 	/*
 	 * Shows a pop up window saying "You Died" because I don't really understand how the panes are implemented in this code. 
 	 */

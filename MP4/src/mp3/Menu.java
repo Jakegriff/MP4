@@ -60,14 +60,14 @@ public class Menu{
 	public void checkSupplies(JTextArea text, Wagon wagon) {
 
 		text.setText( " Money: $" + wagon.getMoney()
-				+ " \n Oxen: " + wagon.getOxen()
-				+ " \n Bullets: " + wagon.ammunitionAmt
-				+ " \n Sets of Clothes: " + wagon.clothSetNum
-				+ " \n Pounds of Food: " + wagon.getFoodNum()
-				+ " \n Wagon Wheels: " + wagon.wheelNum
-				+ " \n Wagon Tongues: " + wagon.tongueNum
-				+ " \n Wagon Axels: " + wagon.axelNum
-				+ " \n \n \n \n Enter q to go back");
+		+ " \n Oxen: " + wagon.getOxen()
+		+ " \n Bullets: " + wagon.ammunitionAmt
+		+ " \n Sets of Clothes: " + wagon.clothSetNum
+		+ " \n Pounds of Food: " + wagon.getFoodNum()
+		+ " \n Wagon Wheels: " + wagon.wheelNum
+		+ " \n Wagon Tongues: " + wagon.tongueNum
+		+ " \n Wagon Axels: " + wagon.axelNum
+		+ " \n \n \n \n Enter q to go back");
 	}
 
 	/*
@@ -147,7 +147,7 @@ public class Menu{
 				+ " 3. Change pace \n"
 				+ " 4. Change rations \n");
 	}
-	
+
 	public void naturalMenu(JTextArea text, String name, Wagon wagon, Weather weather, Health health) {
 
 		text.setText(" Welcome to " + name + "\n"
@@ -346,7 +346,7 @@ public class Menu{
 				counter++;
 				return "River";
 			}
-			
+
 			if(tag.equals("Natural")) {
 				naturalMenu(text,name,wagon, weather, health);
 				counter++;

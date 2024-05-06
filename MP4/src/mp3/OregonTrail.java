@@ -292,7 +292,7 @@ public class OregonTrail {
 					menuFlag = true;
 				}
 
-				
+
 				// If in river results set menu flag to false to avoid bringing up base menu
 				if(rivResults ==  true) {
 					menuFlag = false;
@@ -831,7 +831,7 @@ public class OregonTrail {
 		lblNewLabel_77 = new JLabel("Tongues are $" + tonguePrice + " each");
 		lblNewLabel_77.setBounds(253, 230, 129, 14);
 		Store.add(lblNewLabel_77);
-		
+
 		//Creates Store Image for initial store screen
 		ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Store.png"));
 		Image newImage = icon.getImage().getScaledInstance(1200,  1800,  Image.SCALE_SMOOTH);
@@ -851,7 +851,7 @@ public class OregonTrail {
 		// Makes the store panel visible. 
 		JButton btnTravelTest = new JButton("Go to Store");
 		btnTravelTest.setEnabled(false);
-		
+
 
 		btnTravelTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -943,13 +943,13 @@ public class OregonTrail {
 				if(nameCount >= 5) {
 					btnTravelTest.setEnabled(true);
 				}
-				
+
 			}
 		});
 		member1TF.setBounds(160, 112, 96, 20);
 		layeredPane.add(member1TF);
 		member1TF.setColumns(10);
-		
+
 
 		lblNewLabel_6 = new JLabel("Party Member 5:");
 		lblNewLabel_6.setBounds(61, 335, 103, 14);
@@ -990,7 +990,7 @@ public class OregonTrail {
 		lblOverweight.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		lblOverweight.setBounds(30, 429, 349, 56);
 		layeredPane.add(lblOverweight);
-		
+
 		//Creates Wagon Image for initial screen
 		ImageIcon wagonIcon = new ImageIcon(getClass().getResource("/Images/Wagon.png"));
 		Image newWagImage = wagonIcon.getImage().getScaledInstance(378,  433,  Image.SCALE_SMOOTH);
@@ -1026,14 +1026,14 @@ public class OregonTrail {
 		frmOregontrailv.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmOregontrailv.getContentPane().setLayout(null);
 	}
-	
+
 	/**
 	 * Method to determine what zone the player is currently in. Used for Weather class to determine temp range and weather.
 	 * @param wagon: The wagon object, used to determine current location
 	 * @return returns the zone the player is currently in
 	 */
 	public String zoneCheck(Wagon wagon) {
-		
+
 		// If the player is in the range for the zone, then it will return said zone.
 		// Zone ranges based on Ch 16 of "You have Died of Dysentery".
 		if(wagon.getLocation() >= 600.0 && wagon.getLocation() < 1000.0) {

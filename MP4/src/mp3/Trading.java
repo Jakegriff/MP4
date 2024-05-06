@@ -31,7 +31,7 @@ public class Trading extends Menu{
 	public Trading(int idx) {	
 		tradername = this.names[idx];
 	}
-	
+
 	/*
 	 * Calculates the amount of the items traded via random numbers and multipliers, and decides whether the user can trade based off their current inventory and displays the correct trade prompt to the user.
 	 * @param text - the main JTextArea used to communicate with the player.
@@ -42,20 +42,20 @@ public class Trading extends Menu{
 	public void initiateTrade(JTextArea text, Trading trader, double multiplier, Wagon wagon ) {
 		randOpt1 = getRandomOpt();
 		randOpt2 = getRandomOpt();
-		
+
 		System.out.println("Opt 1: " + randOpt1);
 		System.out.println("Opt 2: " + randOpt2);
-		
+
 		tradeAmt1 = getTradeAmount(tradeAmt1, randOpt1);
 		tradeAmt2 = getTradeAmount(tradeAmt2, randOpt2);
 
 		currentWagNum = getCurrentWNum(randOpt2, wagon);
 		String tradeAction = isTradableAction();
 
-		
+
 		System.out.println("trading option: " + randOpt2);		
 		System.out.println("number of option in wagon: " + currentWagNum);
-		
+
 		text.setText(" Oxen: " + wagon.numOxen + "\n Boxes of Bullets: " + (wagon.ammunitionAmt/20) + "\n Sets of Clothing: " + wagon.clothSetNum + "\n Food: " + wagon.foodAmt 
 				+ "\n Wagon Wheels: " + wagon.wheelNum + "\n Wagon Tongues: " + wagon.tongueNum + "\n Wagon Axels: " + wagon.axelNum 
 				+ "\n\n The " + trader.tradername + " would like to trade\n " + (int)(multiplier *tradeAmt1) + " " + tradeOpts[randOpt1] + " for " + (int)(multiplier * tradeAmt2) 
@@ -72,7 +72,7 @@ public class Trading extends Menu{
 		else
 			return ".\n\n Would you like to trade? (yes or no)\n";
 	}
-	
+
 	/*
 	 * A Boolean function to determine whether the player input == "yes", "no", or something else. Updates wagon if "yes".
 	 * @param text - The main JTextArea for the game's communication with player.
@@ -113,7 +113,7 @@ public class Trading extends Menu{
 			tradePrice = (int)(Math.random()*((5-1)+1))+1;
 			System.out.println(tradeOpts[randOpt] + " " + tradePrice);
 			return tradePrice;
-			
+
 		case 1: 
 			tradePrice = (int)(Math.random()*((5-1)+1))+1;
 			System.out.println(tradeOpts[randOpt] + " " + tradePrice);
@@ -150,7 +150,7 @@ public class Trading extends Menu{
 			return tradePrice;
 		}
 
-}
+	}
 
 	/*
 	 * Gets a random number to use for the tradeOption array.
@@ -161,7 +161,7 @@ public class Trading extends Menu{
 		int num = randomOpt.nextInt(7);
 		return num;
 	}
-	
+
 	/*
 	 * Gets the current amount of the object in the user's wagon using an identifier integer.
 	 * @param randOption - an integer representing the item to determine how much is within the wagon. 
@@ -196,7 +196,7 @@ public class Trading extends Menu{
 		case 5: wagon.tongueNum += tradeAmt1; break;
 		case 6: wagon.axelNum += tradeAmt1; break;
 		}
-		
+
 		//remove items from wagon
 		switch(randOpt2) {
 		case 0: wagon.numOxen -= tradeAmt2; break;
@@ -208,5 +208,5 @@ public class Trading extends Menu{
 		case 6: wagon.axelNum -= tradeAmt2; break;
 		}
 	}
-	
+
 }

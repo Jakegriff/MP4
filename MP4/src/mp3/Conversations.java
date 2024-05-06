@@ -32,7 +32,7 @@ public class Conversations {
 		{
 			// Another switch to determine what conversation to show
 			switch(temp) {
-			
+
 			case 0 : 
 			{
 				text.setText("A stranger tells you:\r\n"
@@ -40,14 +40,14 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 1:
 			{
 				text.setText("A weary traveller tells you:\r\n"
 						+ "“I hope this trip is worth it. So many in my company have died just to get here, and yet we still have a long way to go. If Oregon is as promising as they say, then all this has to be worth it wouldn’t you agree?”");
 				break;
 			}
-			
+
 			case 2:
 			{
 				text.setText("A kind merchant tells you:\r\n"
@@ -57,11 +57,11 @@ public class Conversations {
 			}
 		}
 		break;
-		
+
 		case "Kansas River Crossing":
 		{
 			switch(temp) {
-			
+
 			case 0 : 
 			{
 				text.setText("A nice lady says:\r\n"
@@ -69,7 +69,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 1:
 			{
 				text.setText("An observant woman tells you:\r\n"
@@ -77,7 +77,7 @@ public class Conversations {
 						+ "are glad we noticed, because we used to do our laundry!\" ");
 				break;
 			}
-			
+
 			case 2:
 			{
 				text.setText("A stern woman tells you:\r\n"
@@ -88,11 +88,11 @@ public class Conversations {
 			}
 		}
 		break;
-		
+
 		case "Big Blue River Crossing":
 		{
 			switch(temp) {
-			
+
 			case 0 : 
 			{
 				text.setText("Lucena tells you:\r\n"
@@ -100,7 +100,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 1:
 			{
 				text.setText("Lucena remarks:\r\n"
@@ -108,7 +108,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 2:
 			{
 				text.setText("A seasoned traveler shares:\r\n"
@@ -119,11 +119,11 @@ public class Conversations {
 			}
 		}
 		break;
-		
+
 		case "Fort Kearny":
 		{
 			switch(temp) {
-			
+
 			case 0 : 
 			{
 				text.setText("A solemn lady says:\r\n"
@@ -131,7 +131,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 1:
 			{
 				text.setText("An amused lady says:\r\n"
@@ -139,7 +139,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 2:
 			{
 				text.setText("A soldier shares a local legend:\r\n"
@@ -150,11 +150,11 @@ public class Conversations {
 			}
 		}
 		break;
-		
+
 		case "Chimeny Rock":
 		{
 			switch(temp) {
-			
+
 			case 0 : 
 			{
 				text.setText("Lucena tells you:\r\n"
@@ -162,14 +162,14 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 1:
 			{
 				text.setText("A traveller says:\r\n"
 						+ "Chimney Rock sure is a welcome sight after days of endless plains. It's like a beacon guiding us westward.");
 				break;
 			}
-			
+
 			case 2:
 			{
 				text.setText("A young man tells you:\r\n"
@@ -179,11 +179,11 @@ public class Conversations {
 			}
 		}
 		break;
-		
+
 		case "Fort Laramie":
 		{
 			switch(temp) {
-			
+
 			case 0 : 
 			{
 				text.setText("A stranger tells you:\r\n"
@@ -191,7 +191,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 1:
 			{
 				text.setText("A fort scout tells you:\r\n"
@@ -199,7 +199,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 2:
 			{
 				text.setText("A cook tells you:\r\n"
@@ -210,11 +210,11 @@ public class Conversations {
 			}
 		}
 		break;
-		
+
 		case "Independence Rock":
 		{
 			switch(temp) {
-			
+
 			case 0 : 
 			{
 				text.setText("A child in your company tells you:\r\n"
@@ -222,14 +222,14 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 1:
 			{
 				text.setText("An attentive man tells you:\r\n"
 						+ "Look at all these names carved into the rock. Each one tells a story of someone who passed through here seeking a better life.");
 				break;
 			}
-			
+
 			case 2:
 			{
 				text.setText("A hardy man tells you:\r\n"
@@ -239,25 +239,25 @@ public class Conversations {
 			}
 		}
 		break;
-		
+
 		case "South Pass":
 		{
 			switch(temp) {
-			
+
 			case 0 : 
 			{
 				text.setText("A young women tells you:\r\n"
 						+ "They say the pioneers who passed through South Pass left behind a trail of stories and dreams. What will our legacy be?");
 				break;
 			}
-			
+
 			case 1:
 			{
 				text.setText("A hopeful young man man tells you:\r\n"
 						+ "South Pass may seem unassuming, but it holds the key to our future. Our dreams and aspirations are just beyond those peaks.");
 				break;
 			}
-			
+
 			case 2:
 			{
 				text.setText("A weary man tells you:\r\n"
@@ -267,11 +267,11 @@ public class Conversations {
 			}
 		}
 		break;
-		
+
 		case "Green River Crossing":
 		{
 			switch(temp) {
-			
+
 			case 0 : 
 			{
 				text.setText("Lucena Parsons tells you:\r\n"
@@ -279,7 +279,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 1:
 			{
 				text.setText("A young child runs up to you:\r\n"
@@ -288,7 +288,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 2:
 			{
 				text.setText("A ferry operator warns:\r\n"
@@ -299,11 +299,11 @@ public class Conversations {
 			}
 		}
 		break;
-		
+
 		case "Fort Bridger":
 		{
 			switch(temp) {
-			
+
 			case 0 : 
 			{
 				text.setText("You start conversing with a lady you’re staying alongside at one of the log houses:\r\n"
@@ -312,7 +312,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 1:
 			{
 				text.setText("You see a young red-headed man as you stop by the horse enclosure:\r\n"
@@ -321,7 +321,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 2:
 			{
 				text.setText("A frontier doctor advises:\r\n"
@@ -332,11 +332,11 @@ public class Conversations {
 			}
 		}
 		break;
-		
+
 		case "Soda Springs":
 		{
 			switch(temp) {
-			
+
 			case 0 : 
 			{
 				text.setText("A fellow traveler comments:\r\n"
@@ -344,7 +344,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 1:
 			{
 				text.setText("Lucena points out:\r\n"
@@ -352,7 +352,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 2:
 			{
 				text.setText("An excited women says:\r\n"
@@ -363,11 +363,11 @@ public class Conversations {
 			}
 		}
 		break;
-		
+
 		case "Fort Hall":
 		{
 			switch(temp) {
-			
+
 			case 0 : 
 			{
 				text.setText("An observant woman tells you:\r\n"
@@ -376,7 +376,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 1:
 			{
 				text.setText("A fur trader mentions:\r\n"
@@ -384,7 +384,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 2:
 			{
 				text.setText("A local indigenous guide advises:\r\n"
@@ -395,11 +395,11 @@ public class Conversations {
 			}
 		}
 		break;
-		
+
 		case "Snake River Crossing":
 		{
 			switch(temp) {
-			
+
 			case 0 : 
 			{
 				text.setText("Lucena muses:\r\n"
@@ -407,7 +407,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 1:
 			{
 				text.setText("An observant woman tells you:\r\n"
@@ -415,7 +415,7 @@ public class Conversations {
 						+ "are glad we noticed, because we used to do our laundry!\" ");
 				break;
 			}
-			
+
 			case 2:
 			{
 				text.setText("A Native American elder shares wisdom:\r\n"
@@ -426,11 +426,11 @@ public class Conversations {
 			}
 		}
 		break;
-		
+
 		case "Fort Boise":
 		{
 			switch(temp) {
-			
+
 			case 0 : 
 			{
 				text.setText("Lucena tells you:\r\n"
@@ -439,7 +439,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 1:
 			{
 				text.setText("A local guide advises:\r\n"
@@ -447,7 +447,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 2:
 			{
 				text.setText("A local settler remarks:\r\n"
@@ -458,11 +458,11 @@ public class Conversations {
 			}
 		}
 		break;
-		
+
 		case "Blue Mountains":
 		{
 			switch(temp) {
-			
+
 			case 0 : 
 			{
 				text.setText("An observant woman tells you:\r\n"
@@ -470,7 +470,7 @@ public class Conversations {
 						+ "hard to cross until June or so because of the snow.\" ");
 				break;
 			}
-			
+
 			case 1:
 			{
 				text.setText("A traveller tells you:\r\n"
@@ -478,7 +478,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 2:
 			{
 				text.setText("An old man tells you:\r\n"
@@ -489,11 +489,11 @@ public class Conversations {
 			}
 		}
 		break;
-		
+
 		case "Fort Walla Walla":
 		{
 			switch(temp) {
-			
+
 			case 0 : 
 			{
 				text.setText("A local trader boasts:\r\n"
@@ -501,7 +501,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 1:
 			{
 				text.setText("A gambler offers to play a game:\r\n"
@@ -509,7 +509,7 @@ public class Conversations {
 						+ "");
 				break;
 			}
-			
+
 			case 2:
 			{
 				text.setText("A fur trader shares a tall tale:\r\n"
@@ -520,25 +520,25 @@ public class Conversations {
 			}
 		}
 		break;
-		
+
 		case "The Dalles":
 		{
 			switch(temp) {
-			
+
 			case 0 : 
 			{
 				text.setText("A local tells you:\r\n"
 						+ "They say the waters around The Dalles can be treacherous. We must navigate them with caution and skill.");
 				break;
 			}
-			
+
 			case 1:
 			{
 				text.setText("A cautious traveller tells you:\r\n"
 						+ "The Dalles is a bustling hub of activity, a stark contrast to the untamed wilderness we've traveled through. Let's not let our guard down.");
 				break;
 			}
-			
+
 			case 2:
 			{
 				text.setText("A stranger tells you:\r\n"
