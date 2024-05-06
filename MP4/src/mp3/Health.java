@@ -1,7 +1,11 @@
 package mp3;
+import java.awt.Font;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  * This class creates and calculates the health methods for the Oregon Trail game, along with calculating various corresponding health values.
@@ -41,7 +45,7 @@ public class Health {
 	 * @param weather - an object of type Weather to determine the weather.
 	 * @return healthStr - a STring value representing the current party's health
 	 */
-	public String CheckHealth(ArrayList<People> Party, Wagon wagon, Weather weather) {
+	public String CheckHealth(ArrayList<People> Party, Wagon wagon, Weather weather, JFrame frame, JPanel panel) {
 		//removes 10% of health each day.
 		genHealth -= (genHealth*.10);
 		
@@ -56,8 +60,8 @@ public class Health {
 		calcDeath(Party);
 		calcHealth();
 		
-		if (genHealth >= 1200 || Party.size() == 0)
-			lose();
+		if (genHealth >= 200 || Party.size() == 0)
+			lose(frame, panel);
 		else if (genHealth < 255)
 			healthStr = "Good";
 		else if (genHealth < 488)
@@ -247,7 +251,22 @@ public class Health {
 	/*
 	 * Shows a pop up window saying "You Died" because I don't really understand how the panes are implemented in this code. 
 	 */
-	private void lose() {
-		JOptionPane.showMessageDialog(null, "You Died.", "Warning", JOptionPane.WARNING_MESSAGE);
+	private void lose(JFrame frame, JPanel panel) {
+		//JOptionPane.showMessageDialog(null, "You Died.", "Warning", JOptionPane.WARNING_MESSAGE);
+		System.out.println("YOU DIED");
+		JPanel Died_Screen = new JPanel();
+		Died_Screen.setBounds(0, 0, 646, 524);
+		frame.getContentPane().add(Died_Screen);
+		Died_Screen.setLayout(null);
+
+		JLabel lblNewLabel_7 = new JLabel("YOU DIED!!!!");
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 40));
+		lblNewLabel_7.setBounds(167, 131, 366, 187);
+		Died_Screen.add(lblNewLabel_7);
+
+		Died_Screen.setVisible(true);
+		
+		panel.setVisible(false);
+
 	}
 }

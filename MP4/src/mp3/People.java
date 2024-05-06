@@ -1,6 +1,14 @@
 package mp3;
 
 public class People {
+	/**
+	 * Creates instances of people to create the party
+	 * 
+	 * @author Victor Trujillo
+	 * @version 1.0.0
+	 * @date May 1st 2024
+	 * @filename Conversations.java
+	**/
 	
 	String name;
 	int numDisease;
