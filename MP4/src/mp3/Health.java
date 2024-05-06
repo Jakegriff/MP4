@@ -60,7 +60,7 @@ public class Health {
 		calcDeath(Party);
 		calcHealth();
 		
-		if (genHealth >= 200 || Party.size() == 0)
+		if (genHealth >= 1200 || Party.size() == 0)
 			lose(frame, panel);
 		else if (genHealth < 255)
 			healthStr = "Good";
