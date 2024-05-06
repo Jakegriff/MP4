@@ -128,7 +128,7 @@ public class Conversations {
 			
 			case 0 : 
 			{
-				text.setText("A solemn lady says:\r\n"
+				text.setText("A sophisticated young lady says:\r\n"
 						+ "“ There have been so many graves, and so much death within my company. We found five more today on our way here. We have lost a lot of people to get to this point, yet we forge onward.”\r\n"
 						+ "");
 				break;
@@ -136,7 +136,7 @@ public class Conversations {
 			
 			case 1:
 			{
-				text.setText("An amused lady says:\r\n"
+				text.setText("An interiged wife says:\r\n"
 						+ "“Shortly before we got here the captain lost his ox! The search party never found it, so I wonder what happened to it? Perhaps the Indians have seen it.”\r\n"
 						+ "");
 				break;
