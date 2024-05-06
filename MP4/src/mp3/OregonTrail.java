@@ -516,7 +516,7 @@ public class OregonTrail {
 							timer = new javax.swing.Timer(100, new ActionListener() {
 								public void actionPerformed(ActionEvent evt) {
 									wagon.travel(evt, textArea, wagon.getFoodNum(), Locations[locCounter].getLocation());
-									healStr = partyHealth.CheckHealth(Party, wagon, weather);
+									healStr = partyHealth.CheckHealth(Party, wagon, weather, frmOregontrailv, gamePanel);
 									RandomEvent randomEvent = new RandomEvent();
 									randomEvent.travelDay(timer);
 									//eventFlag = false;
@@ -598,8 +598,6 @@ public class OregonTrail {
 					}
 					}
 
-					//Clears text field
-					//System.out.println(menuFlag);
 					inputField.setText(null);
 
 					//Controls sub-menues for Store class
@@ -647,6 +645,7 @@ public class OregonTrail {
 		frmOregontrailv.getContentPane().add(Store);
 		Store.setVisible(false);
 
+		//sets the initial amount of oxen
 		numOxenTF = new JTextField();
 		numOxenTF.setBounds(33, 129, 96, 20);
 		numOxenTF.addActionListener(new ActionListener() {
@@ -1003,18 +1002,7 @@ public class OregonTrail {
 		wagonImgLbl.setIcon(newWagIcon);
 
 
-		JPanel Died_Screen = new JPanel();
-		Died_Screen.setBounds(0, 0, 646, 524);
-		frmOregontrailv.getContentPane().add(Died_Screen);
-		Died_Screen.setLayout(null);
-
-		JLabel lblNewLabel_7 = new JLabel("YOU DIED!!!!");
-		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 40));
-		lblNewLabel_7.setBounds(167, 131, 366, 187);
-		Died_Screen.add(lblNewLabel_7);
-
-		Died_Screen.setVisible(false);
-	}
+			}
 
 	/*
 	 * Initialize the contents of the frame.
