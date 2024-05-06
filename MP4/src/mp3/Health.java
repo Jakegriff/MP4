@@ -153,7 +153,7 @@ public class Health {
 	 */
 	public int calcFoodAdder(Wagon wagon) {
 		String tempFoodCons = wagon.getRations();
-		if (wagon.getFoodAmt() == 0)
+		if (wagon.getFoodNum() == 0)
 			tempFoodCons = "Empty";
 
 		switch(tempFoodCons) {
@@ -175,7 +175,7 @@ public class Health {
 	 * @return stFAdder - a double value representing the amount of bad health accumulated by freezing or starving.
 	 */
 	public double starveOrFreeze(Wagon wagon) {
-		if (wagon.getFoodAmt()== 0 || lacksClothSet == true) 
+		if (wagon.getFoodNum()== 0 || lacksClothSet == true) 
 			stFAdder += 0.8;
 		else if (stFAdder == 0)
 			stFAdder = 0;

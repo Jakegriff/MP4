@@ -418,19 +418,19 @@ public class OregonTrail {
 				else if (sparePartsFlag == true) {
 					if(Integer.parseInt(input) == 1) {
 						store.sparePartsMenu(textArea, inputField, input, wagon, fortMultiplier);
-						storeFlag = false;
+						//storeFlag = false;
 						wheelFlag = true;
 					}
 
 					if(Integer.parseInt(input) == 2) {
 						store.sparePartsMenu(textArea, inputField, input, wagon,fortMultiplier);
-						storeFlag = false;
+						//storeFlag = false;
 						axelFlag = true;
 					}
 
 					if(Integer.parseInt(input) == 3) {
 						store.sparePartsMenu(textArea, inputField, input, wagon, fortMultiplier);
-						storeFlag = false;
+						//storeFlag = false;
 						tongueFlag = true;
 					}
 					if(Integer.parseInt(input) == 4) {
@@ -473,7 +473,7 @@ public class OregonTrail {
 						menuFlag = false;
 					}
 					input = "";
-					System.out.println(storeFlag);
+					//System.out.println(storeFlag);
 				}
 
 				// If the trade flag is raised, calls the trading menu. 
@@ -633,7 +633,7 @@ public class OregonTrail {
 					}
 
 					//Relays all flags and their status to the console.
-					System.out.println(wagon.getLocation());
+					//System.out.println(wagon.getLocation());
 					//System.out.println("loccounter: " + locCounter);
 					//System.out.println("Oxen num: "+wagon.getOxen());
 					//System.out.println("Cloth num: " +wagon.getClothSet());
@@ -647,8 +647,9 @@ public class OregonTrail {
 					//System.out.println("riverFlag:" + riverFlag);
 					//System.out.println("riverSubMenuFlag:" + rivSubMenuFlag);
 					//System.out.println("tradeFlag:" + tradeFlag);
-					//System.out.println("menuFlag:" + menuFlag);
-					//System.out.println("storeFlag: " + storeFlag);
+					System.out.println("menuFlag:" + menuFlag);
+					System.out.println("storeFlag: " + storeFlag);
+					System.out.println("sparePartsFlag: " + sparePartsFlag);
 					//System.out.println(wagon.getWheelNum());
 					//System.out.println(currentZone);
 					System.out.println("______________");
