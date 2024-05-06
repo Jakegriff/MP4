@@ -615,6 +615,7 @@ public class OregonTrail {
 						menuFlag = true;
 						convoFlag = true;
 						convo.showConversation(textArea, Locations[locCounter].getName());
+						break;
 					}
 					case "8":{
 						inputField.setText(null);
@@ -622,6 +623,7 @@ public class OregonTrail {
 						menuFlag = true;
 						diaryFlag = true;
 						convo.showDiary(textArea);
+						break;
 					}
 					}
 
