@@ -47,6 +47,7 @@ public class OregonTrail {
 
 	Menu menu = new Menu();
 	StoreMenu store = new StoreMenu();
+	Conversations convo = new Conversations();
 
 	//Creates new Persons using the People class.
 	People Person1 = new People();
@@ -104,6 +105,8 @@ public class OregonTrail {
 	Boolean tongueFlag = false;
 	Boolean rivResults = false;
 	Boolean eventFlag = false;
+	Boolean diaryFlag = false;
+	Boolean convoFlag = false;
 
 	// Creating the main timer.
 	private Timer timer;
@@ -216,7 +219,7 @@ public class OregonTrail {
 
 
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(93, 55, 550, 340);
+		textArea.setBounds(93, 55, 550, 390);
 		textArea.setWrapStyleWord(true);
 		textArea.setFont(new Font("Monospaced", Font.BOLD, 18));
 		textArea.setLineWrap(true);
@@ -226,7 +229,7 @@ public class OregonTrail {
 
 
 		inputField = new JTextField();
-		inputField.setBounds(93, 422, 550, 40);
+		inputField.setBounds(93, 470, 550, 40);
 		inputField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Resets user inputs.
@@ -266,6 +269,16 @@ public class OregonTrail {
 				// If the supply flag is true, call the supply menu.
 				if(supplyFlag == true) {
 					supplyFlag = menu.supplyMenu(textArea, inputField, input, wagon, weather, partyHealth);
+					input = "";
+				}
+				
+				if(convoFlag == true) {
+					convoFlag = false;
+					input = "";
+				}
+				
+				if(diaryFlag == true) {
+					diaryFlag = false;
 					input = "";
 				}
 
@@ -595,6 +608,20 @@ public class OregonTrail {
 						tradeFlag = true;
 						//traders[randTrader].initiateTrade(textArea, traders[randTrader], fortMultiplier, 2, 1, wagon.getClothSet(), wagon.getAmmo(), wagon);
 						break;
+					}
+					case "7":{
+						inputField.setText(null);
+						textArea.setText(null);
+						menuFlag = true;
+						convoFlag = true;
+						convo.showConversation(textArea, Locations[locCounter].getName());
+					}
+					case "8":{
+						inputField.setText(null);
+						textArea.setText(null);
+						menuFlag = true;
+						diaryFlag = true;
+						convo.showDiary(textArea);
 					}
 					}
 

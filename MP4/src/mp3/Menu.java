@@ -47,7 +47,9 @@ public class Menu{
 				+ " 2. Check supplies \n"
 				+ " 3. Change pace \n"
 				+ " 4. Change rations \n"
-				+ " 6. Trade");
+				+ " 6. Trade \n"
+				+ " 7. Talk to some \n"
+				+ " 8. Open diary");
 	}
 
 	/*
@@ -124,7 +126,9 @@ public class Menu{
 				+ " 3. Change pace \n"
 				+ " 4. Change rations \n"
 				+ " 5. Store \n"
-				+ " 6. Trade \n");
+				+ " 6. Trade \n"
+				+ " 7. Talk to someone \n"
+				+ " 8. Open diary");
 
 	}
 
@@ -145,7 +149,9 @@ public class Menu{
 				+ " 1. Continue on trail \n"
 				+ " 2. Check supplies \n"
 				+ " 3. Change pace \n"
-				+ " 4. Change rations \n");
+				+ " 4. Change rations \n"
+				+ " 7. Talk to someone \n"
+				+ " 8. Open Diary");
 	}
 
 	public void naturalMenu(JTextArea text, String name, Wagon wagon, Weather weather, Health health) {
@@ -159,7 +165,9 @@ public class Menu{
 				+ " 1. Continue on trail \n"
 				+ " 2. Check supplies \n"
 				+ " 3. Change pace \n"
-				+ " 4. Change rations \n");
+				+ " 4. Change rations \n"
+				+ " 7. Talk to someone \n"
+				+ " 8. Open Diary");
 	}
 
 	/*
