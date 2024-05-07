@@ -277,7 +277,7 @@ public class OregonTrail {
 
 				// If the supply flag is true, call the supply menu.
 				if(supplyFlag == true) {
-					supplyFlag = menu.supplyMenu(textArea, inputField, input, wagon, weather, partyHealth);
+					supplyFlag = menu.supplyMenu(textArea, input, wagon, weather, partyHealth);
 					input = "";
 				}
 				
@@ -293,19 +293,19 @@ public class OregonTrail {
 
 				// If the pace flag is true, call the pace menu.
 				if(paceFlag == true) {
-					paceFlag =  menu.paceMenu(textArea, inputField, input, wagon, weather, partyHealth);
+					paceFlag =  menu.paceMenu(textArea, input, wagon, weather, partyHealth);
 					input = "";
 				}
 
 				// If the rations flag is true, call the rations menu.
 				if(ratFlag == true) {
-					ratFlag = menu.rationsMenu(textArea, inputField, input, wagon, weather, partyHealth);
+					ratFlag = menu.rationsMenu(textArea, input, wagon, weather, partyHealth);
 					input = "";
 				}
 
 				// If the travel flag is true, call the travel menu.
 				if(travelFlag == true) {
-					travelFlag = menu.travelMenu(textArea, inputField, input, timer, wagon, weather, partyHealth);
+					travelFlag = menu.travelMenu(textArea, input, timer, wagon, weather, partyHealth);
 				}
 
 				// If you reach a fort, show the fort menu.
@@ -325,7 +325,7 @@ public class OregonTrail {
 					menuFlag = true;
 					River temp = (River) Locations[locCounter];
 					menu.riverChoices(textArea, temp.getRiverWidth(), temp.getRiverDepth(), wagon, weather);
-					rivSubMenuFlag = menu.riverActions(textArea, inputField, input, temp.getRiverDepth(), wagon);
+					rivSubMenuFlag = menu.riverActions(textArea, input, temp.getRiverDepth(), wagon);
 
 					if(rivSubMenuFlag == false){
 						rivResults = true;

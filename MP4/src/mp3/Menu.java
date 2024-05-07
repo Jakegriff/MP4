@@ -28,12 +28,16 @@ public class Menu{
 	 */
 	public void introMenu(JTextArea text) {
 		text.setText(" Welcome to Oregon Trail!"
-				+ "\n\n All conversations and diary entries were based on the text Covered Wagon Women : Diaries and Letters From the Western Trails");
+				+ "\n\n All conversations and diary entries were based on the text Covered Wagon Women : Diaries and Letters From the Western Trails"
+				+   " \n \n \n \n Link to the book: https://archive.org/details/coveredwagonwom000holm");
 	}
 
-	/*
+	/**
 	 * Sets the text area to the base menu screen.
 	 * @param text - a JTextArea that determines which text area is changed.
+	 * @param wagon - The wagon object used to get the pace and rations
+	 * @param weather - the weather object used to get the weather
+	 * @param health - the health object used to get the current health
 	 */
 	public void baseMenu(JTextArea text, Wagon wagon, Weather weather, Health health) {
 		text.setText(" Weather: " + weather.getWeather() + "\n"
@@ -50,12 +54,10 @@ public class Menu{
 				+ " 8. Open diary");
 	}
 
-	/*
+	/**
 	 * Sets the text area to the checkSupplies menu screen
 	 * @param text - a JTextArea that determines which text area is changed.
-	 * @param food - an integer value based on the current user's food supply.
-	 * @param oxen - an integer value containing the number of oxen in the party.
-	 * @param money - a double value of the user's money value.
+	 * @param wagon - the object used to get the amount of supplies the player has
 	 */
 	public void checkSupplies(JTextArea text, Wagon wagon) {
 
@@ -70,9 +72,10 @@ public class Menu{
 		+ " \n \n \n \n Enter q to go back");
 	}
 
-	/*
+	/**
 	 * Sets the text area to the changePace menu screen.
 	 * @param text - a JTextArea that determines which text area is changed.
+	 * @param wagon - the wagon object that is used to get the current pace level
 	 */
 	public void changePace(JTextArea text, Wagon wagon) {
 
@@ -82,9 +85,10 @@ public class Menu{
 		+ "\n 3. A Grueling Pace");
 	}
 
-	/*
+	/**
 	 * Sets the text area to the changeRations menu screen.
 	 * @param text - a JTextArea that determines which text area is changed.
+	 * @param wagon - the wagon object that is used to get the current rations level
 	 */
 	public void changeRations(JTextArea text, Wagon wagon) {
 
@@ -107,10 +111,13 @@ public class Menu{
 				+ "\n Distance to next location: " + nextLoc);
 	}
 
-	/*
+	/**
 	 * Sets the text area to the fort menu screen.
 	 * @param text - a JTextArea that determines which text area is changed.
 	 * @param name - the String name of the fort being used.
+	 * @param wagon - The wagon object used to get the pace and rations
+	 * @param weather - the weather object used to get the weather
+	 * @param health - the health object used to get the current health
 	 */
 	public void fortMenu(JTextArea text, String name, Wagon wagon, Weather weather, Health health) {
 		text.setText(" Welcome to " + name + "\n"
@@ -131,10 +138,13 @@ public class Menu{
 	}
 
 
-	/*
+	/**
 	 * Sets the text area to the river menu screen.
 	 * @param text - a JTextArea that determines which text area is changed.
 	 * @param name - the name of the current river being implemented.
+	 * @param wagon - The wagon object used to get the pace and rations
+	 * @param weather - the weather object used to get the weather
+	 * @param health - the health object used to get the current health
 	 */
 	public void riverMenu(JTextArea text, String name, Wagon wagon, Weather weather, Health health) {
 
@@ -152,6 +162,14 @@ public class Menu{
 				+ " 8. Open Diary");
 	}
 
+	/**
+	 * Sets the text area to the natural landmark menu screen.
+	 * @param text - a JTextArea that determines which text area is changed.
+	 * @param name - the name of the current river being implemented.
+	 * @param wagon - The wagon object used to get the pace and rations
+	 * @param weather - the weather object used to get the weather
+	 * @param health - the health object used to get the current health
+	 */
 	public void naturalMenu(JTextArea text, String name, Wagon wagon, Weather weather, Health health) {
 
 		text.setText(" Welcome to " + name + "\n"
@@ -168,7 +186,7 @@ public class Menu{
 				+ " 8. Open Diary");
 	}
 
-	/*
+	/**
 	 * Sets the text area to the information about the river menu screen.
 	 * @param text - a JTextArea that determines which text area is changed.
 	 * @param double wid - the double value of the width of the river.
@@ -181,7 +199,7 @@ public class Menu{
 				+ " feet wide and " + dep + " feet deep in the middle and has " + spd  + " units of flow \n Press enter to continue");
 	}
 
-	/*
+	/**
 	 * Sets the text area to the information about the river choice screen.
 	 * @param text - a JTextArea that determines which text area is changed.
 	 * @param double wid - the double value of the width of the river.
@@ -200,21 +218,23 @@ public class Menu{
 	}
 
 	/**
-	 * Used to check the user input for the riverChoices method. Each 
-	 * @param text
-	 * @param in
-	 * @param input
-	 * @param dep
-	 * @param wagon
-	 * @return
+	 * Used to check the user input for the riverChoices method. Each option has differing chances of success and failure
+	 * @param text: The text box that displays the result text
+	 * @param input: The users input
+	 * @param dep: The depth of the river
+	 * @param wagon: The wagon that will lose the items if the player fails
+	 * @return returns false if the player enters a valid option (1,2 or 3) and true otherwise
 	 */
-	public boolean riverActions(JTextArea text, JTextField in, String input, double dep, Wagon wagon) {
-		
+	public boolean riverActions(JTextArea text, String input, double dep, Wagon wagon) {
+		// Generate random # from 1 to 100 for easy calculations
 		int temp = rand.nextInt(100)+1;
+		// Is filled with the riverLostItem method that randomizes the item lost. Used to display what was lost
 		String lostItem = "";
-
+		// Is you choose to ford the river
 		if(input.equals("1")) {
+			// And the depth is low
 			if(dep <= 3) {
+				// You have an 80% chance of success and 20% chance of failure
 				if(temp <= 80) {
 					text.setText("You passed through the river with no issue");
 					return false;
@@ -226,7 +246,10 @@ public class Menu{
 				}
 
 			}
-			else {
+			// If depth is greater than 3
+			else 
+			{
+				// You have a 40% chance of success and 60% chance of failure
 				if(temp <= 40) {
 					text.setText("You passed through the river with no issue");
 					return false;
@@ -239,9 +262,11 @@ public class Menu{
 			}
 
 		}
-
+		// If you choose to caulk the wagon and float across
 		if(input.equals("2")) {
+			// And the depth is less than 5
 			if(dep <= 5) {
+				// You have an 85% chance of success and 15% chance of failure
 				if(temp <= 85) {
 					text.setText("You passed through the river with no issue");
 					return false;
@@ -253,7 +278,9 @@ public class Menu{
 				}
 
 			}
+			// But is the depth is greater than 5
 			else {
+				// You have a 25% chance of success and a 75% chance of failure
 				if(temp <= 25) {
 					text.setText("You passed through the river with no issue");
 					return false;
@@ -264,10 +291,12 @@ public class Menu{
 					return false;
 				}
 			}
-		}
-
+		} 
+		// If you choose to use the ferry
 		if(input.equals("3")) {
+			// Pay the 10$ toll
 			wagon.payToll();
+			// Depth does not matter, 90% chance of success and 10% chance of failure
 			if(temp <= 90) {
 				text.setText("You passed through the river with no issue");
 				return false;
@@ -282,7 +311,16 @@ public class Menu{
 
 	}
 
-	public boolean paceMenu(JTextArea text, JTextField in, String input, Wagon wagon, Weather weather, Health health) {
+	/**
+	 * The input logic for the Pace menu
+	 * @param text The text area that is changed once the the player puts in a valid input
+	 * @param input The players input form the text field
+	 * @param wagon The wagon that is used to display the base menu once a valid input is entered
+	 * @param weather The weather object that is used to display the base menu once a valid input is entered
+	 * @param health The health object that is used to display the base menu once a valid input is entered
+	 * @return Returns false if a valid input is entered, and true otherwise
+	 */
+	public boolean paceMenu(JTextArea text, String input, Wagon wagon, Weather weather, Health health) {
 
 		if(input.equals("1")) {
 			wagon.setPace("Steady");
@@ -303,7 +341,16 @@ public class Menu{
 		return true;
 	}
 
-	public boolean rationsMenu(JTextArea text, JTextField in, String input, Wagon wagon, Weather weather, Health health) {
+	/**
+	 * The input logic for the rations menu
+	 * @param text The text area that is changed once the the player puts in a valid input
+	 * @param input The players input form the text field
+	 * @param wagon The wagon that is used to display the base menu once a valid input is entered
+	 * @param weather The weather object that is used to display the base menu once a valid input is entered
+	 * @param health The health object that is used to display the base menu once a valid input is entered
+	 * @return Returns false if a valid input is entered, and true otherwise
+	 */
+	public boolean rationsMenu(JTextArea text, String input, Wagon wagon, Weather weather, Health health) {
 
 		if(input.equals("1")) {
 			wagon.setRations("Filling");
@@ -324,7 +371,16 @@ public class Menu{
 
 	}
 
-	public boolean supplyMenu(JTextArea text, JTextField in, String input, Wagon wagon, Weather weather, Health health) {
+	/**
+	 * The input logic for the supply menu
+	 * @param text The text area that is changed once the the player exits the menu
+	 * @param input The players input form the text field
+	 * @param wagon The wagon that is used to display the base menu once the player exits the menu
+	 * @param weather The weather object that is used to display the base menu once the player exits the menu
+	 * @param health The health object that is used to display the base menu once the player exits the menu
+	 * @return Returns false if q is pressed, and true otherwise
+	 */
+	public boolean supplyMenu(JTextArea text, String input, Wagon wagon, Weather weather, Health health) {
 
 
 		if(input.equals("q")) {
@@ -334,17 +390,25 @@ public class Menu{
 		else return true;
 	}
 
-	public boolean travelMenu(JTextArea text, JTextField in, String input, Timer time, Wagon wagon, Weather weather, Health health) {
+	/**
+	 * The input logic for the travel menu
+	 * @param text The text area that is changed once the the player stops traveling and not at a landmark
+	 * @param input The players input form the text field
+	 * @param timer The timer that is used to run the travel method
+	 * @param wagon The wagon that is used to display the base menu once the player stops traveling
+	 * @param weather The weather object that is used to display the base menu once the player stops traveling
+	 * @param health The health object that is used to display the base menu once the player stops traveling
+	 * @return Returns false if q is pressed, and true otherwise
+	 */
+	public boolean travelMenu(JTextArea text, String input, Timer time, Wagon wagon, Weather weather, Health health) {
 		if(input.equals("q")) {
 			time.stop();
 			input = "";
 			baseMenu(text, wagon, weather, health);
 			return false;
 		}
-		else {
-			return true;
+		else return true;
 
-		}
 	}
 
 
