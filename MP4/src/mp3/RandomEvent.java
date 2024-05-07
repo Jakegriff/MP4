@@ -50,7 +50,8 @@ public class RandomEvent extends OregonTrail {
 					timer.stop();
 					eventName = "Indians help find food" 
 							+ "\n local Indians will"
-							+ "\n give you 30 pounds of food.";  
+							+ "\n give you 30 pounds of food."
+							+ "\n Press 1 to restart";
 					return;
 				}                        
 			}
@@ -133,7 +134,8 @@ public class RandomEvent extends OregonTrail {
 					eventFlag = true;
 					timer.stop();
 					eventName = "You lose trail" 
-							+ "\n You lose 10 pound of food";                        
+							+ "\n You lose 10 pound of food"
+							+ "\n Press 1 to restart";
 					return;
 				}                           
 			}
@@ -145,7 +147,8 @@ public class RandomEvent extends OregonTrail {
 					eventFlag = true;
 					timer.stop();
 					eventName = "You take a wrong trail" 
-							+ "\n You lose 20 pound of food";                    	
+							+ "\n You lose 20 pound of food"
+							+ "\n Press 1 to restart";
 					return;
 				}                        
 			}
@@ -158,7 +161,8 @@ public class RandomEvent extends OregonTrail {
 					timer.stop();
 					eventName = "Find wild fruits" 
 							+ "\n You are Lucky. You find wild fruits!"
-							+ "\n You got 30 pounds of food.";  
+							+ "\n You got 30 pounds of food."
+							+ "\n Press 1 to restart";
 					return;
 				}                        
 			}
@@ -171,7 +175,8 @@ public class RandomEvent extends OregonTrail {
 					timer.stop();
 					eventName = "Fire in the wagon" 
 							+ "\n Unfortunately, the wagon caught fire."
-							+ "\n You lose 30 pounds of food.";
+							+ "\n You lose 30 pounds of food."
+							+ "\n Press 1 to restart";
 					return;
 				}                        
 			}
@@ -193,7 +198,8 @@ public class RandomEvent extends OregonTrail {
 					timer.stop();
 					eventName = "Finding an abandoned wagon:" 
 							+ "\n Fortunately, you find an abandoned wagon."
-							+ "\n You got 30 pounds of food.";
+							+ "\n You got 30 pounds of food."
+							+ "\n Press 1 to restart";					
 					return;
 				}                        
 			}
@@ -320,7 +326,12 @@ public class RandomEvent extends OregonTrail {
 	 * @return - Returns true.
 	 * */
 	private boolean loseTrail() {
-		return true;
+		if(wagon.getFoodNum() >= 0) {
+			return true;    		
+		}
+		else{
+			return false;
+		}
 	}
 
 	/*
@@ -328,7 +339,12 @@ public class RandomEvent extends OregonTrail {
 	 * @return - Returns true.
 	 * */
 	private boolean wrongTrail() {
-		return true;
+		if(wagon.getFoodNum() >= 0) {
+			return true;    		
+		}
+		else{
+			return false;
+		}
 	}   
 
 	/*
@@ -344,7 +360,12 @@ public class RandomEvent extends OregonTrail {
 	 * @return - Returns true.
 	 * */
 	private boolean wagonFire() {
-		return true;
+		if(wagon.getFoodNum() >= 0) {
+			return true;    		
+		}
+		else{
+			return false;
+		}
 	}
 
 	/*
@@ -380,8 +401,7 @@ public class RandomEvent extends OregonTrail {
 	{			
 		text.append("\n "
 				+ "\n "
-				+ eventName
-				+ "\n Press 1 to restart");
+				+ eventName);
 	}
 
 	/*
