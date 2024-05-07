@@ -556,6 +556,10 @@ public class Conversations {
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	/**
+	 * Used to display the Diary text
+	 * @param text: The text box that is changed
+	 */
 	public void showDiary(JTextArea text) {
 		entryCounter++;
 		

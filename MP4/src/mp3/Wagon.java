@@ -272,7 +272,11 @@ public class Wagon{
 	public void travel(ActionEvent evt, JTextArea text, int food, int nextLandmark)
 	{	
 		calcFood();
-		eatFood();
+		if(food <= 0) {
+			foodAmt = 0;
+			
+		}
+		else eatFood();
 		location = location + numPace;	
 		nextLoc = getNextLocation(nextLandmark);
 		text.setText(" Travelling... Current Location = " + getLocation()
