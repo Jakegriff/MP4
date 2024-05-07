@@ -559,29 +559,93 @@ public class Conversations {
 	public void showDiary(JTextArea text) {
 		entryCounter++;
 		
-		if(entryCounter == 4) {
+		if(entryCounter == 13) {
 			entryCounter = 1;
 		}
 		
 		switch(entryCounter) {
 		case 1:
 		{
-			text.setText("Entry #1");
+			text.setText("You pull out a yellow diary from one of your friends who has traveled this same trail as you. You flip through the pages, reading the tips of seasoned travelers.\n"
+					+ "\nEntry 1- I hope to document my experiences as I make the journey to the West in hopes I can look back at this journey fondly and so this can serve as an inspiration for those who decide to travel the path in the future. "
+					+ " Although my party has left only recently, I’ve learned a lot about trying to travel."
+					+ " With hotter weather approaching, it’s better to control your pace and enjoy the scenery.");
 			break;
 			
 		}
 		case 2:
 		{
-			text.setText("Entry #2");
+			text.setText("Entry 2- I’m back! I’ve decided to create monthly updates, allowing for time to process and plan each entry! Many events occurred over the past month."
+					+ "\n\n"
+					+ "I’ve started baking on Mondays alongside some of the other women I’m traveling with.\nLately, my party and I have been resting near the Otoe’s tribe’s tents and every once in a while I’ll cook a meal to eat with them. "
+					+ "The chief even gave me a special dagger! I’ve heard it’s rare for the tribe to give anything away, it must be a sign my cooking is improving!"
+					+ "");
 			break;
 			
 		}
 		case 3:
 		{
-			text.setText("Entry #3");
+			text.setText("Entry 3- Unfortunately, two of our party members recently got sick, leaving me to handle more work to try and cover up for their portion of work."
+					+ "I hope they get better soon, I would hate to have to bury someone along the way. Just last week we passed by a number of graves alongside the road."
+					+ "I wonder if their party ever made it to Oregon?"
+					+ "No matter, I’ll continue moving on! These illnesses won’t get to us!");
 			break;
 			
 		}
+		case 4:
+		{
+			text.setText("Entry 4- Today we met a team from Salt Lake! They must have also heard of the new opportunities because they’re heading to the same location as we are.\n\n"
+					+ "We also targeted berries and black currants. There was plenty in the area around us, so finding food wasn’t as big of a problem as I had originally thought it would be. Maybe I’ll consider baking a pie using the leftover fruits!");
+			break;
+		}
+		case 5:
+		{
+			text.setText("Entry 5- We recently passed by a large valley! I can’t remember the name, but it was so large! Unlike with the Otoe, the neighboring Indian Tribe isn’t as friendly. "
+					+ "\n\nThey have been causing quite a number of problems with my party’s travel progress and the wolves known to be in the area doesn’t help the reputation of this area.");
+			break;
+		}
+		case 6:
+		{
+			text.setText("Entry 6- After traveling on the trail so far, my experience has been great! This journey has allowed me to see so many different landmarks, forts, and rivers! "
+					+ "\n\nEach location is different in its own way, and the wildlife around each spot really helps to bring the entire setting together.");
+			
+			break;
+		}
+		case 7:
+		{
+			text.setText("Entry 7- Today was a rough day for the party. While up so far, people have gotten illnesses and diseases, no one had gotten seriously affected - that is - until now."
+					+ "\n\nOur entire party and passerbys all mourned some of our closest friends and fellow travelers, those who passes due to the lingering disease spreading around.");
+			break;
+		}
+		case 8:
+		{
+			text.setText("Entry 8- ");
+			break;
+		}
+		case 9:
+		{
+			text.setText("Entry 9- ");
+			break;
+		}
+		case 10:
+		{
+			text.setText("Entry 10- ");
+			break;
+		}
+		case 11:
+		{
+			text.setText("Entry 11- ");
+			break;
+		}
+		case 12:
+		{
+			text.setText("Entry 12- We've finally reached our destination, so this will be the last entry. Overall, this expedition has been life-changing, whether or not we find the riches of this new land."
+					+ "\n\nSo many people were met and lost along the way, however, if anyone has the smallest inkling of curiosity, I encourage you to make the trek yourself to fully experience what this adventure has to offer. Farewell to whomever this reader may be."
+					+ "\n\nThe End. You decide to close the diary and focus on the present.");
+			break;
+		}
+		default: break;
 		}
 	}
 }
+
