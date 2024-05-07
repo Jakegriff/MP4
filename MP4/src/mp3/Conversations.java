@@ -614,27 +614,30 @@ public class Conversations {
 		case 7:
 		{
 			text.setText("Entry 7- Today was a rough day for the party. While up so far, people have gotten illnesses and diseases, no one had gotten seriously affected - that is - until now."
-					+ "\n\nOur entire party and passerbys all mourned some of our closest friends and fellow travelers, those who passes due to the lingering disease spreading around.");
+					+ "\n\nOur entire party and passerbys all mourned some of our closest friends and fellow travelers, those who passed due to the lingering disease spreading around.");
 			break;
 		}
 		case 8:
 		{
-			text.setText("Entry 8- ");
+			text.setText("Entry 8- It recently rained which hindered out progress to start moving along the trail again. At this rate, we’ll have to stay and camp out for yet another night so the rain starts to lift a bit."
+					+ "\n\nAs much as I love the smell of fresh rain and the dew it leaves behind, this scenario has become a nuisance where I am just left waiting for the best time to fork through it. I’m hoping the weather will change over the next few weeks to prevent this sort of thing from happening again.");
 			break;
 		}
 		case 9:
 		{
-			text.setText("Entry 9- ");
+			text.setText("Entry 9- Lately, we’ve been trekking through this difficult terrain as a large group. From climbing through the mountains, to crossing rivers, to long distances over time, we have learned to group together to overcome these problems!"
+					+ "\n\nI think we will be able to make it to Oregon! Those we’ve lost along the way won’t be disappointed!");
 			break;
 		}
 		case 10:
 		{
-			text.setText("Entry 10- ");
+			text.setText("Entry 10- Things are finally starting to look up for my party! We ran into a group of super nice travelers who stopped and provided us with newer materials used to attack and defend ourselves against the outer wilds. "
+					+ "\n\nI am slightly hesitant to see this journey come to an end because without the ability to speak and compare notes with other travelers, I feel like a sense of connection between people is lost.");
 			break;
 		}
 		case 11:
 		{
-			text.setText("Entry 11- ");
+			text.setText("Entry 11- We have finally entered California and the remaining territories. This was a very nice stroke of luck, because otherwise, we would have a result in trying to trade outrageous prices or confining everyone to one side of the store.");
 			break;
 		}
 		case 12:
