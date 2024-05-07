@@ -361,4 +361,14 @@ public class Wagon{
 		nextLoc = nextLandmark - getLocation();
 		return(nextLoc);
 	}
+	
+	
+	/**
+	 * Used to pay the toll for taking a ferry across a river
+	 */
+	public void payToll() {
+		money = money - 10;
+	}
+	
+	
 }

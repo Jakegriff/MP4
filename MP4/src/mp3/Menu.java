@@ -27,8 +27,10 @@ public class Menu{
 	 * @param text - a JTextArea that determines which text area is changed.
 	 */
 	public void introMenu(JTextArea text) {
-		text.setText(" Welcome to Oregon Trail!"
-				+ "\n\n All conversations and diary entries were based on the text Covered Wagon Women : Diaries and Letters From the Western Trails");
+		text.setText(" Welcome to Oregon Trail! This is a MVP version of the game, and will only include a short distance "
+				+ " with two landmarks. In addition, the wagon is already loaded with food, water, and basic supplies."
+				+ "As of now you can only change the travel speed and food consumption in the menus, but this will be "
+				+ "updated later on. To continue press enter");
 	}
 
 	/*
@@ -199,6 +201,15 @@ public class Menu{
 				);			
 	}
 
+	/**
+	 * Used to check the user input for the riverChoices method. Each 
+	 * @param text
+	 * @param in
+	 * @param input
+	 * @param dep
+	 * @param wagon
+	 * @return
+	 */
 	public boolean riverActions(JTextArea text, JTextField in, String input, double dep, Wagon wagon) {
 		
 		int temp = rand.nextInt(100)+1;
@@ -258,7 +269,7 @@ public class Menu{
 		}
 
 		if(input.equals("3")) {
-
+			wagon.payToll();
 			if(temp <= 90) {
 				text.setText("You passed through the river with no issue");
 				return false;
@@ -339,18 +350,36 @@ public class Menu{
 	}
 
 
+	/**
+	 * Used to determine if the player has reached a landmark and what type of landmark
+	 * @param evt: needed to run every timer tick
+	 * @param text: The text box that is changed to that set landmarks menu when is is reached
+	 * @param time: Timer that is stopped to stop the player from traveling
+	 * @param nextLandmark: the position of the next landmark
+	 * @param currentLoc: the players current location, compared to nextLandmark to determine if the player reaches one
+	 * @param name: name of the landmark
+	 * @param tag: An string that is used to differentiate landmarks
+	 * @param counter: Current location in the landmarks array
+	 * @param wagon: Players wagon, used for menu displaying
+	 * @param weather : Current weather, also used for menu displaying
+	 * @param health : Players current health level, also used for menu displaying.
+	 * @return
+	 */
 	public String landmarkCheck(ActionEvent evt, JTextArea text, Timer time, int nextLandmark, double currentLoc, String name, String tag, int counter, Wagon wagon, Weather weather, Health health) {
+		// Calculate distance from next landmark
 		double temp = nextLandmark - currentLoc;
-
+		// For bug testing purposes
 		//	System.out.println("QQEQWEOJQEOI: " + temp);
+		// If at or after a landmark (in case the landmark is overshot due to a not standard pace)
 		if(temp <= 0) {
-
+			// Stop timer to stop traveling
 			time.stop();
-
+			// And then check what kind of landmark, display its menu, update the counter, and return the what type of landmark in string form.
 			if(tag.equals("Fort")) {
 				fortMenu(text,name, wagon, weather, health);
 				counter++;
-				System.out.println("COUNTER: " + counter);
+				// For bug testing purposes
+				// System.out.println("COUNTER: " + counter);
 				return "Fort";
 			}
 
@@ -369,14 +398,19 @@ public class Menu{
 		return "0";
 	}
 	
+	/**
+	 * Helper method to determine what item to lose and how much of it when you fail to pass the river check
+	 * @param wagon: The wagon that is used to access the players items
+	 * @return returns a string to use for the display text to inform the player of what was lost
+	 */
 	public String riverLoseItem(Wagon wagon) {
-		
+		// Random object to randomize what item is lost
 		Random rand = new Random();
-		
+		// 5 options
 		int whichItem = rand.nextInt(4);
-		
+		// Switch to make things cleaner
 		switch(whichItem) {
-		
+		// Each item loses a set amount.
 		case 0:
 		{
 			wagon.setAmmo(-2);

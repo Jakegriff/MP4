@@ -225,7 +225,7 @@ public class OregonTrail {
 
 
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(93, 55, 550, 400);
+		textArea.setBounds(93, 55, 550, 390);
 		textArea.setWrapStyleWord(true);
 		textArea.setFont(new Font("Monospaced", Font.BOLD, 18));
 		textArea.setLineWrap(true);
@@ -535,7 +535,7 @@ public class OregonTrail {
 							menuFlag = true;
 							travelFlag = true;
 							menu.travelling(textArea, wagon.getFoodNum(),wagon.getLocation(),wagon.getNextLocation(Locations[locCounter].getLocation()));
-							timer = new javax.swing.Timer(100, new ActionListener() {
+							timer = new javax.swing.Timer(2000, new ActionListener() {
 								public void actionPerformed(ActionEvent evt) {
 									wagon.travel(evt, textArea, wagon.getFoodNum(), Locations[locCounter].getLocation());
 									healStr = partyHealth.CheckHealth(Party, wagon, weather, frmOregontrailv, gamePanel);
