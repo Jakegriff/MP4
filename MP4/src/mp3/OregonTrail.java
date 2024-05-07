@@ -237,7 +237,7 @@ public class OregonTrail {
 
 
 		inputField = new JTextField();
-		inputField.setBounds(93, 470, 550, 40);
+		inputField.setBounds(93, 470, 550, 51);
 		inputField.setBorder(BorderFactory.createCompoundBorder(border,BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 		inputField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
