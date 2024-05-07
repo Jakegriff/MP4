@@ -535,7 +535,7 @@ public class OregonTrail {
 							menuFlag = true;
 							travelFlag = true;
 							menu.travelling(textArea, wagon.getFoodNum(),wagon.getLocation(),wagon.getNextLocation(Locations[locCounter].getLocation()));
-							timer = new javax.swing.Timer(2000, new ActionListener() {
+							timer = new javax.swing.Timer(1000, new ActionListener() {
 								public void actionPerformed(ActionEvent evt) {
 									wagon.travel(evt, textArea, wagon.getFoodNum(), Locations[locCounter].getLocation());
 									healStr = partyHealth.CheckHealth(Party, wagon, weather, frmOregontrailv, gamePanel);
@@ -643,7 +643,7 @@ public class OregonTrail {
 						menuFlag = false;
 					}
 
-					//Relays all flags and their status to the console.
+					//Relays all flags and their status to the console for bug fixing purposes
 					//System.out.println(wagon.getLocation());
 					//System.out.println("loccounter: " + locCounter);
 					//System.out.println("Oxen num: "+wagon.getOxen());
@@ -658,12 +658,12 @@ public class OregonTrail {
 					//System.out.println("riverFlag:" + riverFlag);
 					//System.out.println("riverSubMenuFlag:" + rivSubMenuFlag);
 					//System.out.println("tradeFlag:" + tradeFlag);
-					System.out.println("menuFlag:" + menuFlag);
-					System.out.println("storeFlag: " + storeFlag);
-					System.out.println("sparePartsFlag: " + sparePartsFlag);
+					//System.out.println("menuFlag:" + menuFlag);
+					//System.out.println("storeFlag: " + storeFlag);
+					//System.out.println("sparePartsFlag: " + sparePartsFlag);
 					//System.out.println(wagon.getWheelNum());
 					//System.out.println(currentZone);
-					System.out.println("______________");
+					//System.out.println("______________");
 
 				}
 				inputField.setText("");

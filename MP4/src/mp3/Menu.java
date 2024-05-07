@@ -27,10 +27,8 @@ public class Menu{
 	 * @param text - a JTextArea that determines which text area is changed.
 	 */
 	public void introMenu(JTextArea text) {
-		text.setText(" Welcome to Oregon Trail! This is a MVP version of the game, and will only include a short distance "
-				+ " with two landmarks. In addition, the wagon is already loaded with food, water, and basic supplies."
-				+ "As of now you can only change the travel speed and food consumption in the menus, but this will be "
-				+ "updated later on. To continue press enter");
+		text.setText(" Welcome to Oregon Trail!"
+				+ "\n\n All conversations and diary entries were based on the text Covered Wagon Women : Diaries and Letters From the Western Trails");
 	}
 
 	/*
