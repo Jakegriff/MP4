@@ -231,7 +231,7 @@ public class OregonTrail {
 
 
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(93, 55, 550, 390);
+		textArea.setBounds(93, 45, 550, 430);
 		textArea.setWrapStyleWord(true);
 		textArea.setFont(new Font("Monospaced", Font.BOLD, 18));
 		textArea.setLineWrap(true);
@@ -243,7 +243,7 @@ public class OregonTrail {
 
 
 		inputField = new JTextField();
-		inputField.setBounds(93, 470, 550, 51);
+		inputField.setBounds(93, 490, 550, 51);
 		inputField.setBorder(BorderFactory.createCompoundBorder(border,BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 		inputField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
