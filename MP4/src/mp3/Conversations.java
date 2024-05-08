@@ -22,7 +22,6 @@ public class Conversations {
 	 * Checks the players current location and then randomizes one of three conversations unique to each location
 	 * @param text : The text area that displays the conversation on method call
 	 * @param locName : The name of the current location
-	 * @wbp.parser.entryPoint
 	 */
 	public void showConversation(JTextArea text, String locName) {
 		// Temp variable that is used to choose the randomly selected conversation

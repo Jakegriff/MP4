@@ -42,27 +42,46 @@ public class Wagon{
 	 * Default Constructor
 	 */
 	public Wagon() {}
-	
+	/**
+	 * Updates the amount of wheels the player has based on the input
+	 * @param wheelNum - How many wheels to be added or subtracted from the players supplies
+	 */
 	public void setWheelNum(int wheelNum) {
 		this.wheelNum = this.wheelNum + wheelNum;
 	}
 	
+	/**
+	 * Getter for the amount of wheels the player has
+	 * @return Returns the amount of wheels the player has
+	 */
 	public int getWheelNum() {
 		return wheelNum;
 	}
-	
+	/**
+	 * Updates the amount of axles the player has based on the input
+	 * @param wheelNum - How many axles to be added or subtracted from the players supplies
+	 */
 	public void setAxelNum (int axelNum) {
 		this.axelNum = this.axelNum + axelNum;
 	}
-	
+	/**
+	 * Getter for the amount of axles the player has
+	 * @return Returns the amount of axles the player has
+	 */
 	public int getAxelNum() {
 		return axelNum;
 	}
-	
+	/**
+	 * Updates the amount of wagon tongues the player has based on the input
+	 * @param wheelNum - How many wagon tongues to be added or subtracted from the players supplies
+	 */
 	public void setTongueNum(int tongueNum) {
 		this.tongueNum = this.tongueNum + tongueNum;
 	}
-	
+	/**
+	 * Getter for the amount of wagon tongues the player has
+	 * @return Returns the amount of wagon tongues the player has
+	 */
 	public int getTongueNum() {
 		return tongueNum;
 	}
