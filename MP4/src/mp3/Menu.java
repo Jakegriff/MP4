@@ -45,13 +45,9 @@ public class Menu{
 		text.setText(" Weather: " + weather.getWeather() + "\n"
 				+ " Health: " + health.getHealthStr() + "\n"
 				+ " Pace: " + wagon.getPace() + "\n"
-<<<<<<< HEAD
 				+ " Rations: " + wagon.getRations() + "\n"
-						+ " Date:" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.DAY_OF_MONTH) + "/" + calendar.get(Calendar.YEAR) + "\n"
-=======
+				+ " Date:" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.DAY_OF_MONTH) + "/" + calendar.get(Calendar.YEAR) + "\n"
 				+ " Rations: " + wagon.getRations() + "\n"				
-				+ " Date: " + calendar.getTime()
->>>>>>> f10105c7a8ba9c1a281dfdf7f1ac4e3a2b2e8333
 				+ " You may:" + "\n \n"
 				+ " 1. Continue on trail \n"
 				+ " 2. Check supplies \n"
@@ -113,10 +109,11 @@ public class Menu{
 	 * @currentLoc - a double value that determines the current location of the wagon.
 	 * @nextLoc - a double value containing the location of the next landmark.
 	 */
-	public void travelling(JTextArea text, int food, double currentLoc, double nextLoc) {
+	public void travelling(JTextArea text, int food, double currentLoc, double nextLoc, Calendar calendar) {
 		text.setText(" Travelling... Current Location = " + currentLoc
 				+ "\n Food: " + food + "\n Press q to stop"
-				+ "\n Distance to next location: " + nextLoc);
+				+ "\n Distance to next location: " + nextLoc
+				+ "\n Date:" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.DAY_OF_MONTH) + "/" + calendar.get(Calendar.YEAR) + "\n");
 	}
 
 	/**
@@ -133,11 +130,7 @@ public class Menu{
 				+ " Health: " + health.getHealthStr() + "\n"
 				+ " Pace: " + wagon.getPace() + "\n"
 				+ " Rations: " + wagon.getRations() + "\n"
-<<<<<<< HEAD
 				+ " Date:" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.DAY_OF_MONTH) + "/" + calendar.get(Calendar.YEAR) + "\n"
-=======
-				+ " Date: " + calendar.getTime()
->>>>>>> f10105c7a8ba9c1a281dfdf7f1ac4e3a2b2e8333
 				+ " \n You may:" + "\n"
 				+ " 1. Continue on trail \n"
 				+ " 2. Check supplies \n"
@@ -166,11 +159,7 @@ public class Menu{
 				+ " Health: " + health.getHealthStr() + "\n"
 				+ " Pace: " + wagon.getPace() + "\n"
 				+ " Rations: " + wagon.getRations() + "\n"
-<<<<<<< HEAD
 				+ " Date:" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.DAY_OF_MONTH) + "/" + calendar.get(Calendar.YEAR) + "\n"
-=======
-				+ " Date: " + calendar.getTime()
->>>>>>> f10105c7a8ba9c1a281dfdf7f1ac4e3a2b2e8333
 				+ " \n You may:" + "\n \n"
 				+ " 1. Continue on trail \n"
 				+ " 2. Check supplies \n"
@@ -195,11 +184,7 @@ public class Menu{
 				+ " Health: " + health.getHealthStr() + "\n"
 				+ " Pace: " + wagon.getPace() + "\n"
 				+ " Rations: " + wagon.getRations() + "\n"
-<<<<<<< HEAD
 				+ " Date:" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.DAY_OF_MONTH) + "/" + calendar.get(Calendar.YEAR) + "\n"
-=======
-				+ " Date: " + calendar.getTime()
->>>>>>> f10105c7a8ba9c1a281dfdf7f1ac4e3a2b2e8333
 				+ " \n You may:" + "\n \n"
 				+ " 1. Continue on trail \n"
 				+ " 2. Check supplies \n"
@@ -343,11 +328,7 @@ public class Menu{
 	 * @param health The health object that is used to display the base menu once a valid input is entered
 	 * @return Returns false if a valid input is entered, and true otherwise
 	 */
-<<<<<<< HEAD
 	public boolean paceMenu(JTextArea text, String input, Wagon wagon, Weather weather, Health health,Calendar calendar) {
-=======
-	public boolean paceMenu(JTextArea text, String input, Wagon wagon, Weather weather, Health health, Calendar calendar) {
->>>>>>> f10105c7a8ba9c1a281dfdf7f1ac4e3a2b2e8333
 
 		if(input.equals("1")) {
 			wagon.setPace("Steady");
@@ -465,11 +446,7 @@ public class Menu{
 			time.stop();
 			// And then check what kind of landmark, display its menu, update the counter, and return the what type of landmark in string form.
 			if(tag.equals("Fort")) {
-<<<<<<< HEAD
-				fortMenu(text,name, wagon, weather, health, calendar);
-=======
 				fortMenu(text, name, wagon, weather, health, calendar);
->>>>>>> f10105c7a8ba9c1a281dfdf7f1ac4e3a2b2e8333
 				counter++;
 				// For bug testing purposes
 				// System.out.println("COUNTER: " + counter);

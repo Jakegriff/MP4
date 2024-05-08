@@ -540,16 +540,15 @@ public class OregonTrail {
 							textArea.setText(null);
 							menuFlag = true;
 							travelFlag = true;
-							menu.travelling(textArea, wagon.getFoodNum(),wagon.getLocation(),wagon.getNextLocation(Locations[locCounter].getLocation()));
+							menu.travelling(textArea, wagon.getFoodNum(),wagon.getLocation(),wagon.getNextLocation(Locations[locCounter].getLocation()), calendar);
+							calendar.add(calendar.DATE, 1);
 							timer = new javax.swing.Timer(1000, new ActionListener() {
 								public void actionPerformed(ActionEvent evt) {
-									wagon.travel(evt, textArea, wagon.getFoodNum(), Locations[locCounter].getLocation());
+									wagon.travel(evt, textArea, wagon.getFoodNum(), Locations[locCounter].getLocation(), calendar);
 									healStr = partyHealth.CheckHealth(Party, wagon, weather, frmOregontrailv, gamePanel);
 									calendar.add(calendar.DATE, 1);
-									System.out.println(calendar.getTime());
 									RandomEvent randomEvent = new RandomEvent();
 									randomEvent.travelDay(timer);
-									//eventFlag = false;
 									System.out.println("event: "+ randomEvent.getEvent());
 									if(randomEvent.getEvent() == true) {
 										randomEvent.eventtext(evt, textArea);

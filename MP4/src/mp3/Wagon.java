@@ -288,7 +288,7 @@ public class Wagon{
 	 * @param food - an integer value containing the amount of food in the wagon.
 	 * @param nextLandmark - an integer value to determine how far until the next landmark appears.
 	 */
-	public void travel(ActionEvent evt, JTextArea text, int food, int nextLandmark)
+	public void travel(ActionEvent evt, JTextArea text, int food, int nextLandmark, Calendar calendar)
 	{	
 		calcFood();
 		if(food <= 0) {
@@ -300,7 +300,9 @@ public class Wagon{
 		nextLoc = getNextLocation(nextLandmark);
 		text.setText(" Travelling... Current Location = " + getLocation()
 		+ "\n Food: " + getFoodNum() + "\n Press q to stop"
-		+ "\n Distance to next location: " + nextLoc);
+		+ "\n Distance to next location: " + nextLoc
+		+ "\n Date:" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.DAY_OF_MONTH) + "/" + calendar.get(Calendar.YEAR) + "\n"
+		);
 	}
 
 	/*
