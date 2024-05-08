@@ -40,11 +40,12 @@ public class Menu{
 	 * @param weather - the weather object used to get the weather
 	 * @param health - the health object used to get the current health
 	 */
-	public void baseMenu(JTextArea text, Wagon wagon, Weather weather, Health health) {
+	public void baseMenu(JTextArea text, Wagon wagon, Weather weather, Health health, Calendar calendar) {
 		text.setText(" Weather: " + weather.getWeather() + "\n"
 				+ " Health: " + health.getHealthStr() + "\n"
 				+ " Pace: " + wagon.getPace() + "\n"
 				+ " Rations: " + wagon.getRations() + "\n"
+						+ " Date:" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.DAY_OF_MONTH) + "/" + calendar.get(Calendar.YEAR) + "\n"
 				+ " You may:" + "\n \n"
 				+ " 1. Continue on trail \n"
 				+ " 2. Check supplies \n"
@@ -126,7 +127,7 @@ public class Menu{
 				+ " Health: " + health.getHealthStr() + "\n"
 				+ " Pace: " + wagon.getPace() + "\n"
 				+ " Rations: " + wagon.getRations() + "\n"
-				+ " Date:" + calendar.get(calendar.DATE) + "\n"
+				+ " Date:" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.DAY_OF_MONTH) + "/" + calendar.get(Calendar.YEAR) + "\n"
 				+ " \n You may:" + "\n"
 				+ " 1. Continue on trail \n"
 				+ " 2. Check supplies \n"
@@ -148,13 +149,14 @@ public class Menu{
 	 * @param weather - the weather object used to get the weather
 	 * @param health - the health object used to get the current health
 	 */
-	public void riverMenu(JTextArea text, String name, Wagon wagon, Weather weather, Health health) {
+	public void riverMenu(JTextArea text, String name, Wagon wagon, Weather weather, Health health, Calendar calendar) {
 
 		text.setText(" Welcome to " + name + "\n"
 				+ " Weather: " + weather.getWeather() + "\n"
 				+ " Health: " + health.getHealthStr() + "\n"
 				+ " Pace: " + wagon.getPace() + "\n"
 				+ " Rations: " + wagon.getRations() + "\n"
+				+ " Date:" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.DAY_OF_MONTH) + "/" + calendar.get(Calendar.YEAR) + "\n"
 				+ " \n You may:" + "\n \n"
 				+ " 1. Continue on trail \n"
 				+ " 2. Check supplies \n"
@@ -172,13 +174,14 @@ public class Menu{
 	 * @param weather - the weather object used to get the weather
 	 * @param health - the health object used to get the current health
 	 */
-	public void naturalMenu(JTextArea text, String name, Wagon wagon, Weather weather, Health health) {
+	public void naturalMenu(JTextArea text, String name, Wagon wagon, Weather weather, Health health, Calendar calendar) {
 
 		text.setText(" Welcome to " + name + "\n"
 				+ " Weather: " + weather.getWeather() + "\n"
 				+ " Health: " + health.getHealthStr() + "\n"
 				+ " Pace: " + wagon.getPace() + "\n"
 				+ " Rations: " + wagon.getRations() + "\n"
+				+ " Date:" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.DAY_OF_MONTH) + "/" + calendar.get(Calendar.YEAR) + "\n"
 				+ " \n You may:" + "\n \n"
 				+ " 1. Continue on trail \n"
 				+ " 2. Check supplies \n"
@@ -322,21 +325,21 @@ public class Menu{
 	 * @param health The health object that is used to display the base menu once a valid input is entered
 	 * @return Returns false if a valid input is entered, and true otherwise
 	 */
-	public boolean paceMenu(JTextArea text, String input, Wagon wagon, Weather weather, Health health) {
+	public boolean paceMenu(JTextArea text, String input, Wagon wagon, Weather weather, Health health,Calendar calendar) {
 
 		if(input.equals("1")) {
 			wagon.setPace("Steady");
-			baseMenu(text, wagon, weather, health);
+			baseMenu(text, wagon, weather, health, calendar);
 			return false;
 		}
 		else if(input.equals("2")) {
 			wagon.setPace("Strenuous");
-			baseMenu(text,wagon, weather, health);
+			baseMenu(text,wagon, weather, health, calendar);
 			return false;
 		}
 		else if(input.equals("3")) {
 			wagon.setPace("Grueling");
-			baseMenu(text, wagon, weather, health);
+			baseMenu(text, wagon, weather, health, calendar);
 			return false;
 		}
 		wagon.calcPace();
@@ -352,21 +355,21 @@ public class Menu{
 	 * @param health The health object that is used to display the base menu once a valid input is entered
 	 * @return Returns false if a valid input is entered, and true otherwise
 	 */
-	public boolean rationsMenu(JTextArea text, String input, Wagon wagon, Weather weather, Health health) {
+	public boolean rationsMenu(JTextArea text, String input, Wagon wagon, Weather weather, Health health, Calendar calendar) {
 
 		if(input.equals("1")) {
 			wagon.setRations("Filling");
-			baseMenu(text, wagon, weather, health);
+			baseMenu(text, wagon, weather, health, calendar);
 			return false;
 		}
 		else if(input.equals("2")) {
 			wagon.setRations("Meager");
-			baseMenu(text, wagon, weather, health);
+			baseMenu(text, wagon, weather, health, calendar);
 			return false;
 		}
 		else if(input.equals("3")) {
 			wagon.setRations("Barebones");
-			baseMenu(text, wagon, weather, health);
+			baseMenu(text, wagon, weather, health, calendar);
 			return false;
 		}
 		return true;
@@ -382,11 +385,11 @@ public class Menu{
 	 * @param health The health object that is used to display the base menu once the player exits the menu
 	 * @return Returns false if q is pressed, and true otherwise
 	 */
-	public boolean supplyMenu(JTextArea text, String input, Wagon wagon, Weather weather, Health health) {
+	public boolean supplyMenu(JTextArea text, String input, Wagon wagon, Weather weather, Health health, Calendar calendar) {
 
 
 		if(input.equals("q")) {
-			baseMenu(text, wagon, weather, health);	
+			baseMenu(text, wagon, weather, health, calendar);	
 			return false;
 		}
 		else return true;
@@ -402,11 +405,11 @@ public class Menu{
 	 * @param health The health object that is used to display the base menu once the player stops traveling
 	 * @return Returns false if q is pressed, and true otherwise
 	 */
-	public boolean travelMenu(JTextArea text, String input, Timer time, Wagon wagon, Weather weather, Health health) {
+	public boolean travelMenu(JTextArea text, String input, Timer time, Wagon wagon, Weather weather, Health health, Calendar calendar) {
 		if(input.equals("q")) {
 			time.stop();
 			input = "";
-			baseMenu(text, wagon, weather, health);
+			baseMenu(text, wagon, weather, health, calendar);
 			return false;
 		}
 		else return true;
@@ -429,7 +432,7 @@ public class Menu{
 	 * @param health : Players current health level, also used for menu displaying.
 	 * @return
 	 */
-	public String landmarkCheck(ActionEvent evt, JTextArea text, Timer time, int nextLandmark, double currentLoc, String name, String tag, int counter, Wagon wagon, Weather weather, Health health) {
+	public String landmarkCheck(ActionEvent evt, JTextArea text, Timer time, int nextLandmark, double currentLoc, String name, String tag, int counter, Wagon wagon, Weather weather, Health health, Calendar calendar) {
 		// Calculate distance from next landmark
 		double temp = nextLandmark - currentLoc;
 		// For bug testing purposes
@@ -440,7 +443,7 @@ public class Menu{
 			time.stop();
 			// And then check what kind of landmark, display its menu, update the counter, and return the what type of landmark in string form.
 			if(tag.equals("Fort")) {
-				fortMenu(text,name, wagon, weather, health);
+				fortMenu(text,name, wagon, weather, health, calendar);
 				counter++;
 				// For bug testing purposes
 				// System.out.println("COUNTER: " + counter);
@@ -448,13 +451,13 @@ public class Menu{
 			}
 
 			if(tag.equals("River")) {
-				riverMenu(text,name, wagon, weather, health);
+				riverMenu(text,name, wagon, weather, health, calendar);
 				counter++;
 				return "River";
 			}
 
 			if(tag.equals("Natural")) {
-				naturalMenu(text,name,wagon, weather, health);
+				naturalMenu(text,name,wagon, weather, health, calendar);
 				counter++;
 				return "Natural";
 			}
