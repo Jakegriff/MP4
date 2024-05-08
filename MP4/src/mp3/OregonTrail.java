@@ -27,6 +27,7 @@ import java.awt.SystemColor;
 
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+import java.util.GregorianCalendar;
 
 /**
  * The gui implementation of packing a wagon in an implementation of the game Oregon Trail.
@@ -37,6 +38,11 @@ import javax.swing.border.LineBorder;
  */
 public class OregonTrail {
 
+	int year = 1850;
+	int month = 4; 
+	int day = 2;
+	GregorianCalendar calendar = new GregorianCalendar(year, month, day);
+	
 	private JFrame frmOregontrailv;
 	private JLayeredPane layeredPane;
 	private JLabel lblOverweight;
@@ -310,7 +316,7 @@ public class OregonTrail {
 
 				// If you reach a fort, show the fort menu.
 				if(fortFlag == true) {
-					menu.fortMenu(textArea, Locations[locCounter].getName(), wagon, weather, partyHealth);
+					menu.fortMenu(textArea, Locations[locCounter].getName(), wagon, weather, partyHealth, calendar);
 					menuFlag = true;
 				}
 
@@ -539,6 +545,8 @@ public class OregonTrail {
 								public void actionPerformed(ActionEvent evt) {
 									wagon.travel(evt, textArea, wagon.getFoodNum(), Locations[locCounter].getLocation());
 									healStr = partyHealth.CheckHealth(Party, wagon, weather, frmOregontrailv, gamePanel);
+									calendar.add(calendar.DATE, 1);
+									System.out.println(calendar.getTime());
 									RandomEvent randomEvent = new RandomEvent();
 									randomEvent.travelDay(timer);
 									//eventFlag = false;

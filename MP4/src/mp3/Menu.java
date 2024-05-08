@@ -1,6 +1,7 @@
 package mp3;
 
 import java.awt.event.ActionEvent;
+import java.util.Calendar;
 import java.util.Random;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -112,12 +113,13 @@ public class Menu{
 	 * @param text - a JTextArea that determines which text area is changed.
 	 * @param name - the String name of the fort being used.
 	 */
-	public void fortMenu(JTextArea text, String name, Wagon wagon, Weather weather, Health health) {
+	public void fortMenu(JTextArea text, String name, Wagon wagon, Weather weather, Health health, Calendar calendar) {
 		text.setText(" Welcome to " + name + "\n"
 				+ " Weather: " + weather.getWeather() + "\n"
 				+ " Health: " + health.getHealthStr() + "\n"
 				+ " Pace: " + wagon.getPace() + "\n"
 				+ " Rations: " + wagon.getRations() + "\n"
+				+ " Date:" + calendar.get(calendar.DATE) + "\n"
 				+ " \n You may:" + "\n"
 				+ " 1. Continue on trail \n"
 				+ " 2. Check supplies \n"
