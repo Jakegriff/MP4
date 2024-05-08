@@ -231,7 +231,7 @@ public class OregonTrail {
 
 
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(93, 55, 550, 390);
+		textArea.setBounds(93, 45, 550, 430);
 		textArea.setWrapStyleWord(true);
 		textArea.setFont(new Font("Monospaced", Font.BOLD, 18));
 		textArea.setLineWrap(true);
@@ -243,7 +243,7 @@ public class OregonTrail {
 
 
 		inputField = new JTextField();
-		inputField.setBounds(93, 470, 550, 51);
+		inputField.setBounds(93, 490, 550, 51);
 		inputField.setBorder(BorderFactory.createCompoundBorder(border,BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 		inputField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -283,7 +283,7 @@ public class OregonTrail {
 
 				// If the supply flag is true, call the supply menu.
 				if(supplyFlag == true) {
-					supplyFlag = menu.supplyMenu(textArea, input, wagon, weather, partyHealth);
+					supplyFlag = menu.supplyMenu(textArea, input, wagon, weather, partyHealth, calendar);
 					input = "";
 				}
 				
@@ -299,19 +299,19 @@ public class OregonTrail {
 
 				// If the pace flag is true, call the pace menu.
 				if(paceFlag == true) {
-					paceFlag =  menu.paceMenu(textArea, input, wagon, weather, partyHealth);
+					paceFlag =  menu.paceMenu(textArea, input, wagon, weather, partyHealth, calendar);
 					input = "";
 				}
 
 				// If the rations flag is true, call the rations menu.
 				if(ratFlag == true) {
-					ratFlag = menu.rationsMenu(textArea, input, wagon, weather, partyHealth);
+					ratFlag = menu.rationsMenu(textArea, input, wagon, weather, partyHealth, calendar);
 					input = "";
 				}
 
 				// If the travel flag is true, call the travel menu.
 				if(travelFlag == true) {
-					travelFlag = menu.travelMenu(textArea, input, timer, wagon, weather, partyHealth);
+					travelFlag = menu.travelMenu(textArea, input, timer, wagon, weather, partyHealth, calendar);
 				}
 
 				// If you reach a fort, show the fort menu.
@@ -499,7 +499,7 @@ public class OregonTrail {
 
 				// If the menu flag is false, then display the base Menu (default)
 				if(menuFlag == false && fortFlag == false) {
-					menu.baseMenu(textArea, wagon, weather, partyHealth);
+					menu.baseMenu(textArea, wagon, weather, partyHealth, calendar);
 				}
 
 				// If the menu flag is false and the user is at a river or fort, calculates and shows the corresponding screen.
@@ -554,7 +554,7 @@ public class OregonTrail {
 									if(randomEvent.getEvent() == true) {
 										randomEvent.eventtext(evt, textArea);
 									}
-									flagCheck =	menu.landmarkCheck(evt, textArea, timer,Locations[locCounter].getLocation(), wagon.getLocation(),Locations[locCounter].getName(),Locations[locCounter].getTag(), locCounter, wagon, weather, partyHealth);
+									flagCheck =	menu.landmarkCheck(evt, textArea, timer,Locations[locCounter].getLocation(), wagon.getLocation(),Locations[locCounter].getName(),Locations[locCounter].getTag(), locCounter, wagon, weather, partyHealth, calendar);
 									currentZone = zoneCheck(wagon);
 									weather.calcWeather(currentZone);
 									if(!flagCheck.equals("0")) {
